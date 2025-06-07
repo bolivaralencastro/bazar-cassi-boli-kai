@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="images/ico.ico">
 
     <!-- Microsoft Clarity Script -->
     <script type="text/javascript">
@@ -21,6 +22,22 @@
 
     <!-- Supabase JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bolivaralencastro.github.io/bazar-cassi-boli-kai/">
+    <meta property="og:title" content="Bazar do Bol - Produtos Incríveis!">
+    <meta property="og:description" content="Confira ofertas de eletrodomésticos, eletrônicos, utilidades e muito mais no Bazar do Bol. Produtos em ótimo estado, prontos para você!">
+    <meta property="og:image" content="https://bolivaralencastro.github.io/bazar-cassi-boli-kai/images/cassi-boli-kai-bazar.png">
+    <meta property="og:image:alt" content="Logo do Bazar Cassi Boli Kai">
+    <meta property="og:site_name" content="Bazar do Bol">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bazar do Bol - Produtos Incríveis!">
+    <meta name="twitter:description" content="Confira ofertas de eletrodomésticos, eletrônicos, utilidades e muito mais no Bazar do Bol. Produtos em ótimo estado, prontos para você!">
+    <meta name="twitter:image" content="https://bolivaralencastro.github.io/bazar-cassi-boli-kai/images/cassi-boli-kai-bazar.png">
+    <meta name="twitter:image:alt" content="Logo do Bazar Cassi Boli Kai">
 
     <style>
         body {
@@ -58,7 +75,7 @@
             border-radius: 8px;
         }
         main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px 8px 0 0; position: relative; z-index: 10; }
-        .order-panel { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 700px; background-color: #2c2c2c; color: white; box-shadow: 0 -3px 10px rgba(0,0,0,0.25); z-index: 10; display: none; box-sizing: border-box; border-radius: 8px; pointer-events: auto; }
+        .order-panel { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 700px; background-color: #2c2c2c; color: white; box-shadow: 0 -3px 10px rgba(0,0,0,0.25); z-index: 2; display: none; box-sizing: border-box; border-radius: 8px; pointer-events: auto; }
         .order-panel.visible { display: block; }
         .order-panel-content-wrapper { margin: 0 auto; padding: 10px 15px; }
         .order-panel-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding-bottom: 8px; }
