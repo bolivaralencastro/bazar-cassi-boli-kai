@@ -95,9 +95,14 @@
             .product-actions-toolbar { margin-top: auto; }
         }
         @media (max-width: 739px) { 
-            /* Para telas menores, o painel se ajusta com left/right 20px no .order-panel original,
-               e max-width 700px garante que não ultrapasse o main.
-               O wrapper centraliza o conteúdo dentro do painel. */
+            main {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            .order-panel-content-wrapper {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
         }
     </style>
 </head>
