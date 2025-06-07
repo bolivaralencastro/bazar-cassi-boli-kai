@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazar do Bol - Produtos Incríveis!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            /* Espaço no final da página para o painel de pedido fixo não cobrir o último produto */
+            padding-bottom: 120px; /* Altura estimada do painel de pedido quando recolhido */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Crect fill='%23ffffff' width='2000' height='1500'/%3E%3Cdefs%3E%3Crect stroke='%23ffffff' stroke-width='0.6' width='1' height='1' id='s'/%3E%3Cpattern id='a' width='3' height='3' patternUnits='userSpaceOnUse' patternTransform='rotate(121 1000 750) scale(9.85) translate(-898.48 -673.86)'%3E%3Cuse fill='%23fcfcfc' href='%23s' y='2'/%3E%3Cuse fill='%23fcfcfc' href='%23s' x='1' y='2'/%3E%3Cuse fill='%23fafafa' href='%23s' x='2' y='2'/%3E%3Cuse fill='%23fafafa' href='%23s'/%3E%3Cuse fill='%23f7f7f7' href='%23s' x='2'/%3E%3Cuse fill='%23f7f7f7' href='%23s' x='1' y='1'/%3E%3C/pattern%3E%3Cpattern id='b' width='7' height='11' patternUnits='userSpaceOnUse' patternTransform='rotate(121 1000 750) scale(9.85) translate(-898.48 -673.86)'%3E%3Cg fill='%23f5f5f5'%3E%3Cuse href='%23s'/%3E%3Cuse href='%23s' y='5' /%3E%3Cuse href='%23s' x='1' y='10'/%3E%3Cuse href='%23s' x='2' y='1'/%3E%3Cuse href='%23s' x='2' y='4'/%3E%3Cuse href='%23s' x='3' y='8'/%3E%3Cuse href='%23s' x='4' y='3'/%3E%3Cuse href='%23s' x='4' y='7'/%3E%3Cuse href='%23s' x='5' y='2'/%3E%3Cuse href='%23s' x='5' y='6'/%3E%3Cuse href='%23s' x='6' y='9'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='h' width='5' height='13' patternUnits='userSpaceOnUse' patternTransform='rotate(121 1000 750) scale(9.85) translate(-898.48 -673.86)'%3E%3Cg fill='%23f5f5f5'%3E%3Cuse href='%23s' y='5'/%3E%3Cuse href='%23s' y='8'/%3E%3Cuse href='%23s' x='1' y='1'/%3E%3Cuse href='%23s' x='1' y='9'/%3E%3Cuse href='%23s' x='1' y='12'/%3E%3Cuse href='%23s' x='2'/%3E%3Cuse href='%23s' x='2' y='4'/%3E%3Cuse href='%23s' x='3' y='2'/%3E%3Cuse href='%23s' x='3' y='6'/%3E%3Cuse href='%23s' x='3' y='11'/%3E%3Cuse href='%23s' x='4' y='3'/%3E%3Cuse href='%23s' x='4' y='7'/%3E%3Cuse href='%23s' x='4' y='10'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='c' width='17' height='13' patternUnits='userSpaceOnUse' patternTransform='rotate(121 1000 750) scale(9.85) translate(-898.48 -673.86)'%3E%3Cg fill='%23f2f2f2'%3E%3Cuse href='%23s' y='11'/%3E%3Cuse href='%23s' x='2' y='9'/%3E%3Cuse href='%23s' x='5' y='12'/%3E%3Cuse href='%23s' x='9' y='4'/%3E%3Cuse href='%23s' x='12' y='1'/%3E%3Cuse href='%23s' x='16' y='6'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='d' width='19' height='17' patternUnits='userSpaceOnUse' patternTransform='rotate(121 1000 750) scale(9.85) translate(-898.48 -673.86)'%3E%3Cg fill='%23ffffff'%3E%3Cuse href='%23s' y='9'/%3E%3Cuse href='%23s' x='16' y='5'/%3E%3Cuse href='%23s' x='14' y='2'/%3E%3Cuse href='%23s' x='11' y='11'/%3E%3Cuse href='%23s' x='6' y='14'/%3E%3C/g%3E%3Cg fill='%23efefef'%3E%3Cuse href='%23s' x='3' y='13'/%3E%3Cuse href='%23s' x='9' y='7'/%3E%3Cuse href='%23s' x='13' y='10'/%3E%3Cuse href='%23s' x='15' y='4'/%3E%3Cuse href='%23s' x='18' y='1'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='e' width='47' height='53' patternUnits='userSpaceOnUse' patternTransform='rotate(121 1000 750) scale(9.85) translate(-898.48 -673.86)'%3E%3Cg fill='%23C7C7C7'%3E%3Cuse href='%23s' x='2' y='5'/%3E%3Cuse href='%23s' x='16' y='38'/%3E%3Cuse href='%23s' x='46' y='42'/%3E%3Cuse href='%23s' x='29' y='20'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='f' width='59' height='71' patternUnits='userSpaceOnUse' patternTransform='rotate(121 1000 750) scale(9.85) translate(-898.48 -673.86)'%3E%3Cg fill='%23C7C7C7'%3E%3Cuse href='%23s' x='33' y='13'/%3E%3Cuse href='%23s' x='27' y='54'/%3E%3Cuse href='%23s' x='55' y='55'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='g' width='139' height='97' patternUnits='userSpaceOnUse' patternTransform='rotate(121 1000 750) scale(9.85) translate(-898.48 -673.86)'%3E%3Cg fill='%23C7C7C7'%3E%3Cuse href='%23s' x='11' y='8'/%3E%3Cuse href='%23s' x='51' y='13'/%3E%3Cuse href='%23s' x='17' y='73'/%3E%3Cuse href='%23s' x='99' y='57'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23b)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23h)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23c)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23d)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23e)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23f)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23g)' width='100%25' height='100%25'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .hero-section { height: 60vh; background-image: url('bazar_hero_completa.png'); background-size: cover; background-position: center; background-repeat: no-repeat; position: sticky; top: 0; left: 0; width: 100%; z-index: 1; }
+
+        main {
+            padding: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Painel do Pedido (Fixo no Rodapé da Viewport) */
+        .order-panel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2c2c2c;
+            color: white;
+            box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
+            z-index: 1000;
+            display: none; /* Começa oculto, JS controla visibilidade */
+            box-sizing: border-box;
+        }
+        .order-panel.visible {
+            display: block;
+        }
+        .order-panel-content-wrapper { /* Novo wrapper para centralizar e limitar largura */
+            max-width: 700px; /* Mesma largura do main */
+            margin: 0 auto;
+            padding: 10px 15px;
+        }
+        .order-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding-bottom: 8px; /* Espaço antes da lista ou botão de enviar */
+        }
+        #orderSummaryText { font-weight: 500; }
+        #toggleOrderDetailsBtn { background: none; border: none; color: #8aff8a; cursor: pointer; text-decoration: underline; font-size: 0.9em; padding: 5px; display: flex; align-items: center; }
+        #toggleOrderDetailsBtn .material-symbols-outlined { font-size: 1.2em; vertical-align: middle; transition: transform 0.3s ease-in-out; margin-left: 4px;}
+        .order-panel.expanded #toggleOrderDetailsBtn .material-symbols-outlined { transform: rotate(180deg); }
+
+        #orderItemsList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0; /* Começa recolhido */
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease-in-out, opacity 0.3s 0.1s ease-in-out, padding-top 0.4s ease-in-out, margin-bottom 0.4s ease-in-out;
+            font-size: 0.9em;
+            border-top: 1px solid #444;
+        }
+        .order-panel.expanded #orderItemsList {
+            max-height: 150px; /* Altura máxima da lista de itens quando expandida */
+            opacity: 1;
+            overflow-y: auto;
+            padding-top: 10px;
+            margin-bottom: 10px; /* Espaço antes do botão Enviar Pedido */
+        }
+        #orderItemsList li { padding: 3px 0; border-bottom: 1px solid #444; }
+        #orderItemsList li:last-child { border-bottom: none; }
+
+        .send-order-btn {
+            display: block;
+            width: 100%;
+            background-color: #58cc02;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 15px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-align: center;
+            margin-top: 5px; /* Espaço acima do botão */
+        }
+        .send-order-btn:hover { background-color: #62e002; }
+
+
+        /* Estilos dos Produtos */
+        .product-list-item { display: flex; flex-direction: column; padding: 20px; border-bottom: 1px solid #eee; gap: 15px; }
+        .product-list-item:last-child { border-bottom: none; }
+        .product-image-container { width: 100%; max-width: 200px; height: auto; align-self: center; margin-bottom: 10px; }
+        .product-image { width: 100%; height: auto; max-height: 180px; object-fit: contain; border-radius: 6px; }
+        .product-details { flex-grow: 1; display: flex; flex-direction: column; }
+        .product-info .name { font-size: 1.3em; font-weight: 700; margin: 0 0 8px 0; }
+        .product-info .price { font-size: 1.2em; color: #58cc02; font-weight: 700; margin: 0 0 8px 0; }
+        .product-info .description { font-size: 0.9em; color: #555; margin: 0 0 15px 0; line-height: 1.4; }
+        .product-actions-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; }
+        .product-actions-toolbar .like-section { display: flex; align-items: center; gap: 5px; color: #777; }
+        .product-actions-toolbar .like-btn { background: none; border: none; cursor: pointer; padding: 0; color: #ff4d4d; }
+        .product-actions-toolbar .like-btn .material-symbols-outlined { font-size: 1.8em; transition: transform 0.2s ease, font-variation-settings 0.2s ease; }
+        .product-actions-toolbar .like-btn:hover .material-symbols-outlined { transform: scale(1.15); }
+        .product-actions-toolbar .like-btn.liked .material-symbols-outlined { font-variation-settings: 'FILL' 1; transform: scale(1.1); } /* Microinteração ao curtir */
+        .product-actions-toolbar .action-buttons { display: flex; gap: 10px; }
+        .product-actions-toolbar .btn { text-decoration: none; cursor: pointer; border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: center; font-size: 0.9em; font-weight: 500; transition: background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s; }
+        .product-actions-toolbar .btn .material-symbols-outlined { margin-right: 6px; font-size: 1.2em; }
+        .product-actions-toolbar .info-btn { background-color: transparent; color: #555; border: 1px solid #ccc; }
+        .product-actions-toolbar .info-btn:hover { background-color: #f0f0f0; border-color: #bbb; }
+        .product-actions-toolbar .cart-action-btn.add { background-color: #58cc02; color: white; border: none; }
+        .product-actions-toolbar .cart-action-btn.add:hover { background-color: #62e002; }
+        .product-actions-toolbar .cart-action-btn.remove { background-color: #ff4d4d; color: white; border: none; }
+        .product-actions-toolbar .cart-action-btn.remove:hover { background-color: #ff6666; }
+
+        @media (min-width: 600px) {
+            .product-list-item { flex-direction: row; align-items: flex-start; }
+            .product-image-container { width: 180px; height: 180px; margin-bottom: 0; margin-right: 20px; align-self: flex-start; }
+            .product-image { width: 100%; height: 100%; }
+            .product-details { text-align: left; }
+            .product-actions-toolbar { margin-top: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section"></div>
+
+    <main>
+        <div id="productList"></div>
+    </main>
+
+    <!-- Painel do Pedido Fixo no Rodapé -->
+    <div id="orderPanel" class="order-panel">
+        <div class="order-panel-content-wrapper">
+            <div class="order-panel-header" id="orderPanelHeader">
+                <span id="orderSummaryText">Seu Pedido (0 itens)</span>
+                <button id="toggleOrderDetailsBtn" title="Ver/Ocultar Detalhes">
+                    Detalhes <span class="material-symbols-outlined">expand_more</span>
+                </button>
+            </div>
+            <ul id="orderItemsList" class="order-items-list"></ul>
+            <button id="sendOrderBtn" class="send-order-btn">Enviar Pedido</button>
+        </div>
+    </div>
+
+    <script>
+        const products = [ /* Sua lista de produtos, SEM initialLikes */
+            { id: "tv_lg_32", imageSrc: "images/tv_lg_32.png", shortName: "Smart TV LG 32\"", fullName: "Smart TV LG 32\" HD com Wi-Fi, Bluetooth, HDR e AI ThinQ - Modelo 32LQ620BPSB", price: "R$ 850,00", description: "Perfeita para streaming e apps, com qualidade HD e IA.", olxLink: "..." },
+            { id: "adega_brastemp", imageSrc: "images/adega_brastemp.png", shortName: "Adega Brastemp", fullName: "Adega Brastemp 12 Garrafas com Painel Touch - Modelo BZC12BE", price: "R$ 800,00", description: "Conserve seus vinhos na temperatura ideal com estilo e praticidade.", olxLink: "..." },
+            { id: "maquina_lavar_electrolux", imageSrc: "images/maquina_lavar_electrolux.png", shortName: "Máquina Lavar Electrolux", fullName: "Máquina de Lavar Electrolux 8.5kg Essential Care", price: "R$ 750,00", description: "Lava suas roupas com cuidado e eficiência, economizando água.", olxLink: "..." },
+            { id: "geladeira_electrolux", imageSrc: "images/geladeira_electrolux.png", shortName: "Geladeira Electrolux", fullName: "Geladeira Electrolux RE31", price: "R$ 600,00", description: "Compacta e eficiente, ideal para quem busca praticidade na cozinha.", olxLink: "..." },
+            { id: "bike_caloi_speed", imageSrc: "images/bike_caloi_speed.png", shortName: "Bike Caloi Speed", fullName: "Bicicleta Caloi Speed", price: "R$ 550,00", description: "Performance e velocidade para seus treinos e passeios na cidade.", olxLink: "..." },
+            { id: "aspirador_robo_oster", imageSrc: "images/aspirador_robo_oster.png", shortName: "Aspirador Robô Oster", fullName: "Aspirador Robô Oster Keep Clean", price: "R$ 400,00", description: "Deixe a limpeza da casa por conta dele, praticidade total.", olxLink: "..." },
+            { id: "ventilador_torre_wap", imageSrc: "images/ventilador_torre_wap.png", shortName: "Ventilador Torre WAP", fullName: "Ventilador Torre WAP Air Silence", price: "R$ 350,00", description: "Silencioso e potente, refresca o ambiente com design moderno.", olxLink: "..." },
+            { id: "fritadeira_eos", imageSrc: "images/fritadeira_eos.png", shortName: "Fritadeira EOS", fullName: "Fritadeira Elétrica EOS Chef Gourmet", price: "R$ 200,00", description: "Comidas crocantes e saudáveis sem usar óleo, fácil de limpar.", olxLink: "..." },
+            { id: "cafeteira_3_coracoes", imageSrc: "images/cafeteira_3_coracoes.png", shortName: "Cafeteira 3 Corações", fullName: "Cafeteira TRES 3 Corações LOV Multibebidas", price: "R$ 150,00", description: "Seu café expresso ou multibebidas favorito ao toque de um botão.", olxLink: "..." },
+            { id: "passadeira_wap", imageSrc: "images/passadeira_wap.png", shortName: "Passadeira WAP", fullName: "Passadeira a Vapor Portátil WAP Wapore Fast - 1250W", price: "R$ 100,00", description: "Roupas desamassadas rapidamente, ideal para viagens e dia a dia.", olxLink: "..." },
+            { id: "liquidificador_britania", imageSrc: "images/liquidificador_britania.png", shortName: "Liquidificador Britânia", fullName: "Liquidificador Britânia Diamante 900W - Potente e Prático", price: "R$ 95,00", description: "Prepare vitaminas, sucos e massas com potência e rapidez.", olxLink: "..." },
+            { id: "fritadeira_cadence", imageSrc: "images/fritadeira_cadence.png", shortName: "Fritadeira Cadence", fullName: "Fritadeira Elétrica Cadence Super Light Fryer 3.2L - 1500W", price: "R$ 90,00", description: "Alimentos saborosos e mais saudáveis para toda a família.", olxLink: "..." }
+        ];
+
+        let cartItems = [];
+        let userLikedItems = JSON.parse(localStorage.getItem('userLikedItemsBazarV2')) || {}; // Mudei a chave para 'resetar' de versões antigas
+        let productLikesCount = JSON.parse(localStorage.getItem('productLikesCountBazarV2')) || {};
+
+        const whatsappNumber = "554898438601";
+        const productListContainer = document.getElementById('productList');
+        const orderPanel = document.getElementById('orderPanel');
+        const orderPanelHeader = document.getElementById('orderPanelHeader');
+        const orderSummaryTextEl = document.getElementById('orderSummaryText');
+        const toggleOrderDetailsBtn = document.getElementById('toggleOrderDetailsBtn');
+        const orderItemsListEl = document.getElementById('orderItemsList');
+        const sendOrderBtn = document.getElementById('sendOrderBtn');
+
+        function initializeProductLikes() {
+            const storedLikes = JSON.parse(localStorage.getItem('productLikesCountBazarV2'));
+            if (storedLikes) {
+                productLikesCount = storedLikes;
+            }
+            // Garante que todos os produtos tenham uma entrada, inicializando com 0 se não existir.
+            products.forEach(product => {
+                if (productLikesCount[product.id] === undefined) {
+                    productLikesCount[product.id] = 0;
+                }
+            });
+            // Não precisa salvar aqui, toggleLike salvará.
+        }
+
+        function parsePrice(priceStr) { return parseFloat(String(priceStr).replace("R$ ", "").replace(/\./g, "").replace(",", ".")); }
+        products.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
+
+        function toggleOrderPanelVisibility() {
+            if (cartItems.length > 0) {
+                orderPanel.classList.add('visible');
+            } else {
+                orderPanel.classList.remove('visible');
+                orderPanel.classList.remove('expanded'); // Garante recolhimento se vazio
+                toggleOrderDetailsBtn.querySelector('.material-symbols-outlined').textContent = 'expand_more';
+            }
+        }
+
+        function updateOrderSummaryText() {
+            const itemCount = cartItems.length;
+            orderSummaryTextEl.textContent = `Seu Pedido (${itemCount} item${itemCount !== 1 ? 's' : ''})`;
+        }
+        
+        function renderOrderItemsList() {
+            orderItemsListEl.innerHTML = '';
+            if (cartItems.length === 0) {
+                // O painel será ocultado por toggleOrderPanelVisibility se não houver itens.
+            } else {
+                cartItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.shortName} (${item.price})`;
+                    orderItemsListEl.appendChild(li);
+                });
+            }
+            updateOrderSummaryText();
+            toggleOrderPanelVisibility();
+        }
+        
+        function updateCartActionButtonState(productId) { /* ...código existente, ok... */ const button = document.querySelector(`.cart-action-btn[data-product-id="${productId}"]`); if (!button) return; const iconSpan = button.querySelector('.material-symbols-outlined'); const textSpan = button.querySelector('span:not(.material-symbols-outlined)'); if (cartItems.some(item => item.id === productId)) { button.classList.remove('add'); button.classList.add('remove'); iconSpan.textContent = 'remove_shopping_cart'; textSpan.textContent = 'Remover'; } else { button.classList.remove('remove'); button.classList.add('add'); iconSpan.textContent = 'add_shopping_cart'; textSpan.textContent = 'Adicionar'; } }
+        
+        function toggleCartItem(product) {
+            const productIndex = cartItems.findIndex(item => item.id === product.id);
+            if (productIndex > -1) {
+                cartItems.splice(productIndex, 1);
+            } else {
+                cartItems.push(product);
+            }
+            renderOrderItemsList();
+            updateCartActionButtonState(product.id);
+        }
+        
+        function sendOrderToWhatsApp() { /* ...código existente, ok... */ if (cartItems.length === 0) { alert("Seu pedido está vazio!"); return; } let message = "Olá! Tenho interesse nos seguintes itens do bazar:\n"; let totalPrice = 0; cartItems.forEach(item => { message += `- ${item.fullName} (${item.price})\n`; totalPrice += parsePrice(item.price); }); message += `\nValor Total Estimado: R$ ${totalPrice.toFixed(2).replace(".", ",")}`; const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`; window.open(whatsappUrl, '_blank'); }
+        
+        function updateLikeButtonState(productId) {
+            const likeButton = document.querySelector(`.like-btn[data-product-id="${productId}"]`);
+            const likeCountSpan = document.querySelector(`.like-count[data-product-id="${productId}"]`);
+            if (!likeButton || !likeCountSpan) return;
+
+            if (userLikedItems[productId]) {
+                likeButton.classList.add('liked');
+            } else {
+                likeButton.classList.remove('liked');
+            }
+            likeCountSpan.textContent = productLikesCount[productId] || 0;
+        }
+
+        function toggleLike(productId) {
+            if (userLikedItems[productId]) {
+                delete userLikedItems[productId];
+                productLikesCount[productId] = Math.max(0, (productLikesCount[productId] || 1) - 1); // Não deixa ser negativo
+            } else {
+                userLikedItems[productId] = true;
+                productLikesCount[productId] = (productLikesCount[productId] || 0) + 1;
+            }
+            localStorage.setItem('userLikedItemsBazarV2', JSON.stringify(userLikedItems));
+            localStorage.setItem('productLikesCountBazarV2', JSON.stringify(productLikesCount));
+            updateLikeButtonState(productId);
+        }
+
+        function toggleOrderDetailsView() {
+            orderPanel.classList.toggle('expanded');
+            const icon = toggleOrderDetailsBtn.querySelector('.material-symbols-outlined');
+            icon.textContent = orderPanel.classList.contains('expanded') ? 'expand_less' : 'expand_more';
+        }
+
+        function renderProductList() { /* ...código de renderProductList existente, ok... */ productListContainer.innerHTML = ''; products.forEach(product => { const itemElement = document.createElement('div'); itemElement.classList.add('product-list-item'); const imageContainer = document.createElement('div'); imageContainer.classList.add('product-image-container'); const productImage = document.createElement('img'); productImage.classList.add('product-image'); productImage.src = product.imageSrc; productImage.alt = product.shortName; imageContainer.appendChild(productImage); itemElement.appendChild(imageContainer); const detailsDiv = document.createElement('div'); detailsDiv.classList.add('product-details'); const infoDiv = document.createElement('div'); infoDiv.classList.add('product-info'); infoDiv.innerHTML = ` <p class="name">${product.shortName}</p> <p class="price">${product.price}</p> <p class="description">${product.description}</p> `; detailsDiv.appendChild(infoDiv); const actionsToolbarDiv = document.createElement('div'); actionsToolbarDiv.classList.add('product-actions-toolbar'); const likeSectionDiv = document.createElement('div'); likeSectionDiv.classList.add('like-section'); const likeButton = document.createElement('button'); likeButton.classList.add('like-btn'); likeButton.setAttribute('data-product-id', product.id); likeButton.title = "Curtir"; likeButton.innerHTML = `<span class="material-symbols-outlined">favorite</span>`; likeButton.onclick = () => toggleLike(product.id); const likeCountSpan = document.createElement('span'); likeCountSpan.classList.add('like-count'); likeCountSpan.setAttribute('data-product-id', product.id); likeSectionDiv.appendChild(likeButton); likeSectionDiv.appendChild(likeCountSpan); actionsToolbarDiv.appendChild(likeSectionDiv); const actionButtonsDiv = document.createElement('div'); actionButtonsDiv.classList.add('action-buttons'); const olxLinkElement = document.createElement('a'); olxLinkElement.classList.add('btn', 'info-btn'); olxLinkElement.href = product.olxLink; olxLinkElement.target = "_blank"; olxLinkElement.title = "Mais Informações na OLX"; olxLinkElement.innerHTML = `<span class="material-symbols-outlined">info</span> Mais Infos`; actionButtonsDiv.appendChild(olxLinkElement); const cartActionButton = document.createElement('button'); cartActionButton.classList.add('btn', 'cart-action-btn'); cartActionButton.setAttribute('data-product-id', product.id); cartActionButton.innerHTML = `<span class="material-symbols-outlined"></span><span></span>`; cartActionButton.onclick = () => toggleCartItem(product); actionButtonsDiv.appendChild(cartActionButton); actionsToolbarDiv.appendChild(actionButtonsDiv); detailsDiv.appendChild(actionsToolbarDiv); itemElement.appendChild(detailsDiv); productListContainer.appendChild(itemElement); updateCartActionButtonState(product.id); updateLikeButtonState(product.id); });}
+        
+        // Event Listeners
+        orderPanelHeader.addEventListener('click', (event) => {
+            // Permite que o clique no botão de toggle funcione sem disparar duas vezes
+            if (event.target === toggleOrderDetailsBtn || toggleOrderDetailsBtn.contains(event.target)) {
+                // Se o clique foi no botão de toggle ou em seu filho (ícone), deixa o listener do botão cuidar
+                return;
+            }
+            toggleOrderDetailsView(); // Clicar no resto do header também expande/recolhe
+        });
+        toggleOrderDetailsBtn.addEventListener('click', toggleOrderDetailsView); // Listener específico para o botão
+
+        sendOrderBtn.onclick = sendOrderToWhatsApp;
+        
+        // Inicialização
+        initializeProductLikes(); 
+        renderProductList(); 
+        renderOrderItemsList();
+
+    </script>
+</body>
+</html>
