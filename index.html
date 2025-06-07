@@ -66,6 +66,12 @@
             top: 0;
             z-index: 1;
             background: transparent;
+            transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        .hero-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1);
         }
         .hero-image {
             width: 100%;
@@ -352,6 +358,19 @@
         renderOrderItemsList();
         // Ao iniciar, carrega os likes globais do Supabase
         loadLikesFromSupabase();
+
+        // Transição de opacidade da hero-section ao rolar
+        const heroSection = document.querySelector('.hero-section');
+        function handleHeroOpacityOnScroll() {
+            if (window.scrollY > 10) {
+                heroSection.classList.add('hero-hidden');
+            } else {
+                heroSection.classList.remove('hero-hidden');
+            }
+        }
+        window.addEventListener('scroll', handleHeroOpacityOnScroll, { passive: true });
+        // Garante estado correto ao carregar
+        handleHeroOpacityOnScroll();
     </script>
 </body>
 </html>
