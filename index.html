@@ -131,6 +131,37 @@
                 padding-right: 16px;
             }
         }
+
+        .welcome-card {
+            background-color: #fff7e6;
+            border: 1px solid #ffe0b2;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        .welcome-card h2 {
+            color: #d9534f;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        .welcome-card p {
+            color: #5a5a5a;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        .welcome-card p:last-of-type {
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+        .welcome-card em {
+            font-size: 0.9em;
+            color: #888;
+        }
     </style>
 </head>
 <body>
@@ -138,6 +169,13 @@
         <img src="images/cassi-boli-kai-bazar.png" alt="Bazar Cassi Boli Kai" class="hero-image" />
     </div>
     <main>
+        <div class="welcome-card">
+            <h2>🎉 Bem-vindos ao nosso bazar! 🎉</h2>
+            <p>Olá! Somos a Cassi, o Boli e o Kai.</p>
+            <p>Aqui você encontrará itens que fizeram parte da nossa história e agora buscam um novo lar.</p>
+            <p>Dê uma espiada, veja os detalhes e, se algo despertar seu interesse, envie p pedido para o nosso WhatsApp.</p>
+            <p><em>Todos os itens estão em Florianópolis, SC.</em></p>
+        </div>
         <div id="productList"></div>
     </main>
     <div id="orderPanel" class="order-panel">
