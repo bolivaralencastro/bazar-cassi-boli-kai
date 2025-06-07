@@ -19,6 +19,9 @@
     </script>
     <!-- Fim do Microsoft Clarity Script -->
 
+    <!-- Supabase JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
+
     <style>
         body {
             font-family: 'Roboto', Arial, sans-serif;
@@ -157,6 +160,29 @@
         const orderItemsListEl = document.getElementById('orderItemsList');
         const sendOrderBtn = document.getElementById('sendOrderBtn');
 
+        // Supabase config
+        const SUPABASE_URL = "https://jkxohciuzlxdccfxxizy.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpreG9oY2l1emx4ZGNjZnh4aXp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkzMTUzOTksImV4cCI6MjA2NDg5MTM5OX0.gXGBTPT0dyxn6LH4JbTW8UUg6sb3dmomwHhZIfnr6zc";
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Carrega os likes globais do Supabase
+        async function loadLikesFromSupabase() {
+          const { data, error } = await supabase.from('likes').select('*');
+          if (!error && data) {
+            productLikesCount = {};
+            data.forEach(row => {
+              productLikesCount[row.product_id] = row.count;
+            });
+            products.forEach(product => updateLikeButtonState(product.id));
+          }
+        }
+
+        // Atualiza o like no Supabase
+        async function updateLikeInSupabase(productId, newCount) {
+          // Upsert: atualiza se existe, insere se não existe
+          await supabase.from('likes').upsert({ product_id: productId, count: newCount });
+        }
+
         function initializeProductLikes() {
             const storedLikes = JSON.parse(localStorage.getItem('productLikesCountBazarV2'));
             if (storedLikes) {
@@ -237,7 +263,7 @@
                 productLikesCount[productId] = (productLikesCount[productId] || 0) + 1;
             }
             localStorage.setItem('userLikedItemsBazarV2', JSON.stringify(userLikedItems));
-            localStorage.setItem('productLikesCountBazarV2', JSON.stringify(productLikesCount));
+            updateLikeInSupabase(productId, productLikesCount[productId]);
             updateLikeButtonState(productId);
         }
 
@@ -262,6 +288,8 @@
         initializeProductLikes(); 
         renderProductList(); 
         renderOrderItemsList();
+        // Ao iniciar, carrega os likes globais do Supabase
+        loadLikesFromSupabase();
     </script>
 </body>
 </html>
