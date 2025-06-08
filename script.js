@@ -4,13 +4,13 @@
 // --- Início do código extraído do index.html ---
 
 const products = [
-    { 
-        id: "tv_lg_32", 
-        imageSrc: "images/tv-hd-400.webp", // corrigido
-        shortName: "Smart TV LG 32\"", 
-        fullName: "Smart TV LG 32\" HD com Wi-Fi, Bluetooth, HDR e AI ThinQ - Modelo 32LQ620BPSB", 
-        price: "R$ 850,00", 
-        description: "Perfeita para streaming e apps, com qualidade HD.", 
+    {
+        id: "tv_lg_32",
+        imageSrc: "images/tv-hd-400.webp",
+        shortName: "Smart TV LG 32\"",
+        fullName: "Smart TV LG 32\" HD com Wi-Fi, Bluetooth, HDR e AI ThinQ - Modelo 32LQ620BPSB",
+        price: "R$ 850,00",
+        description: "Perfeita para streaming e apps, com qualidade HD.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/tvs-e-video/tvs/smart-tv-lg-32-hd-com-wi-fi-bluetooth-hdr-e-ai-thinq-modelo-32lq620bpsb-1409672463?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$ 1.532,69",
@@ -32,13 +32,13 @@ const products = [
             estadoProduto: "Usada, mas em perfeito funcionamento. Tela sem riscos, imagem limpa. Acompanha controle."
         }
     },
-    { 
-        id: "adega_brastemp", 
-        imageSrc: "images/adega-400.webp", // corrigido
-        shortName: "Adega Brastemp", 
-        fullName: "Adega Brastemp 12 Garrafas com Painel Touch - Modelo BZC12BE", 
-        price: "R$ 800,00", 
-        description: "Conserve seus vinhos na temperatura ideal com estilo e praticidade.", 
+    {
+        id: "adega_brastemp",
+        imageSrc: "images/adega-400.webp",
+        shortName: "Adega Brastemp",
+        fullName: "Adega Brastemp 12 Garrafas com Painel Touch - Modelo BZC12BE",
+        price: "R$ 800,00",
+        description: "Conserve seus vinhos na temperatura ideal com estilo e praticidade.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/geladeiras-e-freezers/adega-brastemp-12-garrafas-com-painel-touch-modelo-bzc12be-1409697836?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$ 1.039,00",
@@ -58,13 +58,13 @@ const products = [
             estadoProduto: "Usada, em ótimo estado de conservação. Nenhum dano aparente, funcionamento perfeito."
         }
     },
-    { 
-        id: "maquina_lavar_electrolux", 
-        imageSrc: "images/maquina-de-lavar-400.webp", // corrigido
-        shortName: "Máquina Lavar Electrolux", 
-        fullName: "Máquina de Lavar Electrolux 8.5kg Essential Care", 
-        price: "R$ 750,00", 
-        description: "Lava suas roupas com cuidado e eficiência, economizando água.", 
+    {
+        id: "maquina_lavar_electrolux",
+        imageSrc: "images/maquina-de-lavar-400.webp",
+        shortName: "Máquina Lavar Electrolux",
+        fullName: "Máquina de Lavar Electrolux 8.5kg Essential Care",
+        price: "R$ 750,00",
+        description: "Lava suas roupas com cuidado e eficiência, economizando água.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/maquinas-de-lavar-e-secadoras/maquina-de-lavar-electrolux-8-5kg-essential-care-1409730468?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$ 1.699,00",
@@ -85,13 +85,39 @@ const products = [
             estadoProduto: "Usada, mas em excelente funcionamento. Limpa e bem conservada."
         }
     },
-    { 
-        id: "geladeira_electrolux", 
-        imageSrc: "images/geladeira-400.webp", // corrigido
-        shortName: "Geladeira Electrolux", 
-        fullName: "Geladeira Electrolux RE31", 
-        price: "R$ 600,00", 
-        description: "Compacta e eficiente, ideal para quem busca praticidade na cozinha.", 
+    { // NOVO PRODUTO ADICIONADO AQUI
+        id: "tripe_manfrotto_055",
+        imageSrc: "images/tripe-manfroto-400.webp", // Certifique-se que o caminho da imagem está correto
+        shortName: "Tripé Manfrotto 055 + Joystick 222",
+        fullName: "Tripé Profissional Manfrotto MT055XPRO3 + Cabeça Joystick 222",
+        price: "R$ 700,00",
+        description: "Tripé profissional com cabeça joystick. Firme, preciso e resistente.",
+        olxLink: "", // Adicione o link da OLX se tiver
+        detailedInfo: {
+            valorOriginal: "R$ 3.200,00",
+            localRetirada: "Rio Tavares – Florianópolis",
+            descricaoGeral: "Tripé robusto com cabeça joystick. Ideal para fotógrafos e videomakers que buscam estabilidade e agilidade no ajuste da câmera.",
+            especificacoesHTML: `
+                <ul>
+                    <li>Modelo: MT055XPRO3 com cabeça Manfrotto 222</li>
+                    <li>Funcionalidade: Coluna central com movimento horizontal e vertical</li>
+                    <li>Recursos: Travas Quick Power Lock, conector Easy Link, nível de bolha giratório</li>
+                    <li>Altura máxima: 170 cm</li>
+                    <li>Altura mínima: 9 cm</li>
+                    <li>Peso aproximado: 2,88 kg</li>
+                    <li>Material: Alumínio</li>
+                    <li>Compatibilidade: Câmeras DSLR e mirrorless</li>
+                </ul>`,
+            estadoProduto: "Equipamento em ótimo estado. Pronto para uso profissional."
+        }
+    },
+    {
+        id: "geladeira_electrolux",
+        imageSrc: "images/geladeira-400.webp",
+        shortName: "Geladeira Electrolux",
+        fullName: "Geladeira Electrolux RE31",
+        price: "R$ 600,00",
+        description: "Compacta e eficiente, ideal para quem busca praticidade na cozinha.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/geladeiras-e-freezers/geladeira-electrolux-re31-1409738827?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$ 1.799",
@@ -109,13 +135,13 @@ const products = [
             estadoProduto: "Usada por 3 anos, sempre em ambiente doméstico. Está funcionando perfeitamente, com exceção da tampa do freezer, que precisa de conserto simples. Por isso, o valor reduzido para venda rápida. Está limpa."
         }
     },
-    { 
-        id: "bike_caloi_speed", 
-        imageSrc: "images/caloi-10-400.webp", // corrigido
-        shortName: "Bike Caloi Speed", 
-        fullName: "Bicicleta Caloi Speed", 
-        price: "R$ 550,00", 
-        description: "Performance e velocidade para seus treinos e passeios na cidade.", 
+    {
+        id: "bike_caloi_speed",
+        imageSrc: "images/caloi-10-400.webp",
+        shortName: "Bike Caloi Speed",
+        fullName: "Bicicleta Caloi Speed",
+        price: "R$ 550,00",
+        description: "Performance e velocidade para seus treinos e passeios na cidade.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/ciclismo/bicicleta-caloi-speed-1409757466?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$ 2.700",
@@ -133,13 +159,13 @@ const products = [
             observacoes: "Preço para vender rápido."
         }
     },
-    { 
-        id: "aspirador_robo_oster", 
-        imageSrc: "images/robo-aspirador-400.webp", // corrigido
-        shortName: "Aspirador Robô Oster", 
-        fullName: "Aspirador Robô Oster Keep Clean", 
-        price: "R$ 400,00", 
-        description: "Deixe a limpeza da casa por conta dele, praticidade total.", 
+    {
+        id: "aspirador_robo_oster",
+        imageSrc: "images/robo-aspirador-400.webp",
+        shortName: "Aspirador Robô Oster",
+        fullName: "Aspirador Robô Oster Keep Clean",
+        price: "R$ 400,00",
+        description: "Deixe a limpeza da casa por conta dele, praticidade total.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/aspirador-robo-oster-keep-clean-1409729011?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$ 899",
@@ -159,13 +185,13 @@ const products = [
             estadoProduto: "Usado em ótimo estado, funcionando perfeitamente. Apenas pequenas marcas de uso na carcaça."
         }
     },
-    { 
-        id: "ventilador_torre_wap", 
-        imageSrc: "images/ventilador-torre-400.webp", // corrigido
-        shortName: "Ventilador Torre WAP", 
-        fullName: "Ventilador Torre WAP Air Silence", 
-        price: "R$ 300,00", // Preço atualizado conforme a descrição detalhada
-        description: "Silencioso e potente, refresca o ambiente com design moderno.", 
+    {
+        id: "ventilador_torre_wap",
+        imageSrc: "images/ventilador-torre-400.webp",
+        shortName: "Ventilador Torre WAP",
+        fullName: "Ventilador Torre WAP Air Silence",
+        price: "R$ 300,00",
+        description: "Silencioso e potente, refresca o ambiente com design moderno.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/ventiladores-e-climatizadores/ventilador-torre-wap-air-silence-1409685583?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$ 649,90",
@@ -188,13 +214,13 @@ const products = [
             estadoProduto: "NOVO - nunca foi utilizado. Acompanha controle remoto original."
         }
     },
-    { 
-        id: "fritadeira_eos", 
-        imageSrc: "images/air-fryer-vermelha-400.webp", // corrigido
-        shortName: "Fritadeira EOS", 
-        fullName: "Fritadeira Elétrica EOS Chef Gourmet", 
-        price: "R$ 200,00", 
-        description: "Comidas crocantes e saudáveis sem usar óleo, fácil de limpar.", 
+    {
+        id: "fritadeira_eos",
+        imageSrc: "images/air-fryer-vermelha-400.webp",
+        shortName: "Fritadeira EOS",
+        fullName: "Fritadeira Elétrica EOS Chef Gourmet",
+        price: "R$ 200,00",
+        description: "Comidas crocantes e saudáveis sem usar óleo, fácil de limpar.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/fogoes-e-fornos/fritadeira-eletrica-eos-chef-gourmet-1409726359?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$ 399,00",
@@ -213,13 +239,39 @@ const products = [
             estadoProduto: "Usada, mas em ótimo funcionamento. Sem arranhões ou danos."
         }
     },
-    { 
-        id: "cafeteira_3_coracoes", 
-        imageSrc: "images/cafeteira-400.webp", // corrigido
-        shortName: "Cafeteira 3 Corações", 
-        fullName: "Cafeteira TRES 3 Corações LOV Multibebidas", 
-        price: "R$ 150,00", 
-        description: "Seu café expresso ou multibebidas favorito ao toque de um botão.", 
+    {
+        id: "fritadeira_cadence",
+        imageSrc: "images/airfyer-preta-400.webp",
+        shortName: "Fritadeira Cadence",
+        fullName: "Fritadeira Elétrica Cadence Super Light Fryer 3.2L - 1500W",
+        price: "R$ 180,00",
+        description: "Alimentos saborosos e mais saudáveis para toda a família.",
+        olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/fritadeira-eletrica-cadence-super-light-fryer-3-2l-1500w-1409737099?lis=ad_card_user_profile",
+        detailedInfo: {
+            valorOriginal: "R$ 419",
+            localRetirada: "Rio Tavares - Florianópolis",
+            descricaoGeral: "Air Fryer potente e compacta, ideal para preparar refeições mais saudáveis com praticidade.",
+            especificacoesHTML: `
+                <ul>
+                    <li>Capacidade: 3,2 litros</li>
+                    <li>Potência: 1500W</li>
+                    <li>Controle de temperatura: 80° a 200°C</li>
+                    <li>Timer: Até 30 minutos</li>
+                    <li>Indicadores: Luzes de funcionamento e aquecimento</li>
+                    <li>Voltagem: 110V (127V)</li>
+                    <li>Design: Moderno e fácil de limpar</li>
+                </ul>`,
+            estadoProduto: "Funcionando normalmente. Precisa trocar o botão do timer (custa no máximo R$ 30). A alça também pode ser trocada por uma nova (R$ 45), mas o encaixe pode ser resolvido com parafusos simples.",
+            observacoes: "Ótima opção para quem quer economizar e resolver pequenos ajustes por conta própria. Ideal para quem gosta de pequenos consertos e quer economizar."
+        }
+    },
+    {
+        id: "cafeteira_3_coracoes",
+        imageSrc: "images/cafeteira-400.webp",
+        shortName: "Cafeteira 3 Corações",
+        fullName: "Cafeteira TRES 3 Corações LOV Multibebidas",
+        price: "R$ 150,00",
+        description: "Seu café expresso ou multibebidas favorito ao toque de um botão.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/cafeteira-tres-3-coracoes-lov-multibebidas-1410281152?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$400",
@@ -238,13 +290,13 @@ const products = [
             estadoProduto: "Nunca foi usada. Ainda está com adesivos de caixa. Funciona perfeitamente."
         }
     },
-    { 
-        id: "passadeira_wap", 
-        imageSrc: "images/passador-400.webp", // corrigido
-        shortName: "Passadeira WAP", 
-        fullName: "Passadeira a Vapor Portátil WAP Wapore Fast - 1250W", 
-        price: "R$ 100,00", 
-        description: "Roupas desamassadas rapidamente, ideal para viagens e dia a dia.", 
+    {
+        id: "passadeira_wap",
+        imageSrc: "images/passador-400.webp",
+        shortName: "Passadeira WAP",
+        fullName: "Passadeira a Vapor Portátil WAP Wapore Fast - 1250W",
+        price: "R$ 100,00",
+        description: "Roupas desamassadas rapidamente, ideal para viagens e dia a dia.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/passadeira-a-vapor-portatil-wap-wapore-fast-1250w-1410282629?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$ 350",
@@ -264,13 +316,38 @@ const products = [
             observacoes: "Só vender mesmo porque estou me mudando."
         }
     },
-    { 
-        id: "liquidificador_britania", 
-        imageSrc: "images/liquidificador-400.webp", // corrigido
-        shortName: "Liquidificador Britânia", 
-        fullName: "Liquidificador Britânia Diamante 900W - Potente e Prático", 
-        price: "R$ 90,00", // Preço atualizado conforme a descrição detalhada
-        description: "Prepare vitaminas, sucos e massas com potência e rapidez.", 
+    { // NOVO PRODUTO ADICIONADO AQUI
+        id: "cafeteira_oster_daylight",
+        imageSrc: "images/cafeteira-oster-daylight-400.webp", // Certifique-se que o caminho da imagem está correto
+        shortName: "Cafeteira Oster Day Light",
+        fullName: "Cafeteira Digital Oster Day Light OCAF500 – 127V",
+        price: "R$ 100,00",
+        description: "Café pronto ao acordar. Moderna, prática e programável.",
+        olxLink: "", // Adicione o link da OLX se tiver
+        detailedInfo: {
+            valorOriginal: "R$ 289,00",
+            localRetirada: "Rio Tavares – Florianópolis",
+            descricaoGeral: "Modelo compacto e programável, ideal para quem deseja praticidade no preparo do café do dia a dia. Basta programar e acordar com café fresquinho.",
+            especificacoesHTML: `
+                <ul>
+                    <li>Modelo: OCAF500</li>
+                    <li>Funcionalidade: Timer programável até 24h</li>
+                    <li>Recursos: Placa aquecedora, desligamento automático, jarra de 1,2L, filtro permanente lavável</li>
+                    <li>Voltagem: 127V</li>
+                    <li>Cor: Preta</li>
+                    <li>Peso aproximado: 1,2kg</li>
+                    <li>Acessórios: Acompanha copo medidor</li>
+                </ul>`,
+            estadoProduto: "Usada poucas vezes. Em ótimo estado e funcionamento perfeito."
+        }
+    },
+    {
+        id: "liquidificador_britania",
+        imageSrc: "images/liquidificador-400.webp",
+        shortName: "Liquidificador Britânia",
+        fullName: "Liquidificador Britânia Diamante 900W - Potente e Prático",
+        price: "R$ 90,00",
+        description: "Prepare vitaminas, sucos e massas com potência e rapidez.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/liquidificador-britania-diamante-900w-potente-e-pratico-1410297464?lis=ad_card_user_profile",
         detailedInfo: {
             valorOriginal: "R$ 200",
@@ -286,32 +363,6 @@ const products = [
                     <li>Copo: Com medidor e tampa com dosador</li>
                 </ul>`,
             estadoProduto: "Usado, mas em ótimo funcionamento. Pode apresentar sinais leves de uso. Todas as peças e lâminas afiadas. Funciona perfeitamente."
-        }
-    },
-    { 
-        id: "fritadeira_cadence", 
-        imageSrc: "images/airfyer-preta-400.webp", // corrigido
-        shortName: "Fritadeira Cadence", 
-        fullName: "Fritadeira Elétrica Cadence Super Light Fryer 3.2L - 1500W", 
-        price: "R$ 180,00", // Preço atualizado conforme a descrição detalhada
-        description: "Alimentos saborosos e mais saudáveis para toda a família.", 
-        olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/fritadeira-eletrica-cadence-super-light-fryer-3-2l-1500w-1409737099?lis=ad_card_user_profile",
-        detailedInfo: {
-            valorOriginal: "R$ 419",
-            localRetirada: "Rio Tavares - Florianópolis",
-            descricaoGeral: "Air Fryer potente e compacta, ideal para preparar refeições mais saudáveis com praticidade.",
-            especificacoesHTML: `
-                <ul>
-                    <li>Capacidade: 3,2 litros</li>
-                    <li>Potência: 1500W</li>
-                    <li>Controle de temperatura: 80° a 200°C</li>
-                    <li>Timer: Até 30 minutos</li>
-                    <li>Indicadores: Luzes de funcionamento e aquecimento</li>
-                    <li>Voltagem: 110V (127V)</li>
-                    <li>Design: Moderno e fácil de limpar</li>
-                </ul>`,
-            estadoProduto: "Funcionando normalmente. Precisa trocar o botão do timer (custa no máximo R$ 30). A alça também pode ser trocada por uma nova (R$ 45), mas o encaixe pode ser resolvido com parafusos simples.",
-            observacoes: "Ótima opção para quem quer economizar e resolver pequenos ajustes por conta própria. Ideal para quem gosta de pequenos consertos e quer economizar."
         }
     }
 ];
@@ -375,6 +426,9 @@ function initializeProductLikes() {
 }
 
 function parsePrice(priceStr) { return parseFloat(String(priceStr).replace("R$ ", "").replace(/\./g, "").replace(",", ".")); }
+// ESTA LINHA IRÁ REORDENAR O ARRAY DE QUALQUER FORMA, INCLUSIVE OS NOVOS ITENS.
+// SE VOCÊ OS INSERIU MANUALMENTE NA ORDEM CORRETA, ESTA LINHA APENAS CONFIRMARÁ.
+// SE VOCÊ OS ADICIONOU NO FINAL DO ARRAY, ESTA LINHA OS COLOCARÁ NO LUGAR CERTO.
 products.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
 
 function toggleOrderPanelVisibility() {
@@ -411,24 +465,24 @@ function renderOrderItemsList() {
     toggleOrderPanelVisibility();
 }
 
-function updateCartActionButtonState(productId) { 
-    const button = document.querySelector(`.cart-action-btn[data-product-id="${productId}"]`); 
-    if (!button) return; 
-    const iconImg = button.querySelector('.icon-svg'); 
-    const textSpan = button.querySelector('span:not(.icon-svg)'); 
-    if (cartItems.some(item => item.id === productId)) { 
-        button.classList.remove('add'); 
-        button.classList.add('remove'); 
+function updateCartActionButtonState(productId) {
+    const button = document.querySelector(`.cart-action-btn[data-product-id="${productId}"]`);
+    if (!button) return;
+    const iconImg = button.querySelector('.icon-svg');
+    const textSpan = button.querySelector('span:not(.icon-svg)');
+    if (cartItems.some(item => item.id === productId)) {
+        button.classList.remove('add');
+        button.classList.add('remove');
         iconImg.src = 'icons/remove_shopping_cart.svg';
         iconImg.alt = 'Remover do carrinho';
-        textSpan.textContent = 'Remover'; 
-    } else { 
-        button.classList.remove('remove'); 
-        button.classList.add('add'); 
+        textSpan.textContent = 'Remover';
+    } else {
+        button.classList.remove('remove');
+        button.classList.add('add');
         iconImg.src = 'icons/add_shopping_cart.svg';
         iconImg.alt = 'Adicionar ao carrinho';
-        textSpan.textContent = 'Adicionar'; 
-    } 
+        textSpan.textContent = 'Adicionar';
+    }
 }
 
 function toggleCartItem(product) {
@@ -514,8 +568,8 @@ function showProductDetailsModal(productId) {
     modalProductImage.outerHTML = getProductPictureHTML(product, 'modal-product-image', 400, 400);
     // Atualiza referência do modalProductImage após substituir o HTML
     const modalContent = document.querySelector('.modal-content');
-    window.modalProductImage = modalContent.querySelector('.modal-product-image');
-    modalProductImage.alt = product.shortName;
+    window.modalProductImage = modalContent.querySelector('.modal-product-image'); // Correção: use window.modalProductImage ou defina como variável local
+    modalProductImage.alt = product.shortName; // Agora modalProductImage é a referência correta
     modalProductImage.loading = 'lazy';
     modalProductImage.width = 400;
     modalProductImage.height = 400;
@@ -540,79 +594,79 @@ function closeProductDetailsModal() {
 }
 // --- END MODAL FUNCTIONS ---
 
-function renderProductList() { 
-    productListContainer.innerHTML = ''; 
-    products.forEach(product => { 
-        const itemElement = document.createElement('section'); 
-        itemElement.classList.add('product-list-item'); 
+function renderProductList() {
+    productListContainer.innerHTML = '';
+    products.forEach(product => {
+        const itemElement = document.createElement('section');
+        itemElement.classList.add('product-list-item');
         itemElement.setAttribute('data-product-id', product.id);
         itemElement.setAttribute('data-clarity-section', 'product');
         itemElement.setAttribute('aria-label', product.shortName);
-        const imageContainer = document.createElement('div'); 
-        imageContainer.classList.add('product-image-container'); 
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('product-image-container');
         // --- Usando <picture> com srcset para imagens otimizadas ---
         imageContainer.innerHTML = getProductPictureHTML(product, 'product-image', 400, 400);
-        itemElement.appendChild(imageContainer); 
-        
-        const detailsDiv = document.createElement('div'); 
-        detailsDiv.classList.add('product-details'); 
-        
-        const infoDiv = document.createElement('div'); 
-        infoDiv.classList.add('product-info'); 
-        infoDiv.innerHTML = ` <p class="name">${product.shortName}</p> <p class="price">${product.price}</p> <p class="description">${product.description}</p> `; 
-        detailsDiv.appendChild(infoDiv); 
-        
-        const actionsToolbarDiv = document.createElement('div'); 
-        actionsToolbarDiv.classList.add('product-actions-toolbar'); 
-        
-        const likeSectionDiv = document.createElement('div'); 
-        likeSectionDiv.classList.add('like-section'); 
-        const likeButton = document.createElement('button'); 
-        likeButton.classList.add('like-btn'); 
-        likeButton.setAttribute('data-product-id', product.id); 
+        itemElement.appendChild(imageContainer);
+
+        const detailsDiv = document.createElement('div');
+        detailsDiv.classList.add('product-details');
+
+        const infoDiv = document.createElement('div');
+        infoDiv.classList.add('product-info');
+        infoDiv.innerHTML = ` <p class="name">${product.shortName}</p> <p class="price">${product.price}</p> <p class="description">${product.description}</p> `;
+        detailsDiv.appendChild(infoDiv);
+
+        const actionsToolbarDiv = document.createElement('div');
+        actionsToolbarDiv.classList.add('product-actions-toolbar');
+
+        const likeSectionDiv = document.createElement('div');
+        likeSectionDiv.classList.add('like-section');
+        const likeButton = document.createElement('button');
+        likeButton.classList.add('like-btn');
+        likeButton.setAttribute('data-product-id', product.id);
         likeButton.setAttribute('data-clarity-event', 'like');
         likeButton.setAttribute('data-clarity-product', product.shortName);
-        likeButton.title = "Curtir"; 
-        likeButton.innerHTML = `<img src="icons/favorite.svg" alt="Curtir" class="icon-svg">`; 
-        likeButton.onclick = () => toggleLike(product.id); 
-        const likeCountSpan = document.createElement('span'); 
-        likeCountSpan.classList.add('like-count'); 
-        likeCountSpan.setAttribute('data-product-id', product.id); 
-        likeSectionDiv.appendChild(likeButton); 
-        likeSectionDiv.appendChild(likeCountSpan); 
-        actionsToolbarDiv.appendChild(likeSectionDiv); 
-        
-        const actionButtonsDiv = document.createElement('div'); 
-        actionButtonsDiv.classList.add('action-buttons'); 
-        
+        likeButton.title = "Curtir";
+        likeButton.innerHTML = `<img src="icons/favorite.svg" alt="Curtir" class="icon-svg">`;
+        likeButton.onclick = () => toggleLike(product.id);
+        const likeCountSpan = document.createElement('span');
+        likeCountSpan.classList.add('like-count');
+        likeCountSpan.setAttribute('data-product-id', product.id);
+        likeSectionDiv.appendChild(likeButton);
+        likeSectionDiv.appendChild(likeCountSpan);
+        actionsToolbarDiv.appendChild(likeSectionDiv);
+
+        const actionButtonsDiv = document.createElement('div');
+        actionButtonsDiv.classList.add('action-buttons');
+
         // Botão de detalhes
-        const detailsButton = document.createElement('button'); 
-        detailsButton.classList.add('btn', 'details-btn'); 
-        detailsButton.title = "Mais Detalhes do Produto"; 
+        const detailsButton = document.createElement('button');
+        detailsButton.classList.add('btn', 'details-btn');
+        detailsButton.title = "Mais Detalhes do Produto";
         detailsButton.setAttribute('data-product-id', product.id);
         detailsButton.setAttribute('data-clarity-event', 'details');
         detailsButton.setAttribute('data-clarity-product', product.shortName);
         detailsButton.innerHTML = `<img src="icons/info.svg" alt="Mais Detalhes" class="icon-svg"> Mais Detalhes`;
-        detailsButton.onclick = () => showProductDetailsModal(product.id); 
-        actionButtonsDiv.appendChild(detailsButton); 
-        
+        detailsButton.onclick = () => showProductDetailsModal(product.id);
+        actionButtonsDiv.appendChild(detailsButton);
+
         // Botão de adicionar/remover carrinho
-        const cartActionButton = document.createElement('button'); 
-        cartActionButton.classList.add('btn', 'cart-action-btn'); 
-        cartActionButton.setAttribute('data-product-id', product.id); 
+        const cartActionButton = document.createElement('button');
+        cartActionButton.classList.add('btn', 'cart-action-btn');
+        cartActionButton.setAttribute('data-product-id', product.id);
         cartActionButton.setAttribute('data-clarity-event', 'cart');
         cartActionButton.setAttribute('data-clarity-product', product.shortName);
-        cartActionButton.innerHTML = `<img src="icons/add_shopping_cart.svg" alt="Adicionar ao carrinho" class="icon-svg"><span>Adicionar</span>`; 
-        cartActionButton.onclick = () => toggleCartItem(product); 
-        actionButtonsDiv.appendChild(cartActionButton); 
-        
-        actionsToolbarDiv.appendChild(actionButtonsDiv); 
-        detailsDiv.appendChild(actionsToolbarDiv); 
-        itemElement.appendChild(detailsDiv); 
-        productListContainer.appendChild(itemElement); 
-        
-        updateCartActionButtonState(product.id); 
-        updateLikeButtonState(product.id); 
+        cartActionButton.innerHTML = `<img src="icons/add_shopping_cart.svg" alt="Adicionar ao carrinho" class="icon-svg"><span>Adicionar</span>`;
+        cartActionButton.onclick = () => toggleCartItem(product);
+        actionButtonsDiv.appendChild(cartActionButton);
+
+        actionsToolbarDiv.appendChild(actionButtonsDiv);
+        detailsDiv.appendChild(actionsToolbarDiv);
+        itemElement.appendChild(detailsDiv);
+        productListContainer.appendChild(itemElement);
+
+        updateCartActionButtonState(product.id);
+        updateLikeButtonState(product.id);
     });
 }
 
@@ -620,9 +674,9 @@ orderPanelHeader.addEventListener('click', (event) => {
     if (event.target === toggleOrderDetailsBtn || toggleOrderDetailsBtn.contains(event.target)) {
         return;
     }
-    toggleOrderDetailsView(); 
+    toggleOrderDetailsView();
 });
-toggleOrderDetailsBtn.addEventListener('click', toggleOrderDetailsView); 
+toggleOrderDetailsBtn.addEventListener('click', toggleOrderDetailsView);
 sendOrderBtn.onclick = sendOrderToWhatsApp;
 
 // Modal event listeners
@@ -633,8 +687,8 @@ productDetailsModal.addEventListener('click', (event) => { // Close on overlay c
     }
 });
 
-initializeProductLikes(); 
-renderProductList(); 
+initializeProductLikes();
+renderProductList();
 renderOrderItemsList();
 loadLikesFromSupabase();
 
