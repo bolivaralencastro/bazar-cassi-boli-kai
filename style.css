@@ -49,7 +49,16 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
 .order-panel-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding-bottom: 8px; }
 #orderSummaryText { font-weight: 500; }
 #toggleOrderDetailsBtn { background: none; border: none; color: #8aff8a; cursor: pointer; text-decoration: underline; font-size: 0.9em; padding: 5px; display: flex; align-items: center; }
-#toggleOrderDetailsBtn .material-symbols-outlined { font-size: 1.2em; vertical-align: middle; transition: transform 0.3s ease-in-out; margin-left: 4px;}
+#toggleOrderDetailsBtn .icon-svg {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    margin-left: 4px;
+    transition: transform 0.3s ease-in-out;
+}
+.order-panel.expanded #toggleOrderDetailsBtn .icon-svg {
+    transform: rotate(180deg);
+}
 .order-panel.expanded #toggleOrderDetailsBtn .material-symbols-outlined { transform: rotate(180deg); }
 #orderItemsList { list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease-in-out, opacity 0.3s 0.1s ease-in-out, padding-top 0.4s ease-in-out, margin-bottom 0.4s ease-in-out; font-size: 0.9em; border-top: 1px solid #444; }
 .order-panel.expanded #orderItemsList { max-height: 150px; opacity: 1; overflow-y: auto; padding-top: 10px; margin-bottom: 10px; }
@@ -87,12 +96,25 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
 .product-actions-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; }
 .product-actions-toolbar .like-section { display: flex; align-items: center; gap: 5px; color: #777; }
 .product-actions-toolbar .like-btn { background: none; border: none; cursor: pointer; padding: 0; color: #ff4d4d; }
-.product-actions-toolbar .like-btn .material-symbols-outlined { font-size: 1.8em; transition: transform 0.2s ease, font-variation-settings 0.2s ease; }
-.product-actions-toolbar .like-btn:hover .material-symbols-outlined { transform: scale(1.15); }
-.product-actions-toolbar .like-btn.liked .material-symbols-outlined { font-variation-settings: 'FILL' 1; transform: scale(1.1); }
+.product-actions-toolbar .like-btn .icon-svg {
+    width: 1.8em;
+    height: 1.8em;
+    transition: transform 0.2s ease;
+}
+.product-actions-toolbar .like-btn:hover .icon-svg {
+    transform: scale(1.15);
+}
+.product-actions-toolbar .like-btn.liked .icon-svg {
+    filter: brightness(0) saturate(100%) invert(32%) sepia(99%) saturate(7492%) hue-rotate(346deg) brightness(99%) contrast(101%);
+    transform: scale(1.1);
+}
 .product-actions-toolbar .action-buttons { display: flex; gap: 10px; }
 .product-actions-toolbar .btn { text-decoration: none; cursor: pointer; border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: center; font-size: 0.9em; font-weight: 500; transition: background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s; }
-.product-actions-toolbar .btn .material-symbols-outlined { margin-right: 6px; font-size: 1.2em; }
+.product-actions-toolbar .btn .icon-svg {
+    margin-right: 6px;
+    width: 1.2em;
+    height: 1.2em;
+}
 .product-actions-toolbar .details-btn { background-color: transparent; color: #555; border: 1px solid #ccc; }
 .product-actions-toolbar .details-btn:hover { background-color: #f0f0f0; border-color: #bbb; }
 .product-actions-toolbar .cart-action-btn.add { background-color: #257a1a; color: #fff; border: none; }
@@ -235,13 +257,27 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
     margin-top: 15px;
     transition: background-color 0.2s;
 }
-.modal-olx-btn .material-symbols-outlined {
-     vertical-align: middle;
-     margin-right: 6px;
-     font-size: 1.2em;
+.modal-olx-btn .icon-svg {
+    vertical-align: middle;
+    margin-right: 6px;
+    width: 1.2em;
+    height: 1.2em;
 }
 .modal-olx-btn:hover {
     background-color: #00474f;
+}
+
+.icon-svg {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 6px;
+    /* Ajuste para ícones de ação */
+}
+.order-panel-header .icon-svg {
+    margin-left: 4px;
+    margin-right: 0;
 }
 
 @media (min-width: 600px) {

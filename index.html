@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bazar da Cassi, Boli e Kai!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Google Fonts removido. Usando pilha de fontes do sistema no CSS. -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <!-- Google Fonts removido. Usando SVGs locais para ícones. -->
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="images/ico.ico">
     <link rel="shortcut icon" type="image/x-icon" href="images/ico.ico">
@@ -74,7 +71,7 @@
             <div class="order-panel-header" id="orderPanelHeader">
                 <span id="orderSummaryText">Seu Pedido (0 itens)</span>
                 <button id="toggleOrderDetailsBtn" title="Ver/Ocultar Detalhes">
-                    Detalhes <span class="material-symbols-outlined">expand_more</span>
+                    Detalhes <img src="icons/arrow_drop_down.svg" alt="Expandir" class="icon-svg">
                 </button>
             </div>
             <ul id="orderItemsList" class="order-items-list"></ul>
@@ -120,7 +117,7 @@
             </div>
             
             <a id="modalOlxBtn" href="#" target="_blank" class="modal-olx-btn">
-                <span class="material-symbols-outlined">storefront</span> Ver na OLX
+                <img src="icons/shopping_bag.svg" alt="Ver na OLX" class="icon-svg"> Ver na OLX
             </a>
         </div>
     </div>

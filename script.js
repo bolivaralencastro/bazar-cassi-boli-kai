@@ -407,7 +407,25 @@ function renderOrderItemsList() {
     toggleOrderPanelVisibility();
 }
 
-function updateCartActionButtonState(productId) { const button = document.querySelector(`.cart-action-btn[data-product-id="${productId}"]`); if (!button) return; const iconSpan = button.querySelector('.material-symbols-outlined'); const textSpan = button.querySelector('span:not(.material-symbols-outlined)'); if (cartItems.some(item => item.id === productId)) { button.classList.remove('add'); button.classList.add('remove'); iconSpan.textContent = 'remove_shopping_cart'; textSpan.textContent = 'Remover'; } else { button.classList.remove('remove'); button.classList.add('add'); iconSpan.textContent = 'add_shopping_cart'; textSpan.textContent = 'Adicionar'; } }
+function updateCartActionButtonState(productId) { 
+    const button = document.querySelector(`.cart-action-btn[data-product-id="${productId}"]`); 
+    if (!button) return; 
+    const iconImg = button.querySelector('.icon-svg'); 
+    const textSpan = button.querySelector('span:not(.icon-svg)'); 
+    if (cartItems.some(item => item.id === productId)) { 
+        button.classList.remove('add'); 
+        button.classList.add('remove'); 
+        iconImg.src = 'icons/remove_shopping_cart.svg';
+        iconImg.alt = 'Remover do carrinho';
+        textSpan.textContent = 'Remover'; 
+    } else { 
+        button.classList.remove('remove'); 
+        button.classList.add('add'); 
+        iconImg.src = 'icons/add_shopping_cart.svg';
+        iconImg.alt = 'Adicionar ao carrinho';
+        textSpan.textContent = 'Adicionar'; 
+    } 
+}
 
 function toggleCartItem(product) {
     const productIndex = cartItems.findIndex(item => item.id === product.id);
@@ -530,7 +548,7 @@ function renderProductList() {
         likeButton.setAttribute('data-clarity-event', 'like');
         likeButton.setAttribute('data-clarity-product', product.shortName);
         likeButton.title = "Curtir"; 
-        likeButton.innerHTML = `<span class="material-symbols-outlined">favorite</span>`; 
+        likeButton.innerHTML = `<img src="icons/favorite.svg" alt="Curtir" class="icon-svg">`; 
         likeButton.onclick = () => toggleLike(product.id); 
         const likeCountSpan = document.createElement('span'); 
         likeCountSpan.classList.add('like-count'); 
@@ -549,7 +567,7 @@ function renderProductList() {
         detailsButton.setAttribute('data-product-id', product.id);
         detailsButton.setAttribute('data-clarity-event', 'details');
         detailsButton.setAttribute('data-clarity-product', product.shortName);
-        detailsButton.innerHTML = `<span class="material-symbols-outlined">info</span> Mais Detalhes`;
+        detailsButton.innerHTML = `<img src="icons/info.svg" alt="Mais Detalhes" class="icon-svg"> Mais Detalhes`;
         detailsButton.onclick = () => showProductDetailsModal(product.id); 
         actionButtonsDiv.appendChild(detailsButton); 
         
@@ -559,7 +577,7 @@ function renderProductList() {
         cartActionButton.setAttribute('data-product-id', product.id); 
         cartActionButton.setAttribute('data-clarity-event', 'cart');
         cartActionButton.setAttribute('data-clarity-product', product.shortName);
-        cartActionButton.innerHTML = `<span class="material-symbols-outlined"></span><span></span>`; 
+        cartActionButton.innerHTML = `<img src="icons/add_shopping_cart.svg" alt="Adicionar ao carrinho" class="icon-svg"><span>Adicionar</span>`; 
         cartActionButton.onclick = () => toggleCartItem(product); 
         actionButtonsDiv.appendChild(cartActionButton); 
         
@@ -606,4 +624,4 @@ function handleHeroOpacityOnScroll() {
 window.addEventListener('scroll', handleHeroOpacityOnScroll, { passive: true });
 handleHeroOpacityOnScroll();
 
-// --- Fim do código extraído do index.html ---
+// --- Fim do código extraído do index.html---
