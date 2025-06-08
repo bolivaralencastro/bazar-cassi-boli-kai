@@ -13,7 +13,7 @@ body {
     line-height: 1.5;
 }
 body.order-panel-padding {
-    padding-bottom: 220px;
+    padding-bottom: 220px; /* Ajuste conforme a altura do painel de pedido */
 }
 .hero-section { 
     display: flex;
@@ -59,7 +59,7 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
 .order-panel.expanded #toggleOrderDetailsBtn .icon-svg {
     transform: rotate(180deg);
 }
-.order-panel.expanded #toggleOrderDetailsBtn .material-symbols-outlined { transform: rotate(180deg); }
+/* .order-panel.expanded #toggleOrderDetailsBtn .material-symbols-outlined { transform: rotate(180deg); } */ /* Removido se não estiver usando Material Symbols */
 #orderItemsList { list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease-in-out, opacity 0.3s 0.1s ease-in-out, padding-top 0.4s ease-in-out, margin-bottom 0.4s ease-in-out; font-size: 0.9em; border-top: 1px solid #444; }
 .order-panel.expanded #orderItemsList { max-height: 150px; opacity: 1; overflow-y: auto; padding-top: 10px; margin-bottom: 10px; }
 #orderItemsList li { padding: 3px 0; border-bottom: 1px solid #444; }
@@ -69,6 +69,7 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
 .product-list-item { display: flex; flex-direction: column; padding: 20px; border-bottom: 1px solid #eee; gap: 15px; }
 .product-list-item:last-child { border-bottom: none; }
 .product-image-container {
+    position: relative; /* Necessário para posicionar o overlay de "Vendido" */
     width: 100%;
     max-width: 200px;
     min-width: 120px;
@@ -146,7 +147,7 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    display: none;
+    display: none; /* Alterado para 'none' por padrão */
     justify-content: center;
     align-items: center;
     z-index: 100000;
@@ -154,7 +155,7 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
     box-sizing: border-box;
 }
 .modal-overlay.visible {
-    display: flex;
+    display: flex; /* Mostra quando a classe 'visible' é adicionada */
 }
 .modal-content {
     background-color: #fff;
@@ -166,11 +167,9 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    padding-top: 70px;
+    padding-top: 70px; /* Espaço para o botão de fechar e título */
 }
-.modal-header-fixed {
-    display: none !important;
-}
+/* .modal-header-fixed { display: none !important; } */ /* Removido se não for usado */
 .modal-close-btn {
     position: absolute;
     top: 15px;
@@ -186,14 +185,24 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
 .modal-close-btn:hover {
     color: #333;
 }
-.modal-product-image {
+/* Estilo para o contêiner da imagem no modal, se necessário. */
+.modal-product-image-container {
     width: 100%;
-    max-width: 250px;
+    max-width: 250px; /* Ou o tamanho desejado */
     height: auto;
-    max-height: 250px;
+    margin: 0 auto 20px auto; /* Centraliza e adiciona margem inferior */
+    display: flex; /* Para centralizar a imagem se ela for menor que o contêiner */
+    justify-content: center;
+    align-items: center;
+}
+/* Estilo para a imagem DENTRO do contêiner do modal */
+.modal-product-image-container .modal-product-image { /* Seletor mais específico */
+    width: 100%; /* Faz a imagem preencher o contêiner */
+    max-width: 250px; /* Ou o tamanho desejado */
+    height: auto;
+    max-height: 250px; /* Ou o tamanho desejado */
     object-fit: contain;
     border-radius: 6px;
-    margin: 0 auto 20px auto;
     display: block;
 }
 .modal-product-title {
@@ -206,7 +215,7 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
 }
 @media (max-width: 739px) {
     .modal-product-title {
-        font-size: 1.1em;
+        font-size: 1.1em; /* Ajustado para telas menores */
     }
 }
 .modal-product-section {
@@ -273,11 +282,49 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
     vertical-align: middle;
     display: inline-block;
     margin-right: 6px;
-    /* Ajuste para ícones de ação */
 }
 .order-panel-header .icon-svg {
     margin-left: 4px;
     margin-right: 0;
+}
+
+/* Estilos para itens vendidos */
+.product-list-item.sold-item {
+    opacity: 0.65; /* Levemente mais visível que 0.6 */
+}
+.sold-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(230, 230, 230, 0.75); /* Fundo um pouco mais opaco e claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: 6px; /* Para coincidir com o border-radius da imagem */
+    pointer-events: none; /* Permite cliques através dele se necessário (para o link da OLX, por exemplo) */
+}
+.sold-overlay span {
+    background-color: #c9302c; /* Vermelho um pouco mais escuro */
+    color: white;
+    padding: 8px 15px;
+    font-size: 1.1em; /* Um pouco menor */
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.product-actions-toolbar .btn.disabled-btn {
+    background-color: #d8d8d8 !important; /* Mais claro */
+    color: #909090 !important; /* Mais claro */
+    border-color: #c8c8c8 !important; /* Mais claro */
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
+.product-actions-toolbar .cart-action-btn.sold-cart-btn .icon-svg {
+    filter: grayscale(100%) opacity(0.6);
 }
 
 @media (min-width: 600px) {
@@ -300,7 +347,7 @@ main { padding: 20px; max-width: 700px; margin: 0 auto; background-color: #fff; 
         padding: 20px;
     }
     .modal-product-title {
-        font-size: 1.4em;
+        font-size: 1.4em; /* Mantido */
     }
     .product-list-item {
         flex-direction: column;

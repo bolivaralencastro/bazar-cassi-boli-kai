@@ -1,7 +1,4 @@
 // script.js - JS extraído do index.html
-// ...código JS do <script> do index.html...
-
-// --- Início do código extraído do index.html ---
 
 const products = [
     {
@@ -12,6 +9,7 @@ const products = [
         price: "R$ 850,00",
         description: "Perfeita para streaming e apps, com qualidade HD.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/tvs-e-video/tvs/smart-tv-lg-32-hd-com-wi-fi-bluetooth-hdr-e-ai-thinq-modelo-32lq620bpsb-1409672463?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 1.532,69",
             localRetirada: "Rio Tavares - Florianópolis",
@@ -40,6 +38,7 @@ const products = [
         price: "R$ 800,00",
         description: "Conserve seus vinhos na temperatura ideal com estilo e praticidade.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/geladeiras-e-freezers/adega-brastemp-12-garrafas-com-painel-touch-modelo-bzc12be-1409697836?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 1.039,00",
             localRetirada: "Rio Tavares - Florianópolis",
@@ -66,6 +65,7 @@ const products = [
         price: "R$ 750,00",
         description: "Lava suas roupas com cuidado e eficiência, economizando água.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/maquinas-de-lavar-e-secadoras/maquina-de-lavar-electrolux-8-5kg-essential-care-1409730468?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 1.699,00",
             localRetirada: "Rio Tavares - Florianópolis",
@@ -87,12 +87,13 @@ const products = [
     },
     { 
         id: "tripe_manfrotto_055",
-        imageSrc: "images/tripe-manfroto-400.webp",
+        imageSrc: "images/tripe-manfroto-400.webp", 
         shortName: "Tripé Manfrotto 055 + Joystick 222",
         fullName: "Tripé Profissional Manfrotto MT055XPRO3 + Cabeça Joystick 222",
         price: "R$ 700,00",
         description: "Tripé profissional com cabeça joystick. Firme, preciso e resistente.",
         olxLink: "", 
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 3.200,00",
             localRetirada: "Rio Tavares – Florianópolis",
@@ -119,6 +120,7 @@ const products = [
         price: "R$ 600,00",
         description: "Compacta e eficiente, ideal para quem busca praticidade na cozinha.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/geladeiras-e-freezers/geladeira-electrolux-re31-1409738827?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 1.799",
             localRetirada: "Rio Tavares - Florianópolis",
@@ -143,6 +145,7 @@ const products = [
         price: "R$ 550,00",
         description: "Performance e velocidade para seus treinos e passeios na cidade.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/ciclismo/bicicleta-caloi-speed-1409757466?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 2.700",
             localRetirada: "Rio Tavares - Florianópolis",
@@ -167,6 +170,7 @@ const products = [
         price: "R$ 400,00",
         description: "Deixe a limpeza da casa por conta dele, praticidade total.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/aspirador-robo-oster-keep-clean-1409729011?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 899",
             localRetirada: "Rio Tavares - Florianópolis",
@@ -193,6 +197,7 @@ const products = [
         price: "R$ 300,00",
         description: "Silencioso e potente, refresca o ambiente com design moderno.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/ventiladores-e-climatizadores/ventilador-torre-wap-air-silence-1409685583?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 649,90",
             localRetirada: "Rio Tavares - Florianópolis",
@@ -222,6 +227,7 @@ const products = [
         price: "R$ 200,00",
         description: "Comidas crocantes e saudáveis sem usar óleo, fácil de limpar.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/fogoes-e-fornos/fritadeira-eletrica-eos-chef-gourmet-1409726359?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 399,00",
             localRetirada: "Campeche - Florianópolis",
@@ -247,6 +253,7 @@ const products = [
         price: "R$ 180,00",
         description: "Alimentos saborosos e mais saudáveis para toda a família.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/fritadeira-eletrica-cadence-super-light-fryer-3-2l-1500w-1409737099?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 419",
             localRetirada: "Rio Tavares - Florianópolis",
@@ -273,6 +280,7 @@ const products = [
         price: "R$ 150,00",
         description: "Seu café expresso ou multibebidas favorito ao toque de um botão.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/cafeteira-tres-3-coracoes-lov-multibebidas-1410281152?lis=ad_card_user_profile",
+        status: "vendido", // <--- ITEM MARCADO COMO VENDIDO
         detailedInfo: {
             valorOriginal: "R$400",
             localRetirada: "Campeche - Florianópolis",
@@ -298,6 +306,7 @@ const products = [
         price: "R$ 100,00",
         description: "Roupas desamassadas rapidamente, ideal para viagens e dia a dia.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/passadeira-a-vapor-portatil-wap-wapore-fast-1250w-1410282629?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 350",
             localRetirada: "Rio Tavares - Florianópolis",
@@ -318,12 +327,13 @@ const products = [
     },
     { 
         id: "cafeteira_oster_daylight",
-        imageSrc: "images/cafeteira-oster-daylight-400.webp",
+        imageSrc: "images/cafeteira-oster-daylight-400.webp", 
         shortName: "Cafeteira Oster Day Light",
         fullName: "Cafeteira Digital Oster Day Light OCAF500 – 127V",
         price: "R$ 100,00",
         description: "Café pronto ao acordar. Moderna, prática e programável.",
         olxLink: "", 
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 289,00",
             localRetirada: "Rio Tavares – Florianópolis",
@@ -349,6 +359,7 @@ const products = [
         price: "R$ 90,00",
         description: "Prepare vitaminas, sucos e massas com potência e rapidez.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/liquidificador-britania-diamante-900w-potente-e-pratico-1410297464?lis=ad_card_user_profile",
+        status: "disponivel",
         detailedInfo: {
             valorOriginal: "R$ 200",
             localRetirada: "Rio Tavares - Florianópolis",
@@ -382,8 +393,6 @@ const sendOrderBtn = document.getElementById('sendOrderBtn');
 // Modal elements
 const productDetailsModal = document.getElementById('productDetailsModal');
 const modalCloseBtn = document.getElementById('modalCloseBtn');
-// MODIFICAÇÃO: Removida a declaração global de modalProductImage
-// const modalProductImage = document.getElementById('modalProductImage'); 
 const modalProductTitle = document.getElementById('modalProductTitle');
 const modalProductPriceInfo = document.getElementById('modalProductPriceInfo');
 const modalProductGeneralDescription = document.getElementById('modalProductGeneralDescription');
@@ -466,23 +475,42 @@ function updateCartActionButtonState(productId) {
     const button = document.querySelector(`.cart-action-btn[data-product-id="${productId}"]`);
     if (!button) return;
     const iconImg = button.querySelector('.icon-svg');
-    const textSpan = button.querySelector('span:not(.icon-svg)');
+    const textSpan = button.querySelector('span:not(.icon-svg)'); // Garante que pega o span correto
+    
+    // Verifica se o produto está vendido antes de verificar o carrinho
+    const product = products.find(p => p.id === productId);
+    if (product && product.status === 'vendido') {
+        // Esta parte já é tratada em renderProductList, mas é uma segurança adicional
+        if (iconImg) iconImg.src = 'icons/block.svg'; // Use um ícone apropriado para "vendido"
+        if (iconImg) iconImg.alt = 'Vendido';
+        if (textSpan) textSpan.textContent = 'Vendido';
+        button.disabled = true;
+        button.classList.add('disabled-btn', 'sold-cart-btn');
+        button.classList.remove('add', 'remove');
+        return;
+    }
+
     if (cartItems.some(item => item.id === productId)) {
         button.classList.remove('add');
         button.classList.add('remove');
-        iconImg.src = 'icons/remove_shopping_cart.svg';
-        iconImg.alt = 'Remover do carrinho';
-        textSpan.textContent = 'Remover';
+        if (iconImg) iconImg.src = 'icons/remove_shopping_cart.svg';
+        if (iconImg) iconImg.alt = 'Remover do carrinho';
+        if (textSpan) textSpan.textContent = 'Remover';
     } else {
         button.classList.remove('remove');
         button.classList.add('add');
-        iconImg.src = 'icons/add_shopping_cart.svg';
-        iconImg.alt = 'Adicionar ao carrinho';
-        textSpan.textContent = 'Adicionar';
+        if (iconImg) iconImg.src = 'icons/add_shopping_cart.svg';
+        if (iconImg) iconImg.alt = 'Adicionar ao carrinho';
+        if (textSpan) textSpan.textContent = 'Adicionar';
     }
 }
 
 function toggleCartItem(product) {
+    if (product.status === 'vendido') {
+        alert("Este item já foi vendido e não pode ser adicionado ao pedido.");
+        return; 
+    }
+
     const productIndex = cartItems.findIndex(item => item.id === product.id);
     if (productIndex > -1) {
         cartItems.splice(productIndex, 1);
@@ -493,7 +521,21 @@ function toggleCartItem(product) {
     updateCartActionButtonState(product.id);
 }
 
-function sendOrderToWhatsApp() { if (cartItems.length === 0) { alert("Seu pedido está vazio!"); return; } let message = "Olá! Tenho interesse nos seguintes itens do bazar:\n"; let totalPrice = 0; cartItems.forEach(item => { message += `- ${item.fullName} (${item.price})\n`; totalPrice += parsePrice(item.price); }); message += `\nValor Total Estimado: R$ ${totalPrice.toFixed(2).replace(".", ",")}`; const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`; window.open(whatsappUrl, '_blank'); }
+function sendOrderToWhatsApp() { 
+    if (cartItems.length === 0) { 
+        alert("Seu pedido está vazio!"); 
+        return; 
+    } 
+    let message = "Olá! Tenho interesse nos seguintes itens do bazar:\n"; 
+    let totalPrice = 0; 
+    cartItems.forEach(item => { 
+        message += `- ${item.fullName} (${item.price})\n`; 
+        totalPrice += parsePrice(item.price); 
+    }); 
+    message += `\nValor Total Estimado: R$ ${totalPrice.toFixed(2).replace(".", ",")}`; 
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`; 
+    window.open(whatsappUrl, '_blank'); 
+}
 
 function updateLikeButtonState(productId) {
     const likeButton = document.querySelector(`.like-btn[data-product-id="${productId}"]`);
@@ -509,6 +551,12 @@ function updateLikeButtonState(productId) {
 }
 
 function toggleLike(productId) {
+    // Opcional: Impedir likes em itens vendidos
+    // const product = products.find(p => p.id === productId);
+    // if (product && product.status === 'vendido') {
+    //     return;
+    // }
+
     if (userLikedItems[productId]) {
         delete userLikedItems[productId];
         productLikesCount[productId] = Math.max(0, (productLikesCount[productId] || 1) - 1);
@@ -554,22 +602,30 @@ function getProductPictureHTML(product, className = 'product-image', width = 400
 // --- MODAL FUNCTIONS ---
 function showProductDetailsModal(productId) {
     const product = products.find(p => p.id === productId);
-    if (!product || !product.detailedInfo) {
-        console.error("Detalhes do produto não encontrados para:", productId);
+
+    if (!product) { 
+        console.error("Produto não encontrado para o ID:", productId);
         return;
     }
 
-    // MODIFICAÇÃO: Obter o contêiner da imagem do modal
+    if (product.status === 'vendido') {
+        console.log("Tentativa de ver detalhes de item vendido:", productId);
+        // Opcional: alert("Este item já foi vendido.");
+        return; 
+    }
+
+    if (!product.detailedInfo) {
+        console.error("Detalhes do produto não encontrados para:", productId);
+        return;
+    }
+    
     const modalImageContainer = document.getElementById('modalImageContainer');
     if (!modalImageContainer) {
         console.error("Elemento #modalImageContainer não encontrado no HTML do modal.");
         return;
     }
-    // Popule o contêiner com a nova imagem/picture
-    // A classe 'modal-product-image' é aplicada ao <img> interno pela função getProductPictureHTML.
     modalImageContainer.innerHTML = getProductPictureHTML(product, 'modal-product-image', 400, 400);
     
-    // O restante da sua lógica para popular o modal permanece:
     modalProductTitle.textContent = product.fullName;
     modalProductPriceInfo.innerHTML = `<strong>${product.price}</strong> <span class="original-price">${product.detailedInfo.valorOriginal}</span>`;
     modalProductGeneralDescription.textContent = product.detailedInfo.descricaoGeral;
@@ -600,9 +656,23 @@ function renderProductList() {
         itemElement.setAttribute('data-product-id', product.id);
         itemElement.setAttribute('data-clarity-section', 'product');
         itemElement.setAttribute('aria-label', product.shortName);
+
+        const isSold = product.status === 'vendido';
+
+        if (isSold) {
+            itemElement.classList.add('sold-item');
+        }
+
         const imageContainer = document.createElement('div');
         imageContainer.classList.add('product-image-container');
         imageContainer.innerHTML = getProductPictureHTML(product, 'product-image', 400, 400);
+
+        if (isSold) {
+            const soldOverlay = document.createElement('div');
+            soldOverlay.classList.add('sold-overlay');
+            soldOverlay.innerHTML = '<span>VENDIDO</span>';
+            imageContainer.appendChild(soldOverlay);
+        }
         itemElement.appendChild(imageContainer);
 
         const detailsDiv = document.createElement('div');
@@ -626,6 +696,7 @@ function renderProductList() {
         likeButton.title = "Curtir";
         likeButton.innerHTML = `<img src="icons/favorite.svg" alt="Curtir" class="icon-svg">`;
         likeButton.onclick = () => toggleLike(product.id);
+        
         const likeCountSpan = document.createElement('span');
         likeCountSpan.classList.add('like-count');
         likeCountSpan.setAttribute('data-product-id', product.id);
@@ -643,7 +714,12 @@ function renderProductList() {
         detailsButton.setAttribute('data-clarity-event', 'details');
         detailsButton.setAttribute('data-clarity-product', product.shortName);
         detailsButton.innerHTML = `<img src="icons/info.svg" alt="Mais Detalhes" class="icon-svg"> Mais Detalhes`;
-        detailsButton.onclick = () => showProductDetailsModal(product.id);
+        if (isSold) {
+            detailsButton.disabled = true;
+            detailsButton.classList.add('disabled-btn');
+        } else {
+            detailsButton.onclick = () => showProductDetailsModal(product.id);
+        }
         actionButtonsDiv.appendChild(detailsButton);
 
         const cartActionButton = document.createElement('button');
@@ -651,8 +727,15 @@ function renderProductList() {
         cartActionButton.setAttribute('data-product-id', product.id);
         cartActionButton.setAttribute('data-clarity-event', 'cart');
         cartActionButton.setAttribute('data-clarity-product', product.shortName);
-        cartActionButton.innerHTML = `<img src="icons/add_shopping_cart.svg" alt="Adicionar ao carrinho" class="icon-svg"><span>Adicionar</span>`;
-        cartActionButton.onclick = () => toggleCartItem(product);
+        
+        if (isSold) {
+            cartActionButton.innerHTML = `<img src="icons/block.svg" alt="Vendido" class="icon-svg"><span>Vendido</span>`; // Ícone para vendido
+            cartActionButton.disabled = true;
+            cartActionButton.classList.add('disabled-btn', 'sold-cart-btn');
+        } else {
+            cartActionButton.innerHTML = `<img src="icons/add_shopping_cart.svg" alt="Adicionar ao carrinho" class="icon-svg"><span>Adicionar</span>`;
+            cartActionButton.onclick = () => toggleCartItem(product);
+        }
         actionButtonsDiv.appendChild(cartActionButton);
 
         actionsToolbarDiv.appendChild(actionButtonsDiv);
@@ -660,7 +743,9 @@ function renderProductList() {
         itemElement.appendChild(detailsDiv);
         productListContainer.appendChild(itemElement);
 
-        updateCartActionButtonState(product.id);
+        if (!isSold) {
+            updateCartActionButtonState(product.id);
+        }
         updateLikeButtonState(product.id);
     });
 }
@@ -697,5 +782,3 @@ function handleHeroOpacityOnScroll() {
 }
 window.addEventListener('scroll', handleHeroOpacityOnScroll, { passive: true });
 handleHeroOpacityOnScroll();
-
-// --- Fim do código extraído do index.html---
