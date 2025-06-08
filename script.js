@@ -473,8 +473,8 @@ function toggleOrderDetailsView() {
 }
 
 function getProductImageBaseName(imageSrc) {
-    // Exemplo: images/tv_lg_32.webp => tv_lg_32
-    return imageSrc.replace(/^images\//, '').replace(/\.(webp|png|jpg|jpeg)$/i, '');
+    // Exemplo: images/tv-hd-400.webp => tv-hd
+    return imageSrc.replace(/^images\//, '').replace(/(-400|-200|-700)?\.(webp|png|jpg|jpeg)$/i, '');
 }
 
 function getProductPictureHTML(product, className = 'product-image', width = 400, height = 400) {
