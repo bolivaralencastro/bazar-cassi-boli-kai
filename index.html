@@ -112,8 +112,27 @@
         .send-order-btn:hover { background-color: #62e002; }
         .product-list-item { display: flex; flex-direction: column; padding: 20px; border-bottom: 1px solid #eee; gap: 15px; }
         .product-list-item:last-child { border-bottom: none; }
-        .product-image-container { width: 100%; max-width: 200px; height: auto; align-self: center; margin-bottom: 10px; }
-        .product-image { width: 100%; height: auto; max-height: 180px; object-fit: contain; border-radius: 6px; }
+        .product-image-container {
+            width: 100%;
+            max-width: 200px;
+            min-width: 120px;
+            height: auto;
+            align-self: center;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .product-image {
+            width: 100%;
+            max-width: 180px;
+            min-width: 80px;
+            height: auto;
+            max-height: 180px;
+            object-fit: contain;
+            border-radius: 6px;
+            display: block;
+        }
         .product-details { flex-grow: 1; display: flex; flex-direction: column; }
         .product-info .name { font-size: 1.3em; font-weight: 700; margin: 0 0 8px 0; }
         .product-info .price { font-size: 1.2em; color: #58cc02; font-weight: 700; margin: 0 0 8px 0; }
@@ -178,6 +197,33 @@
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
+            padding-top: 70px;
+        }
+        .modal-header-fixed {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 650px;
+            background: #fff;
+            z-index: 10;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 30px 12px 30px;
+        }
+        .modal-header-fixed h3 {
+            margin: 0;
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #333;
+        }
+        .modal-header-fixed .modal-close-btn {
+            position: static;
+            margin-left: 10px;
         }
         .modal-close-btn {
             position: absolute;
@@ -290,6 +336,23 @@
             }
             .modal-product-title {
                 font-size: 1.4em;
+            }
+            .product-list-item {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product-image-container {
+                width: 100%;
+                max-width: 220px;
+                min-width: 100px;
+                margin: 0 auto 10px auto;
+            }
+            .product-image {
+                width: 100%;
+                max-width: 180px;
+                min-width: 80px;
+                height: auto;
+                max-height: 180px;
             }
         }
     </style>
@@ -824,6 +887,23 @@
                 return;
             }
 
+            // Monta header fixo
+            const modalContent = document.querySelector('.modal-content');
+            let modalHeader = document.querySelector('.modal-header-fixed');
+            if (!modalHeader) {
+                modalHeader = document.createElement('div');
+                modalHeader.className = 'modal-header-fixed';
+                modalHeader.innerHTML = `
+                    <h3 class="modal-product-title"></h3>
+                    <button id="modalCloseBtnFixed" class="modal-close-btn" title="Fechar">×</button>
+                `;
+                modalContent.insertBefore(modalHeader, modalContent.firstChild);
+                document.getElementById('modalCloseBtnFixed').onclick = closeProductDetailsModal;
+            }
+            modalHeader.querySelector('h3').textContent = product.fullName;
+
+            // Esconde o título original do modal (fica só no header fixo)
+            modalProductTitle.style.display = 'none';
             modalProductImage.src = product.imageSrc;
             modalProductImage.alt = product.shortName;
             modalProductTitle.textContent = product.fullName;
@@ -847,6 +927,11 @@
 
         function closeProductDetailsModal() {
             productDetailsModal.classList.remove('visible');
+            // Remove header fixo ao fechar
+            const modalHeader = document.querySelector('.modal-header-fixed');
+            if (modalHeader) modalHeader.remove();
+            // Restaura o título original
+            modalProductTitle.style.display = '';
         }
         // --- END MODAL FUNCTIONS ---
 
