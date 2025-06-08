@@ -85,14 +85,14 @@ const products = [
             estadoProduto: "Usada, mas em excelente funcionamento. Limpa e bem conservada."
         }
     },
-    { // NOVO PRODUTO ADICIONADO AQUI
+    { 
         id: "tripe_manfrotto_055",
-        imageSrc: "images/tripe-manfroto-400.webp", // Certifique-se que o caminho da imagem está correto
+        imageSrc: "images/tripe-manfroto-400.webp",
         shortName: "Tripé Manfrotto 055 + Joystick 222",
         fullName: "Tripé Profissional Manfrotto MT055XPRO3 + Cabeça Joystick 222",
         price: "R$ 700,00",
         description: "Tripé profissional com cabeça joystick. Firme, preciso e resistente.",
-        olxLink: "", // Adicione o link da OLX se tiver
+        olxLink: "", 
         detailedInfo: {
             valorOriginal: "R$ 3.200,00",
             localRetirada: "Rio Tavares – Florianópolis",
@@ -316,14 +316,14 @@ const products = [
             observacoes: "Só vender mesmo porque estou me mudando."
         }
     },
-    { // NOVO PRODUTO ADICIONADO AQUI
+    { 
         id: "cafeteira_oster_daylight",
-        imageSrc: "images/cafeteira-oster-daylight-400.webp", // Certifique-se que o caminho da imagem está correto
+        imageSrc: "images/cafeteira-oster-daylight-400.webp",
         shortName: "Cafeteira Oster Day Light",
         fullName: "Cafeteira Digital Oster Day Light OCAF500 – 127V",
         price: "R$ 100,00",
         description: "Café pronto ao acordar. Moderna, prática e programável.",
-        olxLink: "", // Adicione o link da OLX se tiver
+        olxLink: "", 
         detailedInfo: {
             valorOriginal: "R$ 289,00",
             localRetirada: "Rio Tavares – Florianópolis",
@@ -382,7 +382,8 @@ const sendOrderBtn = document.getElementById('sendOrderBtn');
 // Modal elements
 const productDetailsModal = document.getElementById('productDetailsModal');
 const modalCloseBtn = document.getElementById('modalCloseBtn');
-const modalProductImage = document.getElementById('modalProductImage');
+// MODIFICAÇÃO: Removida a declaração global de modalProductImage
+// const modalProductImage = document.getElementById('modalProductImage'); 
 const modalProductTitle = document.getElementById('modalProductTitle');
 const modalProductPriceInfo = document.getElementById('modalProductPriceInfo');
 const modalProductGeneralDescription = document.getElementById('modalProductGeneralDescription');
@@ -426,9 +427,6 @@ function initializeProductLikes() {
 }
 
 function parsePrice(priceStr) { return parseFloat(String(priceStr).replace("R$ ", "").replace(/\./g, "").replace(",", ".")); }
-// ESTA LINHA IRÁ REORDENAR O ARRAY DE QUALQUER FORMA, INCLUSIVE OS NOVOS ITENS.
-// SE VOCÊ OS INSERIU MANUALMENTE NA ORDEM CORRETA, ESTA LINHA APENAS CONFIRMARÁ.
-// SE VOCÊ OS ADICIONOU NO FINAL DO ARRAY, ESTA LINHA OS COLOCARÁ NO LUGAR CERTO.
 products.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
 
 function toggleOrderPanelVisibility() {
@@ -438,7 +436,6 @@ function toggleOrderPanelVisibility() {
     } else {
         orderPanel.classList.remove('visible');
         orderPanel.classList.remove('expanded');
-        // Corrigido: manipula o SVG do botão de detalhes do pedido
         const iconImg = toggleOrderDetailsBtn.querySelector('img.icon-svg');
         if (iconImg) {
             iconImg.style.transform = '';
@@ -526,15 +523,14 @@ function toggleLike(productId) {
 
 function toggleOrderDetailsView() {
     orderPanel.classList.toggle('expanded');
-    // Atualiza o ícone SVG do botão para expand_less ou expand_more
     const iconImg = toggleOrderDetailsBtn.querySelector('.icon-svg');
     if (iconImg) {
         if (orderPanel.classList.contains('expanded')) {
-            iconImg.src = 'icons/arrow_drop_down.svg'; // seta para cima (expandido)
+            iconImg.src = 'icons/arrow_drop_down.svg'; 
             iconImg.alt = 'Recolher detalhes';
             iconImg.style.transform = 'rotate(180deg)';
         } else {
-            iconImg.src = 'icons/arrow_drop_down.svg'; // seta para baixo (recolhido)
+            iconImg.src = 'icons/arrow_drop_down.svg'; 
             iconImg.alt = 'Expandir detalhes';
             iconImg.style.transform = '';
         }
@@ -542,13 +538,11 @@ function toggleOrderDetailsView() {
 }
 
 function getProductImageBaseName(imageSrc) {
-    // Exemplo: images/tv-hd-400.webp => tv-hd
     return imageSrc.replace(/^images\//, '').replace(/(-400|-200|-700)?\.(webp|png|jpg|jpeg)$/i, '');
 }
 
 function getProductPictureHTML(product, className = 'product-image', width = 400, height = 400) {
     const baseName = getProductImageBaseName(product.imageSrc);
-    // Garante que as imagens otimizadas existam: 200, 400, 700px
     return `
         <picture>
             <source srcset="images/${baseName}-700.webp 700w, images/${baseName}-400.webp 400w, images/${baseName}-200.webp 200w" sizes="(max-width: 700px) 100vw, 700px">
@@ -564,21 +558,25 @@ function showProductDetailsModal(productId) {
         console.error("Detalhes do produto não encontrados para:", productId);
         return;
     }
-    // --- Usando <picture> com srcset para imagem do modal ---
-    modalProductImage.outerHTML = getProductPictureHTML(product, 'modal-product-image', 400, 400);
-    // Atualiza referência do modalProductImage após substituir o HTML
-    const modalContent = document.querySelector('.modal-content');
-    window.modalProductImage = modalContent.querySelector('.modal-product-image'); // Correção: use window.modalProductImage ou defina como variável local
-    modalProductImage.alt = product.shortName; // Agora modalProductImage é a referência correta
-    modalProductImage.loading = 'lazy';
-    modalProductImage.width = 400;
-    modalProductImage.height = 400;
+
+    // MODIFICAÇÃO: Obter o contêiner da imagem do modal
+    const modalImageContainer = document.getElementById('modalImageContainer');
+    if (!modalImageContainer) {
+        console.error("Elemento #modalImageContainer não encontrado no HTML do modal.");
+        return;
+    }
+    // Popule o contêiner com a nova imagem/picture
+    // A classe 'modal-product-image' é aplicada ao <img> interno pela função getProductPictureHTML.
+    modalImageContainer.innerHTML = getProductPictureHTML(product, 'modal-product-image', 400, 400);
+    
+    // O restante da sua lógica para popular o modal permanece:
     modalProductTitle.textContent = product.fullName;
     modalProductPriceInfo.innerHTML = `<strong>${product.price}</strong> <span class="original-price">${product.detailedInfo.valorOriginal}</span>`;
     modalProductGeneralDescription.textContent = product.detailedInfo.descricaoGeral;
     modalProductSpecifications.innerHTML = product.detailedInfo.especificacoesHTML;
     modalProductState.textContent = product.detailedInfo.estadoProduto;
     modalProductPickupLocation.textContent = product.detailedInfo.localRetirada;
+
     if (product.detailedInfo.observacoes) {
         modalProductObservations.textContent = product.detailedInfo.observacoes;
         modalProductObservationsSection.style.display = 'block';
@@ -604,7 +602,6 @@ function renderProductList() {
         itemElement.setAttribute('aria-label', product.shortName);
         const imageContainer = document.createElement('div');
         imageContainer.classList.add('product-image-container');
-        // --- Usando <picture> com srcset para imagens otimizadas ---
         imageContainer.innerHTML = getProductPictureHTML(product, 'product-image', 400, 400);
         itemElement.appendChild(imageContainer);
 
@@ -639,7 +636,6 @@ function renderProductList() {
         const actionButtonsDiv = document.createElement('div');
         actionButtonsDiv.classList.add('action-buttons');
 
-        // Botão de detalhes
         const detailsButton = document.createElement('button');
         detailsButton.classList.add('btn', 'details-btn');
         detailsButton.title = "Mais Detalhes do Produto";
@@ -650,7 +646,6 @@ function renderProductList() {
         detailsButton.onclick = () => showProductDetailsModal(product.id);
         actionButtonsDiv.appendChild(detailsButton);
 
-        // Botão de adicionar/remover carrinho
         const cartActionButton = document.createElement('button');
         cartActionButton.classList.add('btn', 'cart-action-btn');
         cartActionButton.setAttribute('data-product-id', product.id);
@@ -681,7 +676,7 @@ sendOrderBtn.onclick = sendOrderToWhatsApp;
 
 // Modal event listeners
 modalCloseBtn.addEventListener('click', closeProductDetailsModal);
-productDetailsModal.addEventListener('click', (event) => { // Close on overlay click
+productDetailsModal.addEventListener('click', (event) => { 
     if (event.target === productDetailsModal) {
         closeProductDetailsModal();
     }

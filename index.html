@@ -52,13 +52,14 @@
     <meta name="twitter:image" content="https://bolivaralencastro.github.io/bazar-cassi-boli-kai/images/cassi-boli-kai-bazar-open-graph.">
     <meta name="twitter:image:alt" content="Arte do Bazar da Cassi, Boli e Kai com casa de madeira e trio animado acenando">
 
-<meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  script-src 'self' https://cdn.jsdelivr.net https://www.clarity.ms;
-  connect-src 'self' https://jkxohciuzlxdccfxxizy.supabase.co https://s.clarity.ms;
-  img-src 'self' data: https://c.clarity.ms;
-  style-src 'self' 'unsafe-inline';
-">
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' https://cdn.jsdelivr.net https://www.clarity.ms;
+      connect-src 'self' https://jkxohciuzlxdccfxxizy.supabase.co https://s.clarity.ms https://b.clarity.ms;
+      img-src 'self' data: https://c.clarity.ms;
+      style-src 'self' 'unsafe-inline';
+      font-src 'self';
+    ">
 
 </head>
 <body>
@@ -94,7 +95,12 @@
     <div id="productDetailsModal" class="modal-overlay">
         <div class="modal-content">
             <button id="modalCloseBtn" class="modal-close-btn" title="Fechar">×</button>
-            <img id="modalProductImage" src="" alt="Imagem do Produto" class="modal-product-image"/>
+            
+            <!-- MODIFICAÇÃO AQUI: Contêiner para a imagem do modal -->
+            <div id="modalImageContainer" class="modal-product-image-container">
+                <!-- A imagem/picture gerada pelo JavaScript será inserida aqui -->
+            </div>
+            
             <h3 id="modalProductTitle" class="modal-product-title"></h3>
             
             <div class="modal-product-section">
@@ -132,8 +138,6 @@
             </a>
         </div>
     </div>
-
-
    
     <script src="script.js" defer></script>
 </body>
