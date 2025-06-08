@@ -135,7 +135,7 @@
         }
         .product-details { flex-grow: 1; display: flex; flex-direction: column; }
         .product-info .name { font-size: 1.3em; font-weight: 700; margin: 0 0 8px 0; }
-        .product-info .price { font-size: 1.2em; color: #58cc02; font-weight: 700; margin: 0 0 8px 0; }
+        .product-info .price { color: #1a3d0c; background: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
         .product-info .description { font-size: 0.9em; color: #555; margin: 0 0 15px 0; line-height: 1.4; }
         .product-actions-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; }
         .product-actions-toolbar .like-section { display: flex; align-items: center; gap: 5px; color: #777; }
@@ -148,8 +148,8 @@
         .product-actions-toolbar .btn .material-symbols-outlined { margin-right: 6px; font-size: 1.2em; }
         .product-actions-toolbar .details-btn { background-color: transparent; color: #555; border: 1px solid #ccc; } /* Renomeado de info-btn para details-btn para clareza */
         .product-actions-toolbar .details-btn:hover { background-color: #f0f0f0; border-color: #bbb; }
-        .product-actions-toolbar .cart-action-btn.add { background-color: #58cc02; color: white; border: none; }
-        .product-actions-toolbar .cart-action-btn.add:hover { background-color: #62e002; }
+        .product-actions-toolbar .cart-action-btn.add { background-color: #257a1a; color: #fff; border: none; }
+        .product-actions-toolbar .cart-action-btn.add:hover { background-color: #1a3d0c; }
         .product-actions-toolbar .cart-action-btn.remove { background-color: #ff4d4d; color: white; border: none; }
         .product-actions-toolbar .cart-action-btn.remove:hover { background-color: #ff6666; }
 
@@ -339,10 +339,26 @@
             }
         }
     </style>
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      // Adiar carregamento do Supabase
+      var supa = document.createElement('script');
+      supa.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js';
+      supa.defer = true;
+      document.body.appendChild(supa);
+      // Adiar carregamento do Clarity
+      setTimeout(function() {
+        var clarity = document.createElement('script');
+        clarity.src = 'https://www.clarity.ms/tag/rvud1vnpxa';
+        clarity.defer = true;
+        document.body.appendChild(clarity);
+      }, 1000);
+    });
+    </script>
 </head>
 <body>
     <div class="hero-section">
-        <img src="images/cassi-boli-kai-bazar.webp" alt="Bazar Cassi Boli Kai" class="hero-image" />
+        <img src="images/cassi-boli-kai-bazar.webp" alt="Bazar Cassi Boli Kai" class="hero-image" width="1200" height="400" loading="lazy" />
     </div>
     <main>
         <div class="welcome-card">
@@ -870,8 +886,11 @@
                 return;
             }
 
-            modalProductImage.src = product.imageSrc;
+            modalProductImage.src = product.imageSrc.replace('.png', '.webp');
             modalProductImage.alt = product.shortName;
+            modalProductImage.loading = 'lazy';
+            modalProductImage.width = 400;
+            modalProductImage.height = 400;
             modalProductTitle.textContent = product.fullName;
             
             modalProductPriceInfo.innerHTML = `<strong>${product.price}</strong> <span class="original-price">${product.detailedInfo.valorOriginal}</span>`;
@@ -900,15 +919,20 @@
         function renderProductList() { 
             productListContainer.innerHTML = ''; 
             products.forEach(product => { 
-                const itemElement = document.createElement('div'); 
+                const itemElement = document.createElement('section'); 
                 itemElement.classList.add('product-list-item'); 
-                
+                itemElement.setAttribute('data-product-id', product.id);
+                itemElement.setAttribute('data-clarity-section', 'product');
+                itemElement.setAttribute('aria-label', product.shortName);
                 const imageContainer = document.createElement('div'); 
                 imageContainer.classList.add('product-image-container'); 
                 const productImage = document.createElement('img'); 
                 productImage.classList.add('product-image'); 
-                productImage.src = product.imageSrc; 
+                productImage.src = product.imageSrc.replace('.png', '.webp'); 
                 productImage.alt = product.shortName; 
+                productImage.loading = 'lazy';
+                productImage.width = 400;
+                productImage.height = 400;
                 imageContainer.appendChild(productImage); 
                 itemElement.appendChild(imageContainer); 
                 
@@ -928,6 +952,8 @@
                 const likeButton = document.createElement('button'); 
                 likeButton.classList.add('like-btn'); 
                 likeButton.setAttribute('data-product-id', product.id); 
+                likeButton.setAttribute('data-clarity-event', 'like');
+                likeButton.setAttribute('data-clarity-product', product.shortName);
                 likeButton.title = "Curtir"; 
                 likeButton.innerHTML = `<span class="material-symbols-outlined">favorite</span>`; 
                 likeButton.onclick = () => toggleLike(product.id); 
@@ -941,17 +967,23 @@
                 const actionButtonsDiv = document.createElement('div'); 
                 actionButtonsDiv.classList.add('action-buttons'); 
                 
-                // Changed from <a> to <button> for "Mais Detalhes"
+                // Botão de detalhes
                 const detailsButton = document.createElement('button'); 
-                detailsButton.classList.add('btn', 'details-btn'); // Used new class .details-btn
+                detailsButton.classList.add('btn', 'details-btn'); 
                 detailsButton.title = "Mais Detalhes do Produto"; 
+                detailsButton.setAttribute('data-product-id', product.id);
+                detailsButton.setAttribute('data-clarity-event', 'details');
+                detailsButton.setAttribute('data-clarity-product', product.shortName);
                 detailsButton.innerHTML = `<span class="material-symbols-outlined">info</span> Mais Detalhes`;
-                detailsButton.onclick = () => showProductDetailsModal(product.id); // Call modal function
+                detailsButton.onclick = () => showProductDetailsModal(product.id); 
                 actionButtonsDiv.appendChild(detailsButton); 
                 
+                // Botão de adicionar/remover carrinho
                 const cartActionButton = document.createElement('button'); 
                 cartActionButton.classList.add('btn', 'cart-action-btn'); 
                 cartActionButton.setAttribute('data-product-id', product.id); 
+                cartActionButton.setAttribute('data-clarity-event', 'cart');
+                cartActionButton.setAttribute('data-clarity-product', product.shortName);
                 cartActionButton.innerHTML = `<span class="material-symbols-outlined"></span><span></span>`; 
                 cartActionButton.onclick = () => toggleCartItem(product); 
                 actionButtonsDiv.appendChild(cartActionButton); 
