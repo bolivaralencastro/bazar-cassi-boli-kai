@@ -6,7 +6,7 @@
 const products = [
     { 
         id: "tv_lg_32", 
-        imageSrc: "images/tv_lg_32.webp", 
+        imageSrc: "images/tv-hd-400.webp", // corrigido
         shortName: "Smart TV LG 32\"", 
         fullName: "Smart TV LG 32\" HD com Wi-Fi, Bluetooth, HDR e AI ThinQ - Modelo 32LQ620BPSB", 
         price: "R$ 850,00", 
@@ -34,7 +34,7 @@ const products = [
     },
     { 
         id: "adega_brastemp", 
-        imageSrc: "images/adega_brastemp.webp", 
+        imageSrc: "images/adega-400.webp", // corrigido
         shortName: "Adega Brastemp", 
         fullName: "Adega Brastemp 12 Garrafas com Painel Touch - Modelo BZC12BE", 
         price: "R$ 800,00", 
@@ -60,7 +60,7 @@ const products = [
     },
     { 
         id: "maquina_lavar_electrolux", 
-        imageSrc: "images/maquina_lavar_electrolux.webp", 
+        imageSrc: "images/maquina-de-lavar-400.webp", // corrigido
         shortName: "Máquina Lavar Electrolux", 
         fullName: "Máquina de Lavar Electrolux 8.5kg Essential Care", 
         price: "R$ 750,00", 
@@ -87,7 +87,7 @@ const products = [
     },
     { 
         id: "geladeira_electrolux", 
-        imageSrc: "images/geladeira_electrolux.webp", 
+        imageSrc: "images/geladeira-400.webp", // corrigido
         shortName: "Geladeira Electrolux", 
         fullName: "Geladeira Electrolux RE31", 
         price: "R$ 600,00", 
@@ -111,7 +111,7 @@ const products = [
     },
     { 
         id: "bike_caloi_speed", 
-        imageSrc: "images/bike_caloi_speed.webp", 
+        imageSrc: "images/caloi-10-400.webp", // corrigido
         shortName: "Bike Caloi Speed", 
         fullName: "Bicicleta Caloi Speed", 
         price: "R$ 550,00", 
@@ -135,7 +135,7 @@ const products = [
     },
     { 
         id: "aspirador_robo_oster", 
-        imageSrc: "images/aspirador_robo_oster.webp", 
+        imageSrc: "images/robo-aspirador-400.webp", // corrigido
         shortName: "Aspirador Robô Oster", 
         fullName: "Aspirador Robô Oster Keep Clean", 
         price: "R$ 400,00", 
@@ -161,7 +161,7 @@ const products = [
     },
     { 
         id: "ventilador_torre_wap", 
-        imageSrc: "images/ventilador_torre_wap.webp", 
+        imageSrc: "images/ventilador-torre-400.webp", // corrigido
         shortName: "Ventilador Torre WAP", 
         fullName: "Ventilador Torre WAP Air Silence", 
         price: "R$ 300,00", // Preço atualizado conforme a descrição detalhada
@@ -190,7 +190,7 @@ const products = [
     },
     { 
         id: "fritadeira_eos", 
-        imageSrc: "images/fritadeira_eos.webp", 
+        imageSrc: "images/air-fryer-vermelha-400.webp", // corrigido
         shortName: "Fritadeira EOS", 
         fullName: "Fritadeira Elétrica EOS Chef Gourmet", 
         price: "R$ 200,00", 
@@ -215,7 +215,7 @@ const products = [
     },
     { 
         id: "cafeteira_3_coracoes", 
-        imageSrc: "images/cafeteira_3_coracoes.webp", 
+        imageSrc: "images/cafeteira-400.webp", // corrigido
         shortName: "Cafeteira 3 Corações", 
         fullName: "Cafeteira TRES 3 Corações LOV Multibebidas", 
         price: "R$ 150,00", 
@@ -240,7 +240,7 @@ const products = [
     },
     { 
         id: "passadeira_wap", 
-        imageSrc: "images/passadeira_wap.webp", 
+        imageSrc: "images/passador-400.webp", // corrigido
         shortName: "Passadeira WAP", 
         fullName: "Passadeira a Vapor Portátil WAP Wapore Fast - 1250W", 
         price: "R$ 100,00", 
@@ -266,7 +266,7 @@ const products = [
     },
     { 
         id: "liquidificador_britania", 
-        imageSrc: "images/liquidificador_britania.webp", 
+        imageSrc: "images/liquidificador-400.webp", // corrigido
         shortName: "Liquidificador Britânia", 
         fullName: "Liquidificador Britânia Diamante 900W - Potente e Prático", 
         price: "R$ 90,00", // Preço atualizado conforme a descrição detalhada
@@ -290,7 +290,7 @@ const products = [
     },
     { 
         id: "fritadeira_cadence", 
-        imageSrc: "images/fritadeira_cadence.webp", 
+        imageSrc: "images/airfyer-preta-400.webp", // corrigido
         shortName: "Fritadeira Cadence", 
         fullName: "Fritadeira Elétrica Cadence Super Light Fryer 3.2L - 1500W", 
         price: "R$ 180,00", // Preço atualizado conforme a descrição detalhada
@@ -472,6 +472,22 @@ function toggleOrderDetailsView() {
     icon.textContent = orderPanel.classList.contains('expanded') ? 'expand_less' : 'expand_more';
 }
 
+function getProductImageBaseName(imageSrc) {
+    // Exemplo: images/tv_lg_32.webp => tv_lg_32
+    return imageSrc.replace(/^images\//, '').replace(/\.(webp|png|jpg|jpeg)$/i, '');
+}
+
+function getProductPictureHTML(product, className = 'product-image', width = 400, height = 400) {
+    const baseName = getProductImageBaseName(product.imageSrc);
+    // Garante que as imagens otimizadas existam: 200, 400, 700px
+    return `
+        <picture>
+            <source srcset="images/${baseName}-700.webp 700w, images/${baseName}-400.webp 400w, images/${baseName}-200.webp 200w" sizes="(max-width: 700px) 100vw, 700px">
+            <img src="images/${baseName}-400.webp" alt="${product.shortName}" class="${className}" width="${width}" height="${height}" loading="lazy" />
+        </picture>
+    `;
+}
+
 // --- MODAL FUNCTIONS ---
 function showProductDetailsModal(productId) {
     const product = products.find(p => p.id === productId);
@@ -479,27 +495,27 @@ function showProductDetailsModal(productId) {
         console.error("Detalhes do produto não encontrados para:", productId);
         return;
     }
-
-    modalProductImage.src = product.imageSrc.replace('.png', '.webp');
+    // --- Usando <picture> com srcset para imagem do modal ---
+    modalProductImage.outerHTML = getProductPictureHTML(product, 'modal-product-image', 400, 400);
+    // Atualiza referência do modalProductImage após substituir o HTML
+    const modalContent = document.querySelector('.modal-content');
+    window.modalProductImage = modalContent.querySelector('.modal-product-image');
     modalProductImage.alt = product.shortName;
     modalProductImage.loading = 'lazy';
     modalProductImage.width = 400;
     modalProductImage.height = 400;
     modalProductTitle.textContent = product.fullName;
-    
     modalProductPriceInfo.innerHTML = `<strong>${product.price}</strong> <span class="original-price">${product.detailedInfo.valorOriginal}</span>`;
     modalProductGeneralDescription.textContent = product.detailedInfo.descricaoGeral;
     modalProductSpecifications.innerHTML = product.detailedInfo.especificacoesHTML;
     modalProductState.textContent = product.detailedInfo.estadoProduto;
     modalProductPickupLocation.textContent = product.detailedInfo.localRetirada;
-
     if (product.detailedInfo.observacoes) {
         modalProductObservations.textContent = product.detailedInfo.observacoes;
         modalProductObservationsSection.style.display = 'block';
     } else {
         modalProductObservationsSection.style.display = 'none';
     }
-    
     modalOlxBtn.href = product.olxLink;
     productDetailsModal.classList.add('visible');
 }
@@ -519,14 +535,8 @@ function renderProductList() {
         itemElement.setAttribute('aria-label', product.shortName);
         const imageContainer = document.createElement('div'); 
         imageContainer.classList.add('product-image-container'); 
-        const productImage = document.createElement('img'); 
-        productImage.classList.add('product-image'); 
-        productImage.src = product.imageSrc.replace('.png', '.webp'); 
-        productImage.alt = product.shortName; 
-        productImage.loading = 'lazy';
-        productImage.width = 400;
-        productImage.height = 400;
-        imageContainer.appendChild(productImage); 
+        // --- Usando <picture> com srcset para imagens otimizadas ---
+        imageContainer.innerHTML = getProductPictureHTML(product, 'product-image', 400, 400);
         itemElement.appendChild(imageContainer); 
         
         const detailsDiv = document.createElement('div'); 
