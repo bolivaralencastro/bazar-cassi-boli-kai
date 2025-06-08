@@ -384,7 +384,11 @@ function toggleOrderPanelVisibility() {
     } else {
         orderPanel.classList.remove('visible');
         orderPanel.classList.remove('expanded');
-        toggleOrderDetailsBtn.querySelector('.material-symbols-outlined').textContent = 'expand_more';
+        // Corrigido: manipula o SVG do botão de detalhes do pedido
+        const iconImg = toggleOrderDetailsBtn.querySelector('img.icon-svg');
+        if (iconImg) {
+            iconImg.style.transform = '';
+        }
         document.body.classList.remove('order-panel-padding');
     }
 }
@@ -468,8 +472,19 @@ function toggleLike(productId) {
 
 function toggleOrderDetailsView() {
     orderPanel.classList.toggle('expanded');
-    const icon = toggleOrderDetailsBtn.querySelector('.material-symbols-outlined');
-    icon.textContent = orderPanel.classList.contains('expanded') ? 'expand_less' : 'expand_more';
+    // Atualiza o ícone SVG do botão para expand_less ou expand_more
+    const iconImg = toggleOrderDetailsBtn.querySelector('.icon-svg');
+    if (iconImg) {
+        if (orderPanel.classList.contains('expanded')) {
+            iconImg.src = 'icons/arrow_drop_down.svg'; // seta para cima (expandido)
+            iconImg.alt = 'Recolher detalhes';
+            iconImg.style.transform = 'rotate(180deg)';
+        } else {
+            iconImg.src = 'icons/arrow_drop_down.svg'; // seta para baixo (recolhido)
+            iconImg.alt = 'Expandir detalhes';
+            iconImg.style.transform = '';
+        }
+    }
 }
 
 function getProductImageBaseName(imageSrc) {
