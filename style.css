@@ -40,7 +40,7 @@ body.modal-open {
 }
 .hero-image {
     width: 100%;
-    max-width: 700px; /* Pode ser redundante se .hero-section já controla */
+    max-width: 700px; 
     aspect-ratio: 1 / 1;
     height: auto;
     object-fit: cover;
@@ -162,7 +162,7 @@ main {
     padding: 20px; 
     border-bottom: 1px solid #eee; 
     gap: 15px; 
-    position: relative; /* Para o sold-overlay */
+    position: relative;
 }
 .product-list-item:last-child { 
     border-bottom: none; 
@@ -224,56 +224,68 @@ main {
     width: 100%; 
     margin-top: auto; 
 }
+
+/* --- AJUSTES NA SEÇÃO DE LIKE --- */
 .product-actions-toolbar .like-section { 
     display: flex; 
-    align-items: center; 
-    gap: 5px; /* Espaçamento entre o coração e o número */
-    color: #777; /* Cor para o número de likes */
-    background: none; /* Garantir que não haja fundo */
-    border: none;     /* Garantir que não haja borda */
-    padding: 0;       /* Garantir que não haja padding */
+    align-items: center; /* Alinha o ícone e o contador verticalmente */
+    gap: 5px; 
+    color: #777; 
+    background: none; 
+    border: none;     
+    padding: 0;       
 }
 
-.product-actions-toolbar .like-btn { /* Esta é a classe que estamos usando no JS agora */
-    background: none !important; /* Força sem fundo */
-    border: none !important;     /* Força sem borda */
-    padding: 0 !important;       /* Força sem padding */
+.product-actions-toolbar .like-btn {
+    background: transparent !important;
+    border: none !important;        
+    padding: 0 !important;          
     cursor: pointer; 
-    color: #ff4d4d; /* Cor do ícone de coração */
-    line-height: 1; /* Ajuda a alinhar o ícone SVG verticalmente */
-    display: inline-flex; /* Para alinhar SVG */
-    align-items: center;
+    color: #ff4d4d;                 
+    line-height: 0;                 /* Tenta colapsar altura extra */
+    display: inline-flex;           /* Para melhor controle do conteúdo interno */
+    align-items: center;            /* Centraliza o ícone verticalmente */
+    justify-content: center;        /* Centraliza o ícone horizontalmente */
+    /* Remova min-width/min-height se herdados de .btn */
+    min-width: auto; 
+    min-height: auto;
+    appearance: none; /* Tenta remover estilos padrão do SO */
+    -webkit-appearance: none; /* Para Safari/Chrome */
+    -moz-appearance: none; /* Para Firefox */
 }
 
-.product-actions-toolbar .like-btn .icon-svg.icon-svg--like { /* Classe específica para o ícone de like */
-    width: 1.8em;
+.product-actions-toolbar .like-btn .icon-svg.icon-svg--like { 
+    width: 1.8em; 
     height: 1.8em;
     transition: transform 0.2s ease;
     fill: currentColor; 
+    display: block; /* Para remover espaço extra da imagem/svg */
 }
 
 .product-actions-toolbar .like-btn:hover .icon-svg.icon-svg--like,
 .product-actions-toolbar .like-btn:focus .icon-svg.icon-svg--like {
     transform: scale(1.15);
-    outline: none; /* Remove outline de foco padrão se não desejar */
+    outline: none; 
 }
 
 .product-actions-toolbar .like-btn.liked .icon-svg.icon-svg--like {
-    /* O JS troca o src da imagem para favorite_fill.svg */
     transform: scale(1.1);
 }
 
 .product-actions-toolbar .like-section .like-count {
-    font-size: 0.9em; /* Ajuste o tamanho da fonte do contador como desejar */
-    line-height: 1; /* Alinha com o ícone */
+    font-size: 0.9em; 
+    /* line-height ajustado para alinhar com o ícone maior, pode precisar de ajuste fino */
+    /* ou confiar no align-items: center do flex container .like-section */
+    line-height: 1; 
 }
+/* --- FIM DOS AJUSTES NA SEÇÃO DE LIKE --- */
+
 
 .product-actions-toolbar .action-buttons { 
     display: flex; 
     gap: 10px; 
 }
 
-/* Base .btn style for this toolbar */
 .product-actions-toolbar .btn { 
     text-decoration: none; 
     cursor: pointer; 
@@ -286,7 +298,7 @@ main {
     font-weight: 500; 
     transition: background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s, border-color 0.2s;
     border: 1px solid transparent; 
-    box-sizing: border-box; /* Adicionado para consistência */
+    box-sizing: border-box;
 }
 .product-actions-toolbar .btn .icon-svg {
     margin-right: 6px;
@@ -295,7 +307,6 @@ main {
     fill: currentColor;
 }
 
-/* Specific button types in toolbar */
 .product-actions-toolbar .details-btn { 
     background-color: transparent; 
     color: #555; 
@@ -307,7 +318,7 @@ main {
 }
 
 .product-actions-toolbar .cart-action-btn.add { 
-    background-color: #257a1a; /* VERDE ESCURO (para Adicionar) */
+    background-color: #257a1a; 
     color: #fff; 
     border-color: #257a1a;
 }
@@ -317,7 +328,7 @@ main {
 }
 
 .product-actions-toolbar .cart-action-btn.remove { 
-    background-color: #d9534f; /* VERMELHO (para Remover) */
+    background-color: #d9534f; 
     color: white; 
     border-color: #d9534f;
 }
@@ -326,15 +337,13 @@ main {
     border-color: #c9302c;
 }
 
-/* --- ESTADO DESABILITADO PARA BOTÕES NA TOOLBAR --- */
-/* Aplicado quando o atributo 'disabled' é adicionado via JS OU a classe .disabled */
 .product-actions-toolbar .btn:disabled,
 .product-actions-toolbar .btn.disabled {
-    background-color: #d8d8d8 !important; /* CINZA CLARO */
+    background-color: #d8d8d8 !important; 
     color: #909090 !important;
-    border-color: #c8c8c8 !important; /* Usar uma borda um pouco mais escura que o bg */
+    border-color: #c8c8c8 !important; 
     cursor: not-allowed !important;
-    pointer-events: none !important; /* Garante que não haja hover */
+    pointer-events: none !important; 
     box-shadow: none !important;
 }
 .product-actions-toolbar .btn:disabled .icon-svg,
@@ -514,7 +523,6 @@ main {
     z-index: 10;
     flex-shrink: 0; 
 }
-/* Modal Action Buttons Base */
 .modal-action-btn {
     text-decoration: none;
     cursor: pointer;
@@ -535,7 +543,6 @@ main {
     height: 1.25em;
     fill: currentColor;
 }
-/* Specific Modal Buttons */
 .modal-action-btn.olx-btn {
     background-color: #002f34;
     color: white;
@@ -543,26 +550,23 @@ main {
 .modal-action-btn.olx-btn:hover {
     background-color: #00474f;
 }
-.modal-action-btn.add-to-cart-btn { /* Estilo padrão para "Adicionar ao Pedido" no modal */
-    background-color: #58cc02; /* VERDE CLARO */
+.modal-action-btn.add-to-cart-btn {
+    background-color: #58cc02;
     color: white;
 }
 .modal-action-btn.add-to-cart-btn:hover {
     background-color: #62e002;
 }
-
-/* Disabled state for modal buttons */
-.modal-action-btn:disabled { /* Aplica-se a qualquer .modal-action-btn com atributo disabled */
+.modal-action-btn:disabled {
     background-color: #d8d8d8 !important;
     color: #909090 !important;
     cursor: not-allowed !important;
-    border-color: #d0d0d0 !important; /* Se tiver borda */
+    border-color: #d0d0d0 !important; 
     box-shadow: none !important;
 }
 .modal-action-btn:disabled .icon-svg {
     filter: grayscale(100%) opacity(0.6);
 }
-
 
 /* Sold Item Styles */
 .product-list-item.sold-item {
@@ -578,7 +582,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10; /* Ajustado para o z-index do seu projeto */
+    z-index: 10; 
     border-radius: 6px;
     pointer-events: none;
 }
@@ -601,31 +605,28 @@ main {
     display: inline-block; 
     fill: currentColor; 
 }
-/* Specific icon adjustments */
-.order-panel-header .icon-svg { /* Para o ícone de dropdown no painel de pedido */
+.order-panel-header .icon-svg {
     margin-left: 4px;
-    margin-right: 0; /* Remove margem direita se não houver texto depois */
+    margin-right: 0;
 }
 
-
-/* Remove Order Item Button (sugestão original) */
+/* Remove Order Item Button */
 .remove-order-item-btn {
     background: none;
     border: none;
     cursor: pointer;
     margin-left: 8px;
     padding: 2px;
-    vertical-align: middle; /* Redundante com flex, mas não prejudica */
-    display: inline-flex; /* Adicionado para melhor alinhamento do ícone */
+    display: inline-flex; 
     align-items: center;
 }
 .remove-order-item-btn .icon-svg {
-    width: 20px; /* Tamanho específico */
+    width: 20px; 
     height: 20px;
-    fill: #ff8a8a; /* Cor do ícone (ex: um vermelho claro) */
+    fill: #ff8a8a; 
 }
 .remove-order-item-btn:hover .icon-svg {
-    fill: #ff6b6b; /* Cor mais forte no hover */
+    fill: #ff6b6b; 
 }
 
 
@@ -711,13 +712,13 @@ main {
 
 /* Classe de erro para mensagens */
 .error-message {
-    color: #c9302c; /* Cor de erro */
-    background-color: #fdd; /* Fundo claro para destaque */
+    color: #c9302c;
+    background-color: #fdd;
     padding: 10px;
     border: 1px solid #c9302c;
     border-radius: 4px;
     margin: 10px 0;
 }
-.error-container { /* Se quiser estilizar o container da mensagem de erro */
+.error-container {
     /* Estilos para o container, se necessário */
 }
