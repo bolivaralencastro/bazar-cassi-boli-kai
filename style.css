@@ -722,3 +722,27 @@ main {
 .error-container {
     /* Estilos para o container, se necessário */
 }
+
+/* --- AJUSTE FINAL: REMOVE QUALQUER FUNDO/BORDA DO BOTÃO DE LIKE, INDEPENDENTE DA CLASSE --- */
+.product-actions-toolbar button.like-btn,
+.product-actions-toolbar button.btn-like,
+.product-actions-toolbar .like-btn,
+.product-actions-toolbar .btn-like {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    color: #ff4d4d !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 0 !important;
+    border-radius: 0 !important;
+}
