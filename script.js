@@ -338,9 +338,20 @@ function updateOrderSummaryText() {
 function renderOrderItemsList() {
     orderItemsListEl.innerHTML = '';
     if (cartItems.length > 0) {
-         cartItems.forEach(item => {
+        cartItems.forEach(item => {
             const li = document.createElement('li');
             li.textContent = `${item.shortName} (${item.price})`;
+
+            // Botão remover
+            const removeBtn = document.createElement('button');
+            removeBtn.classList.add('remove-order-item-btn');
+            removeBtn.title = 'Remover do pedido';
+            removeBtn.innerHTML = `<img src="icons/remove_shopping_cart.svg" alt="Remover" class="icon-svg">`;
+            removeBtn.onclick = () => {
+                toggleCartItem(item);
+            };
+
+            li.appendChild(removeBtn);
             orderItemsListEl.appendChild(li);
         });
     }
