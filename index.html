@@ -52,14 +52,14 @@
     <meta name="twitter:image" content="https://bolivaralencastro.github.io/bazar-cassi-boli-kai/images/cassi-boli-kai-bazar-open-graph.">
     <meta name="twitter:image:alt" content="Arte do Bazar da Cassi, Boli e Kai com casa de madeira e trio animado acenando">
 
-    <meta http-equiv="Content-Security-Policy" content="
-      default-src 'self';
-      script-src 'self' https://cdn.jsdelivr.net https://www.clarity.ms;
-      connect-src 'self' https://jkxohciuzlxdccfxxizy.supabase.co https://s.clarity.ms https://b.clarity.ms;
-      img-src 'self' data: https://c.clarity.ms;
-      style-src 'self' 'unsafe-inline';
-      font-src 'self';
-    ">
+ <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://cdn.jsdelivr.net https://www.clarity.ms;
+  connect-src 'self' https://jkxohciuzlxdccfxxizy.supabase.co https://*.clarity.ms; /* <--- MUDANÇA PRINCIPAL AQUI */
+  img-src 'self' data: https://c.clarity.ms;
+  style-src 'self' 'unsafe-inline'; /* Se não usar Google Fonts, pode remover 'https://fonts.googleapis.com' */
+  font-src 'self'; /* Se não usar Google Fonts, pode remover 'https://fonts.gstatic.com' */
+">
 
 </head>
 <body>
