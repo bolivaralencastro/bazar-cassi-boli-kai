@@ -320,18 +320,24 @@
             const actionsToolbarDiv = document.createElement('div');
             actionsToolbarDiv.className = 'product-actions-toolbar';
 
+  // Like Section
             const likeSectionDiv = document.createElement('div');
             likeSectionDiv.className = 'like-section';
             const likeButton = document.createElement('button');
-            likeButton.className = 'btn-like'; // Mantido simples, o JS adiciona 'liked'
+            likeButton.className = 'btn-like'; // REMOVIDO 'btn' e 'icon-only' daqui
             likeButton.dataset.productId = product.id;
             likeButton.setAttribute('aria-label', `Curtir ${product.shortName}`);
-            likeButton.innerHTML = `<img src="icons/favorite.svg" alt="" class="icon-svg icon-svg--like">`;
+            likeButton.setAttribute('aria-pressed', 'false'); // Estado inicial
+            likeButton.title = `Curtir ${product.shortName}`; // Adiciona title aqui
+            likeButton.innerHTML = `<img src="icons/favorite.svg" alt="" class="icon-svg icon-svg--like">`; // alt vazio porque o aria-label e title já descrevem
             likeButton.onclick = () => Likes.toggle(product.id);
+            
             const likeCountSpan = document.createElement('span');
             likeCountSpan.className = 'like-count';
             likeCountSpan.dataset.productId = product.id;
-            likeSectionDiv.append(likeButton, likeCountSpan);
+            // likeCountSpan.textContent será definido por UI.updateLikeButtonState
+
+            likeSectionDiv.append(likeButton, likeCountSpan); // Usando append para múltiplos elementos
             actionsToolbarDiv.appendChild(likeSectionDiv);
 
             const actionButtonsDiv = document.createElement('div');

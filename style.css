@@ -227,30 +227,45 @@ main {
 .product-actions-toolbar .like-section { 
     display: flex; 
     align-items: center; 
-    gap: 5px; 
-    color: #777; 
+    gap: 5px; /* Espaçamento entre o coração e o número */
+    color: #777; /* Cor para o número de likes */
+    background: none; /* Garantir que não haja fundo */
+    border: none;     /* Garantir que não haja borda */
+    padding: 0;       /* Garantir que não haja padding */
 }
-.product-actions-toolbar .like-btn { 
-    background: none; 
-    border: none; 
+
+.product-actions-toolbar .like-btn { /* Esta é a classe que estamos usando no JS agora */
+    background: none !important; /* Força sem fundo */
+    border: none !important;     /* Força sem borda */
+    padding: 0 !important;       /* Força sem padding */
     cursor: pointer; 
-    padding: 0; 
-    color: #ff4d4d; 
-    /* display: inline-flex;  Adicionado no script.js para 'btn icon-only' */
-    /* align-items: center; */
+    color: #ff4d4d; /* Cor do ícone de coração */
+    line-height: 1; /* Ajuda a alinhar o ícone SVG verticalmente */
+    display: inline-flex; /* Para alinhar SVG */
+    align-items: center;
 }
-.product-actions-toolbar .like-btn .icon-svg {
+
+.product-actions-toolbar .like-btn .icon-svg.icon-svg--like { /* Classe específica para o ícone de like */
     width: 1.8em;
     height: 1.8em;
     transition: transform 0.2s ease;
     fill: currentColor; 
 }
-.product-actions-toolbar .like-btn:hover .icon-svg {
+
+.product-actions-toolbar .like-btn:hover .icon-svg.icon-svg--like,
+.product-actions-toolbar .like-btn:focus .icon-svg.icon-svg--like {
     transform: scale(1.15);
+    outline: none; /* Remove outline de foco padrão se não desejar */
 }
-.product-actions-toolbar .like-btn.liked .icon-svg {
-    /* A troca do ícone fill/outline é feita pelo JS */
+
+.product-actions-toolbar .like-btn.liked .icon-svg.icon-svg--like {
+    /* O JS troca o src da imagem para favorite_fill.svg */
     transform: scale(1.1);
+}
+
+.product-actions-toolbar .like-section .like-count {
+    font-size: 0.9em; /* Ajuste o tamanho da fonte do contador como desejar */
+    line-height: 1; /* Alinha com o ícone */
 }
 
 .product-actions-toolbar .action-buttons { 
