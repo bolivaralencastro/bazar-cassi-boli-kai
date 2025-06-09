@@ -241,11 +241,11 @@ main {
     border: none !important;        
     padding: 0 !important;          
     cursor: pointer; 
-    color: #ff4d4d;                 
-    line-height: 0;                 /* Tenta colapsar altura extra */
-    display: inline-flex;           /* Para melhor controle do conteúdo interno */
-    align-items: center;            /* Centraliza o ícone verticalmente */
-    justify-content: center;        /* Centraliza o ícone horizontalmente */
+    color: #ff4d4d !important;                 
+    line-height: 0 !important;                 /* Tenta colapsar altura extra */
+    display: inline-flex !important;           /* Para melhor controle do conteúdo interno */
+    align-items: center !important;            /* Centraliza o ícone verticalmente */
+    justify-content: center !important;        /* Centraliza o ícone horizontalmente */
     /* Remova min-width/min-height se herdados de .btn */
     min-width: auto; 
     min-height: auto;
