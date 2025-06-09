@@ -241,4 +241,55 @@
             "estadoProduto": "Usado, mas em ótimo funcionamento. Pode apresentar sinais leves de uso. Todas as peças e lâminas afiadas. Funciona perfeitamente."
         }
     }
+    {
+  "id": "bicicleta_btwin_100",
+  "imageSrc": "images/bicicleta-btwin-400.webp",
+  "shortName": "Bicicleta Btwin 100",
+  "fullName": "Bicicleta De Lazer Aro 26 Rockrider 100 Btwin",
+  "price": "R$ 250,00",
+  "description": "Ideal para lazer e deslocamentos leves. Com bagageiro incluso.",
+  "olxLink": "",
+  "status": "disponivel",
+  "detailedInfo": {
+    "valorOriginal": "R$ 699,90 (Decathlon Brasil)",
+    "localRetirada": "Rio Tavares – Florianópolis",
+    "descricaoGeral": "Modelo urbano de entrada, leve, confortável e com 21 marchas. Ideal para quem busca uma bike básica com ótimo custo-benefício.",
+    "especificacoesHTML": "<ul><li>Aro: 26″</li><li>Quadro: Aço</li><li>Câmbio: Sunrace 3×7 (21 marchas)</li><li>Freios: V‑brake</li><li>Bagageiro incluso</li></ul>",
+    "estadoProduto": "Funcionando bem. Com sinais de uso, mas estrutura sólida. Ideal para quem busca economia e transporte urbano simples."
+  }
+},
+{
+  "id": "sobrinha_rebatedora_180cm",
+  "imageSrc": "images/sobrinha-rebatedora-400.webp",
+  "shortName": "Sobrinha Rebatedora",
+  "fullName": "Sobrinha Rebatedora Fotográfica 180cm Prata e Dourada",
+  "price": "R$ 100,00",
+  "description": "Perfeita para controlar a luz em fotos e vídeos com praticidade.",
+  "olxLink": "",
+  "status": "disponivel",
+  "detailedInfo": {
+    "valorOriginal": "R$ 350–450,00 (kit 5‑em‑1 profissional)",
+    "localRetirada": "Rio Tavares – Florianópolis",
+    "descricaoGeral": "Sobrinha fotográfica grande, com faces refletoras para controle de luz em estúdio ou externo. Ideal para retratos e moda.",
+    "especificacoesHTML": "<ul><li>Diâmetro: 180 cm</li><li>Cores: Prata e dourada</li><li>Material: Nylon refletivo com estrutura metálica</li><li>Aplicações: Fotografia de retratos, produtos e moda</li></ul>",
+    "estadoProduto": "Em excelente estado. Sem rasgos ou deformações. Muito leve e dobrável."
+  }
+},
+{
+  "id": "stripbox_godox_160cm",
+  "imageSrc": "images/stripbox-godox-400.webp",
+  "shortName": "Strip Box Godox (Par)",
+  "fullName": "Par de Strip Box Godox 160cm com Bowens e Grade",
+  "price": "R$ 250,00",
+  "description": "Controle total da luz em retratos e produtos com qualidade profissional.",
+  "olxLink": "",
+  "status": "disponivel",
+  "detailedInfo": {
+    "valorOriginal": "R$ 599,99 (cada) — Mercado Livre",
+    "localRetirada": "Rio Tavares – Florianópolis",
+    "descricaoGeral": "Par de stripboxes de 160cm ideal para retratos e fotografia de estúdio. Inclui grid colmeia para luz mais controlada e encaixe Bowens universal.",
+    "especificacoesHTML": "<ul><li>Altura: 160 cm</li><li>Formato: Strip (estreito e vertical)</li><li>Compatibilidade: Encaixe Bowens</li><li>Acessórios: Grid colmeia removível</li><li>Quantidade: Par (2 unidades)</li></ul>",
+    "estadoProduto": "Pouquíssimo uso. Estrutura firme, tecido intacto e grade inclusa. Venda do par completo."
+  }
+}
 ]
