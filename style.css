@@ -476,13 +476,14 @@ main {
     cursor: pointer;
     border-radius: 8px;
     padding: 10px 18px;
-    display: flex;
+    display: flex; /* Mantém flex para alinhar ícone e texto */
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Centraliza conteúdo dentro do botão */
     font-size: 0.95em;
     font-weight: 500;
     transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
     border: none;
+    box-sizing: border-box; /* Importante para que padding e border não aumentem a largura total */
 }
 .modal-action-btn .icon-svg {
     margin-right: 8px;
@@ -615,14 +616,15 @@ main {
     .modal-content-scrollable {
         padding: 15px;
     }
-    .modal-footer-fixed {
+     .modal-footer-fixed {
         padding: 12px 15px;
         flex-direction: column;
-        gap: 8px;
+        gap: 10px; /* Aumentar um pouco o espaçamento quando empilhado */
     }
-    .modal-action-btn {
+    .modal-action-btn { /* Aplica a todos os botões de ação no footer em mobile */
         width: 100%;
-        padding: 12px 15px;
+        padding: 12px 15px; /* Consistência no padding */
+        /* display: block; */ /* Alternativamente ao flex, mas flex já está ok para centralizar */
     }
 
     .product-list-item {
@@ -642,4 +644,20 @@ main {
         height: auto;
         max-height: 180px;
     }
+}
+
+/* Sugestão de estilo */
+/* filepath: /workspaces/bazar-cassi-boli-kai/style.css */
+.remove-order-item-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 8px;
+    padding: 2px;
+    vertical-align: middle;
+}
+.remove-order-item-btn .icon-svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
 }
