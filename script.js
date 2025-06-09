@@ -438,8 +438,10 @@ function updateLikeButtonState(productId) {
 
     if (userLikedItems[productId]) {
         likeButton.classList.add('liked');
+        likeButton.innerHTML = `<img src="icons/favorite_fill.svg" alt="Curtido" class="icon-svg">`;
     } else {
         likeButton.classList.remove('liked');
+        likeButton.innerHTML = `<img src="icons/favorite.svg" alt="Curtir" class="icon-svg">`;
     }
     likeCountSpan.textContent = productLikesCount[productId] || 0;
 }
