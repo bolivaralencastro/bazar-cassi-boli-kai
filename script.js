@@ -144,7 +144,7 @@ const products = [
         price: "R$ 200,00",
         description: "Comidas crocantes e saudáveis sem usar óleo, fácil de limpar.",
         olxLink: "https://sc.olx.com.br/florianopolis-e-regiao/eletro/fogoes-e-fornos/fritadeira-eletrica-eos-chef-gourmet-1409726359?lis=ad_card_user_profile",
-        status: "disponivel",
+        status: "vendido",
         detailedInfo: {
             valorOriginal: "R$ 399,00",
             localRetirada: "Campeche - Florianópolis",
