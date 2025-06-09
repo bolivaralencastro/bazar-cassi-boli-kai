@@ -1,12 +1,11 @@
 // js/script.js
 (function () {
-    "use strict"; // Ajuda a pegar erros comuns
+    "use strict";
 
-    // --- CONFIGURAÇÕES GLOBAIS DA APLICAÇÃO ---
     const APP_CONFIG = {
         WHATSAPP_NUMBER: "5548984138601",
-        SUPABASE_URL: "https://jkxohciuzlxdccfxxizy.supabase.co", // <--- VALOR REAL AQUI
-        SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpreG9oY2l1emx4ZGNjZnh4aXp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkzMTUzOTksImV4cCI6MjA2NDg5MTM5OX0.gXGBTPT0dyxn6LH4JbTW8UUg6sb3dmomwHhZIfnr6zc", // <--- VALOR REAL AQUI
+        SUPABASE_URL: "https://jkxohciuzlxdccfxxizy.supabase.co", // VALOR REAL
+        SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpreG9oY2l1emx4ZGNjZnh4aXp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkzMTUzOTksImV4cCI6MjA2NDg5MTM5OX0.gXGBTPT0dyxn6LH4JbTW8UUg6sb3dmomwHhZIfnr6zc", // VALOR REAL
         LOCAL_STORAGE_LIKES_KEY: 'bazarV2_userLikedItems',
         PRODUCTS_JSON_PATH: 'data/products.json',
         DEFAULT_ERROR_MESSAGE: "<p class=\"error-message\">Desculpe, algo deu errado. Por favor, tente recarregar a página.</p>",
@@ -14,17 +13,15 @@
         NO_PRODUCTS_MESSAGE: "<p>Nenhum produto disponível no momento.</p>"
     };
 
-    // --- ESTADO DA APLICAÇÃO (Escopo do Módulo) ---
     let state = {
         products: [],
         cartItems: [],
-        userLikedItems: {}, // productId: true
-        productLikesCount: {}, // productId: count
+        userLikedItems: {},
+        productLikesCount: {},
         currentProductInModal: null,
         supabase: null
     };
 
-    // --- SELETORES DO DOM (Constantes) ---
     const DOM = {
         productListContainer: document.getElementById('productList'),
         heroSection: document.querySelector('.hero-section'),
@@ -49,7 +46,6 @@
         modalAddToCartBtn: document.getElementById('modalAddToCartBtn')
     };
 
-    // --- MÓDULO DE UTILIDADES ---
     const Utils = {
         parsePrice: (priceStr) => {
             if (typeof priceStr !== 'string') return 0;
@@ -63,12 +59,11 @@
         showUserMessage: (element, message, isError = true) => {
             if (element) {
                 element.innerHTML = message;
-                if (isError) element.classList.add('error-container'); // Adicionar uma classe para estilizar erros
+                if (isError) element.classList.add('error-container');
             }
         }
     };
 
-    // --- MÓDULO DE API E DADOS ---
     const DataService = {
         loadProducts: async () => {
             try {
@@ -92,10 +87,12 @@
                     state.supabase = null;
                 }
             } else {
-                if (APP_CONFIG.SUPABASE_URL === "__SUPABASE_URL__") {
-                    console.warn("Placeholders de configuração do Supabase. Likes online desabilitados.");
-                } else {
-                    console.warn("Supabase client não encontrado. Likes online desabilitados.");
+                // Silencioso se for placeholder, pois o GitHub Actions fará a substituição.
+                // Apenas loga se window.supabase não existir.
+                if (!window.supabase && APP_CONFIG.SUPABASE_URL !== "__SUPABASE_URL__") {
+                     console.warn("Supabase client (window.supabase) não encontrado. Likes online desabilitados.");
+                } else if (APP_CONFIG.SUPABASE_URL === "__SUPABASE_URL__") {
+                    console.info("Placeholders de Supabase. Funcionalidade de Likes online será ativada no deploy.")
                 }
             }
         },
@@ -103,7 +100,7 @@
             if (!state.supabase) return;
             try {
                 const { data, error } = await state.supabase.from('likes').select('product_id, count');
-                if (error) throw error; // Será pego pelo catch externo
+                if (error) throw error;
                 if (data) {
                     state.productLikesCount = data.reduce((acc, row) => {
                         acc[row.product_id] = row.count;
@@ -125,11 +122,9 @@
         }
     };
 
-    // --- MÓDULO DE UI (Renderização e Manipulação do DOM) ---
     const UI = {
         getProductPictureHTML: (product, imgClass = 'product-image', baseWidth = 400, baseHeight = 400) => {
             const baseName = Utils.getProductImageBaseName(product.imageSrc);
-            // Considerar adicionar alt text mais descritivo ou permitir passar como parâmetro
             return `
                 <picture>
                     <source srcset="images/${baseName}-700.webp 700w, images/${baseName}-400.webp 400w, images/${baseName}-200.webp 200w" sizes="(max-width: 700px) 100vw, 700px" type="image/webp">
@@ -140,10 +135,8 @@
         updateLikeButtonState: (productId) => {
             const product = Utils.getProductById(productId);
             if (!product || !DOM.productListContainer) return;
-
             const likeButton = DOM.productListContainer.querySelector(`.btn-like[data-product-id="${productId}"]`);
             const likeCountSpan = DOM.productListContainer.querySelector(`.like-count[data-product-id="${productId}"]`);
-            
             if (!likeButton || !likeCountSpan) return;
 
             const isLiked = state.userLikedItems[productId];
@@ -151,10 +144,10 @@
             const iconImg = likeButton.querySelector('.icon-svg');
             if (iconImg) {
                 iconImg.src = isLiked ? 'icons/favorite_fill.svg' : 'icons/favorite.svg';
-                iconImg.alt = isLiked ? 'Descurtir' : 'Curtir'; // Alt text para acessibilidade
+                iconImg.alt = isLiked ? 'Descurtir' : 'Curtir';
             }
             likeButton.title = isLiked ? `Descurtir ${product.shortName}` : `Curtir ${product.shortName}`;
-            likeButton.setAttribute('aria-pressed', isLiked);
+            likeButton.setAttribute('aria-pressed', String(isLiked));
             likeCountSpan.textContent = state.productLikesCount[productId] || 0;
         },
         updateCartActionButtonState: (productId) => {
@@ -164,51 +157,52 @@
             const isInCart = state.cartItems.some(item => item.id === productId);
             const isSold = product.status === 'vendido';
 
-            // Botão na lista de produtos
             const listButton = DOM.productListContainer.querySelector(`.product-list-item .cart-action-btn[data-product-id="${productId}"]`);
             if (listButton) {
                 const iconImg = listButton.querySelector('.icon-svg');
                 const textSpan = listButton.querySelector('span');
-                listButton.disabled = false;
-                listButton.classList.remove('btn-add', 'btn-danger', 'btn-secondary', 'disabled');
+                
+                listButton.disabled = false; // Reset attribute
+                // Remove all state classes before applying the correct one
+                listButton.classList.remove('add', 'remove', 'disabled'); // Note: .btn-add, .btn-danger are for the modal
 
                 if (isSold) {
-                    listButton.classList.add('btn-secondary', 'disabled');
+                    listButton.classList.add('disabled'); // Use generic disabled class for styling
                     if (iconImg) iconImg.src = 'icons/block.svg';
                     if (textSpan) textSpan.textContent = 'Vendido';
-                    listButton.disabled = true;
+                    listButton.disabled = true; // Set HTML attribute
                 } else if (isInCart) {
-                    listButton.classList.add('btn-danger');
+                    listButton.classList.add('remove'); // This class should trigger red style in CSS
                     if (iconImg) iconImg.src = 'icons/remove_shopping_cart.svg';
                     if (textSpan) textSpan.textContent = 'Remover';
                 } else {
-                    listButton.classList.add('btn-add');
+                    listButton.classList.add('add'); // This class should trigger green style in CSS
                     if (iconImg) iconImg.src = 'icons/add_shopping_cart.svg';
                     if (textSpan) textSpan.textContent = 'Adicionar';
                 }
             }
 
-            // Botão no modal
             if (DOM.modalAddToCartBtn && state.currentProductInModal && state.currentProductInModal.id === productId) {
                 DOM.modalAddToCartBtn.disabled = false;
-                DOM.modalAddToCartBtn.classList.remove('btn-primary', 'btn-secondary', 'disabled');
-                const modalIcon = DOM.modalAddToCartBtn.querySelector('.icon-svg'); // Re-seleciona para garantir
+                // No need to remove specific color classes if .disabled state handles it via !important
+                // DOM.modalAddToCartBtn.classList.remove('disabled'); // Ensure disabled class is removed if not applicable
+
                 let modalText = "Adicionar ao Pedido";
                 let modalIconSrc = "icons/add_shopping_cart.svg";
-                let btnClass = 'btn-primary';
+                // The modal button 'add-to-cart-btn' has its own base green style.
+                // We just disable it or change text/icon if sold or in cart.
 
                 if (isSold) {
                     modalText = "Vendido";
                     modalIconSrc = "icons/block.svg";
                     DOM.modalAddToCartBtn.disabled = true;
-                    btnClass = 'btn-secondary disabled';
                 } else if (isInCart) {
                     modalText = "No Pedido";
                     modalIconSrc = "icons/check_circle.svg";
-                    DOM.modalAddToCartBtn.disabled = true; // Usuário não pode adicionar de novo
-                    btnClass = 'btn-primary disabled'; // Mantém primário, mas desabilitado
+                    DOM.modalAddToCartBtn.disabled = true;
                 }
-                DOM.modalAddToCartBtn.className = `btn modal-action-btn ${btnClass}`; // Reseta e aplica classes
+                // The class 'add-to-cart-btn' provides the green.
+                // The :disabled pseudo-class handles the grayed-out style from the CSS.
                 DOM.modalAddToCartBtn.innerHTML = `<img src="${modalIconSrc}" alt="" class="icon-svg icon-svg--modal-action"> ${modalText}`;
             }
         },
@@ -220,7 +214,7 @@
                     const li = document.createElement('li');
                     li.textContent = `${item.shortName} (${item.price})`;
                     const removeBtn = document.createElement('button');
-                    removeBtn.className = 'remove-order-item-btn btn icon-only'; // Adiciona classes de botão
+                    removeBtn.className = 'remove-order-item-btn'; // Specific style for this button
                     removeBtn.title = `Remover ${item.shortName} do pedido`;
                     removeBtn.setAttribute('aria-label', `Remover ${item.shortName}`);
                     removeBtn.innerHTML = `<img src="icons/remove_shopping_cart.svg" alt="" class="icon-svg">`;
@@ -279,7 +273,7 @@
                 if(product.olxLink) DOM.modalOlxBtn.href = product.olxLink;
             }
             
-            UI.updateCartActionButtonState(product.id);
+            UI.updateCartActionButtonState(product.id); // Atualiza o estado do botão no modal
             DOM.productDetailsModal.classList.add('visible');
             DOM.productDetailsModal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
@@ -292,7 +286,7 @@
             document.body.classList.remove('modal-open');
             state.currentProductInModal = null;
         },
-        _createProductCardElement: (product) => { // Helper privado para renderProductList
+        _createProductCardElement: (product) => {
             const itemElement = document.createElement('section');
             itemElement.className = 'product-list-item';
             itemElement.dataset.productId = product.id;
@@ -301,7 +295,6 @@
             const isSold = product.status === 'vendido';
             if (isSold) itemElement.classList.add('sold-item');
 
-            // Image Container
             const imageContainer = document.createElement('div');
             imageContainer.className = 'product-image-container';
             imageContainer.innerHTML = UI.getProductPictureHTML(product, 'product-image', 180, 180);
@@ -313,11 +306,9 @@
             }
             itemElement.appendChild(imageContainer);
 
-            // Details Container
             const detailsDiv = document.createElement('div');
             detailsDiv.className = 'product-details';
 
-            // Product Info
             const infoDiv = document.createElement('div');
             infoDiv.className = 'product-info';
             infoDiv.innerHTML = `
@@ -326,15 +317,13 @@
                 <p class="description">${product.description}</p>`;
             detailsDiv.appendChild(infoDiv);
 
-            // Actions Toolbar
             const actionsToolbarDiv = document.createElement('div');
             actionsToolbarDiv.className = 'product-actions-toolbar';
 
-            // Like Section
             const likeSectionDiv = document.createElement('div');
             likeSectionDiv.className = 'like-section';
             const likeButton = document.createElement('button');
-            likeButton.className = 'btn-like btn icon-only'; // Classes de botão
+            likeButton.className = 'btn-like'; // Mantido simples, o JS adiciona 'liked'
             likeButton.dataset.productId = product.id;
             likeButton.setAttribute('aria-label', `Curtir ${product.shortName}`);
             likeButton.innerHTML = `<img src="icons/favorite.svg" alt="" class="icon-svg icon-svg--like">`;
@@ -345,11 +334,10 @@
             likeSectionDiv.append(likeButton, likeCountSpan);
             actionsToolbarDiv.appendChild(likeSectionDiv);
 
-            // Action Buttons
             const actionButtonsDiv = document.createElement('div');
             actionButtonsDiv.className = 'action-buttons';
             const detailsButton = document.createElement('button');
-            detailsButton.className = 'btn btn-secondary details-btn';
+            detailsButton.className = 'btn details-btn'; // Usa classes do CSS original
             detailsButton.title = `Mais detalhes sobre ${product.shortName}`;
             detailsButton.dataset.productId = product.id;
             detailsButton.innerHTML = `<img src="icons/info.svg" alt="" class="icon-svg"> Info`;
@@ -357,9 +345,10 @@
             else detailsButton.onclick = () => UI.showProductDetailsModal(product.id);
             
             const cartActionButton = document.createElement('button');
-            cartActionButton.className = 'btn cart-action-btn'; // Classes base, estado será via JS
+            cartActionButton.className = 'btn cart-action-btn'; // Classes base, estado é adicionado por JS
             cartActionButton.dataset.productId = product.id;
-            cartActionButton.innerHTML = `<img src="icons/add_shopping_cart.svg" alt="" class="icon-svg"><span>Adicionar</span>`; // Placeholder
+            // O innerHTML será definido por updateCartActionButtonState
+            cartActionButton.innerHTML = `<img src="icons/add_shopping_cart.svg" alt="" class="icon-svg"><span>Adicionar</span>`; 
             if (!isSold) cartActionButton.onclick = () => Cart.toggleItem(product);
             else cartActionButton.disabled = true;
 
@@ -382,8 +371,8 @@
             sortedProducts.forEach(product => {
                 const productElement = UI._createProductCardElement(product);
                 DOM.productListContainer.appendChild(productElement);
-                UI.updateCartActionButtonState(product.id);
-                UI.updateLikeButtonState(product.id);
+                UI.updateCartActionButtonState(product.id); // Garante estado correto na renderização inicial
+                UI.updateLikeButtonState(product.id);   // Garante estado correto na renderização inicial
             });
         },
         handleHeroOpacityOnScroll: () => {
@@ -392,17 +381,15 @@
         }
     };
 
-    // --- MÓDULO DE LIKES ---
     const Likes = {
         initialize: async () => {
             state.userLikedItems = JSON.parse(localStorage.getItem(APP_CONFIG.LOCAL_STORAGE_LIKES_KEY)) || {};
-            await DataService.loadLikesFromSupabase(); // Carrega contagens totais
-            // Garante que todos os produtos tenham uma contagem no estado local, mesmo que 0
+            await DataService.loadLikesFromSupabase();
             state.products.forEach(product => {
                 if (state.productLikesCount[product.id] === undefined) {
                     state.productLikesCount[product.id] = 0;
                 }
-                UI.updateLikeButtonState(product.id); // Atualiza UI após carregar contagens
+                // updateLikeButtonState será chamado em renderProductList
             });
         },
         toggle: (productId) => {
@@ -426,11 +413,14 @@
         }
     };
 
-    // --- MÓDULO DO CARRINHO ---
     const Cart = {
         toggleItem: (product) => {
-            if (!product || product.status === 'vendido') {
-                if(product && product.status === 'vendido') alert("Este item já foi vendido.");
+            if (!product) {
+                console.warn("Tentativa de adicionar produto nulo ao carrinho.");
+                return false;
+            }
+            if (product.status === 'vendido') {
+                alert("Este item já foi vendido.");
                 return false;
             }
             const productIndex = state.cartItems.findIndex(item => item.id === product.id);
@@ -462,13 +452,12 @@
         }
     };
 
-    // --- MÓDULO PRINCIPAL DA APLICAÇÃO ---
     const App = {
         checkDOMExists: () => {
-            const essentialElements = Object.values(DOM); // Pega todos os valores do objeto DOM
-            if (essentialElements.some(el => !el)) { // Verifica se algum é null ou undefined
-                console.error("Um ou mais elementos DOM essenciais não foram encontrados. Verifique IDs/classes.");
-                Utils.showUserMessage(document.body, APP_CONFIG.DEFAULT_ERROR_MESSAGE); // Mostra erro no body se productListContainer não existir
+            const essentialElements = Object.values(DOM);
+            if (essentialElements.some(el => !el)) {
+                console.error("Um ou mais elementos DOM essenciais não foram encontrados.");
+                Utils.showUserMessage(document.body.querySelector('main') || document.body, APP_CONFIG.DEFAULT_ERROR_MESSAGE);
                 return false;
             }
             return true;
@@ -512,19 +501,18 @@
             await DataService.loadProducts();
 
             if (state.products && state.products.length > 0) {
-                await Likes.initialize(); // Inicializa likes após produtos carregados
+                await Likes.initialize();
                 UI.renderProductList();
-                UI.renderOrderItemsList(); // Inicializa o painel de pedidos
+                UI.renderOrderItemsList();
             } else {
-                 // Mensagem de erro/sem produtos já tratada em loadProducts ou renderProductList
-                 console.warn("Nenhum produto para renderizar ou erro ao carregar.")
+                 console.warn("Nenhum produto para renderizar ou erro ao carregar.");
+                 // A mensagem de erro/sem produtos já deve ter sido mostrada por loadProducts ou renderProductList.
             }
             App.setupEventListeners();
             UI.handleHeroOpacityOnScroll();
         }
     };
 
-    // --- PONTO DE ENTRADA DA APLICAÇÃO ---
     document.addEventListener('DOMContentLoaded', App.initialize);
 
 })();
