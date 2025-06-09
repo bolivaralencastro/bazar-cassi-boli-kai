@@ -713,7 +713,7 @@ function renderProductList() {
         detailsButton.setAttribute('data-product-id', product.id);
         detailsButton.setAttribute('data-clarity-event', 'details');
         detailsButton.setAttribute('data-clarity-product', product.shortName);
-        detailsButton.innerHTML = `<img src="icons/info.svg" alt="Mais Detalhes" class="icon-svg"> Mais Detalhes`;
+        detailsButton.innerHTML = `<img src="icons/info.svg" alt="Info" class="icon-svg"> Info`;
         if (isSold) {
             detailsButton.disabled = true;
             detailsButton.classList.add('disabled-btn');
