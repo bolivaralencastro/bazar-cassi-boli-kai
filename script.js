@@ -2,6 +2,50 @@
 (function () {
     "use strict";
 
+    // NOVO: ClarityService para integração com Microsoft Clarity
+    const ClarityService = {
+        _isClarityAvailable: () => typeof window.clarity === 'function',
+
+        setCustomTag: (key, value) => {
+            if (ClarityService._isClarityAvailable()) {
+                try {
+                    // Clarity espera que os valores das tags sejam strings.
+                    window.clarity("set", key, String(value));
+                    // console.log(`Clarity Tag Set: ${key} = ${String(value)}`); // Para debug
+                } catch (e) {
+                    console.warn(`Clarity: Erro ao definir tag (${key}: ${String(value)})`, e);
+                }
+            }
+        },
+
+        triggerEvent: (eventName) => {
+            if (ClarityService._isClarityAvailable()) {
+                try {
+                    window.clarity("event", eventName);
+                    // console.log(`Clarity Event Triggered: ${eventName}`); // Para debug
+                } catch (e) {
+                    console.warn(`Clarity: Erro ao disparar evento (${eventName})`, e);
+                }
+            }
+        },
+
+        // Função utilitária para rastrear um evento com múltiplos tags associados
+        trackEventWithTags: (eventName, tagsObject) => {
+            if (ClarityService._isClarityAvailable()) {
+                if (tagsObject) {
+                    for (const key in tagsObject) {
+                        // Garantir que a propriedade pertence ao objeto e não ao prototype
+                        if (Object.hasOwnProperty.call(tagsObject, key)) {
+                            ClarityService.setCustomTag(key, tagsObject[key]);
+                        }
+                    }
+                }
+                ClarityService.triggerEvent(eventName);
+            }
+        }
+    };
+    // FIM NOVO: ClarityService
+
     const APP_CONFIG = {
         WHATSAPP_NUMBER: "5548984138601",
         SUPABASE_URL: "https://jkxohciuzlxdccfxxizy.supabase.co", // VALOR REAL
@@ -87,8 +131,6 @@
                     state.supabase = null;
                 }
             } else {
-                // Silencioso se for placeholder, pois o GitHub Actions fará a substituição.
-                // Apenas loga se window.supabase não existir.
                 if (!window.supabase && APP_CONFIG.SUPABASE_URL !== "__SUPABASE_URL__") {
                      console.warn("Supabase client (window.supabase) não encontrado. Likes online desabilitados.");
                 } else if (APP_CONFIG.SUPABASE_URL === "__SUPABASE_URL__") {
@@ -162,21 +204,20 @@
                 const iconImg = listButton.querySelector('.icon-svg');
                 const textSpan = listButton.querySelector('span');
                 
-                listButton.disabled = false; // Reset attribute
-                // Remove all state classes before applying the correct one
-                listButton.classList.remove('add', 'remove', 'disabled'); // Note: .btn-add, .btn-danger are for the modal
+                listButton.disabled = false; 
+                listButton.classList.remove('add', 'remove', 'disabled');
 
                 if (isSold) {
-                    listButton.classList.add('disabled'); // Use generic disabled class for styling
+                    listButton.classList.add('disabled'); 
                     if (iconImg) iconImg.src = 'icons/block.svg';
                     if (textSpan) textSpan.textContent = 'Vendido';
-                    listButton.disabled = true; // Set HTML attribute
+                    listButton.disabled = true; 
                 } else if (isInCart) {
-                    listButton.classList.add('remove'); // This class should trigger red style in CSS
+                    listButton.classList.add('remove'); 
                     if (iconImg) iconImg.src = 'icons/remove_shopping_cart.svg';
                     if (textSpan) textSpan.textContent = 'Remover';
                 } else {
-                    listButton.classList.add('add'); // This class should trigger green style in CSS
+                    listButton.classList.add('add'); 
                     if (iconImg) iconImg.src = 'icons/add_shopping_cart.svg';
                     if (textSpan) textSpan.textContent = 'Adicionar';
                 }
@@ -184,13 +225,8 @@
 
             if (DOM.modalAddToCartBtn && state.currentProductInModal && state.currentProductInModal.id === productId) {
                 DOM.modalAddToCartBtn.disabled = false;
-                // No need to remove specific color classes if .disabled state handles it via !important
-                // DOM.modalAddToCartBtn.classList.remove('disabled'); // Ensure disabled class is removed if not applicable
-
                 let modalText = "Adicionar ao Pedido";
                 let modalIconSrc = "icons/add_shopping_cart.svg";
-                // The modal button 'add-to-cart-btn' has its own base green style.
-                // We just disable it or change text/icon if sold or in cart.
 
                 if (isSold) {
                     modalText = "Vendido";
@@ -199,10 +235,8 @@
                 } else if (isInCart) {
                     modalText = "No Pedido";
                     modalIconSrc = "icons/check_circle.svg";
-                    DOM.modalAddToCartBtn.disabled = true;
+                    DOM.modalAddToCartBtn.disabled = true; // O usuário deve remover da lista de pedidos, não do modal
                 }
-                // The class 'add-to-cart-btn' provides the green.
-                // The :disabled pseudo-class handles the grayed-out style from the CSS.
                 DOM.modalAddToCartBtn.innerHTML = `<img src="${modalIconSrc}" alt="" class="icon-svg icon-svg--modal-action"> ${modalText}`;
             }
         },
@@ -214,7 +248,7 @@
                     const li = document.createElement('li');
                     li.textContent = `${item.shortName} (${item.price})`;
                     const removeBtn = document.createElement('button');
-                    removeBtn.className = 'remove-order-item-btn'; // Specific style for this button
+                    removeBtn.className = 'remove-order-item-btn'; 
                     removeBtn.title = `Remover ${item.shortName} do pedido`;
                     removeBtn.setAttribute('aria-label', `Remover ${item.shortName}`);
                     removeBtn.innerHTML = `<img src="icons/remove_shopping_cart.svg" alt="" class="icon-svg">`;
@@ -250,11 +284,19 @@
         },
         showProductDetailsModal: (productId) => {
             const product = Utils.getProductById(productId);
-            if (!product || !DOM.productDetailsModal || product.status === 'vendido' || !product.detailedInfo) {
-                console.warn("Não é possível abrir modal para produto:", productId, product);
+            if (!product || !DOM.productDetailsModal || !product.detailedInfo) { // Removido product.status === 'vendido' daqui, pois pode-se querer ver detalhes de um item vendido, mas não adicionar ao carrinho
+                console.warn("Não é possível abrir modal para produto (ou falta detailedInfo):", productId, product);
                 return;
             }
             state.currentProductInModal = product;
+
+            // Clarity Integration
+            ClarityService.trackEventWithTags("ProductDetailsViewed", {
+                product_id: product.id,
+                product_name: product.shortName,
+                product_price: Utils.parsePrice(product.price),
+                product_status: product.status
+            });
 
             if(DOM.modalImageContainer) DOM.modalImageContainer.innerHTML = UI.getProductPictureHTML(product, 'modal-product-image', 280, 280);
             if(DOM.modalProductTitle) DOM.modalProductTitle.textContent = product.fullName;
@@ -273,7 +315,11 @@
                 if(product.olxLink) DOM.modalOlxBtn.href = product.olxLink;
             }
             
-            UI.updateCartActionButtonState(product.id); // Atualiza o estado do botão no modal
+            if (DOM.modalAddToCartBtn) { // Adicionar data-product-id ao botão de adicionar ao carrinho do modal
+                DOM.modalAddToCartBtn.dataset.productId = product.id;
+            }
+
+            UI.updateCartActionButtonState(product.id); 
             DOM.productDetailsModal.classList.add('visible');
             DOM.productDetailsModal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
@@ -284,6 +330,10 @@
             DOM.productDetailsModal.classList.remove('visible');
             DOM.productDetailsModal.setAttribute('aria-hidden', 'true');
             document.body.classList.remove('modal-open');
+            // Clarity: Opcional, se quiser rastrear fechamento do modal
+            // if (state.currentProductInModal) {
+            //    ClarityService.trackEventWithTags("ProductDetailsModalClosed", { product_id: state.currentProductInModal.id });
+            // }
             state.currentProductInModal = null;
         },
         _createProductCardElement: (product) => {
@@ -320,40 +370,37 @@
             const actionsToolbarDiv = document.createElement('div');
             actionsToolbarDiv.className = 'product-actions-toolbar';
 
-  // Like Section
             const likeSectionDiv = document.createElement('div');
             likeSectionDiv.className = 'like-section';
             const likeButton = document.createElement('button');
-            likeButton.className = 'btn-like'; // REMOVIDO 'btn' e 'icon-only' daqui
+            likeButton.className = 'btn-like'; 
             likeButton.dataset.productId = product.id;
             likeButton.setAttribute('aria-label', `Curtir ${product.shortName}`);
-            likeButton.setAttribute('aria-pressed', 'false'); // Estado inicial
-            likeButton.title = `Curtir ${product.shortName}`; // Adiciona title aqui
-            likeButton.innerHTML = `<img src="icons/favorite.svg" alt="" class="icon-svg icon-svg--like">`; // alt vazio porque o aria-label e title já descrevem
+            likeButton.setAttribute('aria-pressed', 'false'); 
+            likeButton.title = `Curtir ${product.shortName}`; 
+            likeButton.innerHTML = `<img src="icons/favorite.svg" alt="" class="icon-svg icon-svg--like">`; 
             likeButton.onclick = () => Likes.toggle(product.id);
             
             const likeCountSpan = document.createElement('span');
             likeCountSpan.className = 'like-count';
             likeCountSpan.dataset.productId = product.id;
-            // likeCountSpan.textContent será definido por UI.updateLikeButtonState
 
-            likeSectionDiv.append(likeButton, likeCountSpan); // Usando append para múltiplos elementos
+            likeSectionDiv.append(likeButton, likeCountSpan); 
             actionsToolbarDiv.appendChild(likeSectionDiv);
 
             const actionButtonsDiv = document.createElement('div');
             actionButtonsDiv.className = 'action-buttons';
             const detailsButton = document.createElement('button');
-            detailsButton.className = 'btn details-btn'; // Usa classes do CSS original
+            detailsButton.className = 'btn details-btn'; 
             detailsButton.title = `Mais detalhes sobre ${product.shortName}`;
             detailsButton.dataset.productId = product.id;
             detailsButton.innerHTML = `<img src="icons/info.svg" alt="" class="icon-svg"> Info`;
-            if (isSold) detailsButton.disabled = true;
-            else detailsButton.onclick = () => UI.showProductDetailsModal(product.id);
+            // Botão de detalhes funciona mesmo para item vendido, para ver informações
+            detailsButton.onclick = () => UI.showProductDetailsModal(product.id); 
             
             const cartActionButton = document.createElement('button');
-            cartActionButton.className = 'btn cart-action-btn'; // Classes base, estado é adicionado por JS
+            cartActionButton.className = 'btn cart-action-btn'; 
             cartActionButton.dataset.productId = product.id;
-            // O innerHTML será definido por updateCartActionButtonState
             cartActionButton.innerHTML = `<img src="icons/add_shopping_cart.svg" alt="" class="icon-svg"><span>Adicionar</span>`; 
             if (!isSold) cartActionButton.onclick = () => Cart.toggleItem(product);
             else cartActionButton.disabled = true;
@@ -377,8 +424,8 @@
             sortedProducts.forEach(product => {
                 const productElement = UI._createProductCardElement(product);
                 DOM.productListContainer.appendChild(productElement);
-                UI.updateCartActionButtonState(product.id); // Garante estado correto na renderização inicial
-                UI.updateLikeButtonState(product.id);   // Garante estado correto na renderização inicial
+                UI.updateCartActionButtonState(product.id); 
+                UI.updateLikeButtonState(product.id);   
             });
         },
         handleHeroOpacityOnScroll: () => {
@@ -395,7 +442,6 @@
                 if (state.productLikesCount[product.id] === undefined) {
                     state.productLikesCount[product.id] = 0;
                 }
-                // updateLikeButtonState será chamado em renderProductList
             });
         },
         toggle: (productId) => {
@@ -413,6 +459,14 @@
                 currentTotalLikes += 1;
             }
             state.productLikesCount[productId] = currentTotalLikes;
+
+            // Clarity Integration
+            ClarityService.trackEventWithTags("ProductLikeToggled", {
+                product_id: product.id,
+                product_name: product.shortName,
+                liked_status: !previouslyLiked // true if newly liked, false if newly unliked
+            });
+            
             localStorage.setItem(APP_CONFIG.LOCAL_STORAGE_LIKES_KEY, JSON.stringify(state.userLikedItems));
             DataService.updateLikeInSupabase(productId, currentTotalLikes);
             UI.updateLikeButtonState(productId);
@@ -427,23 +481,46 @@
             }
             if (product.status === 'vendido') {
                 alert("Este item já foi vendido.");
+                // Clarity: Opcional, se quiser rastrear tentativa de adicionar item vendido
+                ClarityService.trackEventWithTags("SoldItemInteraction", { 
+                    product_id: product.id, 
+                    product_name: product.shortName,
+                    interaction_type: "add_to_cart_attempt"
+                });
                 return false;
             }
             const productIndex = state.cartItems.findIndex(item => item.id === product.id);
-            let itemWasAdded = false;
-            if (productIndex > -1) {
+            let itemWasAdded; // Será true se o item foi adicionado, false se removido
+            
+            if (productIndex > -1) { // Item está no carrinho, será removido
                 state.cartItems.splice(productIndex, 1);
-            } else {
+                itemWasAdded = false;
+            } else { // Item não está no carrinho, será adicionado
                 state.cartItems.push(product);
                 itemWasAdded = true;
             }
+
+            // Clarity Integration
+            const eventName = itemWasAdded ? "ItemAddedToCart" : "ItemRemovedFromCart";
+            const tags = {
+                product_id: product.id,
+                product_name: product.shortName,
+                cart_action_type: itemWasAdded ? "added" : "removed" // 'added' ou 'removed'
+            };
+            if (itemWasAdded) {
+                tags.product_price = Utils.parsePrice(product.price);
+            }
+            ClarityService.trackEventWithTags(eventName, tags);
+
             UI.renderOrderItemsList();
             UI.updateCartActionButtonState(product.id);
-            return itemWasAdded;
+            return itemWasAdded; // Retorna true se foi adicionado, false se foi removido.
         },
         sendOrderToWhatsApp: () => {
             if (state.cartItems.length === 0) {
                 alert("Seu pedido está vazio!");
+                // Clarity Integration
+                ClarityService.triggerEvent("OrderSubmissionAttemptedEmptyCart");
                 return;
             }
             let message = "Olá! Tenho interesse nos seguintes itens do bazar:\n";
@@ -453,6 +530,13 @@
                 totalPrice += Utils.parsePrice(item.price);
             });
             message += `\nValor Total Estimado: R$ ${totalPrice.toFixed(2).replace(".", ",")}`;
+            
+            // Clarity Integration
+            ClarityService.trackEventWithTags("OrderSubmissionAttempted", {
+                item_count: state.cartItems.length,
+                total_value: totalPrice.toFixed(2)
+            });
+
             const whatsappUrl = `https://wa.me/${APP_CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         }
@@ -488,14 +572,34 @@
                 DOM.productDetailsModal.addEventListener('click', (event) => { if (event.target === DOM.productDetailsModal) UI.closeProductDetailsModal(); });
                 DOM.productDetailsModal.addEventListener('keydown', (event) => { if (event.key === 'Escape') UI.closeProductDetailsModal(); });
             }
+            
             if (DOM.modalAddToCartBtn) {
                 DOM.modalAddToCartBtn.addEventListener('click', () => {
                     if (state.currentProductInModal) {
+                        // O botão no modal só fica ativo para ADICIONAR. Se o item já está no carrinho, ele fica desabilitado ou com texto "No Pedido".
+                        // Portanto, a chamada a Cart.toggleItem aqui resultará em itemWasAdded = true se o botão estiver clicável.
                         const itemWasAdded = Cart.toggleItem(state.currentProductInModal);
-                        if (itemWasAdded) setTimeout(() => UI.closeProductDetailsModal(), 300);
+                        if (itemWasAdded) { // Só fecha o modal se uma adição real ocorreu.
+                            setTimeout(() => UI.closeProductDetailsModal(), 300); 
+                        }
                     }
                 });
             }
+
+            // NOVO: Listener para o botão OLX no modal para Clarity
+            if (DOM.modalOlxBtn) {
+                DOM.modalOlxBtn.addEventListener('click', () => {
+                    if (state.currentProductInModal && state.currentProductInModal.olxLink) {
+                        ClarityService.trackEventWithTags("OlxLinkClicked", {
+                            product_id: state.currentProductInModal.id,
+                            product_name: state.currentProductInModal.shortName,
+                            olx_link: state.currentProductInModal.olxLink
+                        });
+                    }
+                    // A navegação padrão do link (href) ocorrerá após este listener.
+                });
+            }
+
             window.addEventListener('scroll', UI.handleHeroOpacityOnScroll, { passive: true });
         },
         initialize: async () => {
@@ -512,7 +616,6 @@
                 UI.renderOrderItemsList();
             } else {
                  console.warn("Nenhum produto para renderizar ou erro ao carregar.");
-                 // A mensagem de erro/sem produtos já deve ter sido mostrada por loadProducts ou renderProductList.
             }
             App.setupEventListeners();
             UI.handleHeroOpacityOnScroll();
