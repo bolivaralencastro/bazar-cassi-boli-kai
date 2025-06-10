@@ -177,7 +177,7 @@
         "shortName": "Cafeteira 3 Corações",
         "fullName": "Cafeteira TRES 3 Corações LOV Multibebidas",
         "price": "R$ 150,00",
-        "description": "Seu café expresso ou multibebidas favorito ao toque de um botão.",
+        "description": "Café e multibebidas ao toque de um botão.",
         "olxLink": "https://sc.olx.com.br/florianopolis-e-regiao/eletro/eletroportateis-para-cozinha-e-limpeza/cafeteira-tres-3-coracoes-lov-multibebidas-1410281152?lis=ad_card_user_profile",
         "status": "vendido",
         "detailedInfo": {
@@ -263,7 +263,7 @@
       "shortName": "Sobrinha Rebatedora",
       "fullName": "Sobrinha Rebatedora Fotográfica 180cm Prata e Dourada",
       "price": "R$ 100,00",
-      "description": "Perfeita para controlar a luz em fotos e vídeos com praticidade.",
+      "description": "Controle a luz em fotos/vídeos com praticidade.",
       "olxLink": "",
       "status": "vendido",
       "detailedInfo": {
@@ -280,7 +280,7 @@
       "shortName": "Strip Box Godox (Par)",
       "fullName": "Par de Strip Box Godox 160cm com Bowens e Grade",
       "price": "R$ 250,00",
-      "description": "Controle total da luz em retratos e produtos com qualidade profissional.",
+      "description": "Luz profissional para retratos e produtos.",
       "olxLink": "",
       "status": "vendido",
       "detailedInfo": {
@@ -310,20 +310,20 @@
         }
     },
     {
-  "id": "longjohn_mormaii_feminino",
-  "imageSrc": "images/longjohn-400.webp",
-  "shortName": "Long John Mormaii Feminino",
-  "fullName": "Long John Manga Longa 3-2mm Mormaii Feminino Surf – Preto e Rosa",
-  "price": "R$ 900,00",
-  "description": "Roupa de neoprene anatômica e flexível com alta proteção térmica e resistência.",
-  "olxLink": "",
-  "status": "disponivel",
-  "detailedInfo": {
-    "valorOriginal": "R$ 1.990,00",
-    "localRetirada": "Rio Tavares - Florianópolis",
-    "descricaoGeral": "Long John feminino da Mormaii com modelagem anatômica e tecnologia exclusiva. Ideal para surfistas que buscam flexibilidade, proteção e durabilidade. Com sistema sem zíper, gola ergonômica e vedação interna avançada, garante conforto térmico e liberdade de movimento.",
-    "especificacoesHTML": "<ul><li>Tipo: Long John</li><li>Espessura: 3-2mm</li><li>Gênero: Feminino</li><li>Divisão: Adulto</li><li>Produto: Surf</li><li>Coleção: 2021</li><li>Tecido: Neox4 Plus – policloropreno 4x mais flexível</li><li>Costura: Blindstitch (não atravessa o tecido)</li><li>Sistema: En System sem zíper com gola ergonômica</li><li>Vedação interna: 70% com Neox4 Tape</li><li>Joelhos: Proteção com EBS System (alta durabilidade)</li><li>Proteção UV: Até 98% dos raios UV (certificação ARPANSA)</li><li>Composição: 100% policloropreno com revestimento 86% poliamida, 14% elastano</li><li>Garantia de fábrica: 12 meses</li></ul>",
-    "estadoProduto": "Novo, nunca usado. Produto original com nota e garantia Mormaii."
-  }
-}
+      "id": "longjohn_mormaii_feminino",
+      "imageSrc": "images/longjohn-400.webp",
+      "shortName": "Long John Mormaii Feminino",
+      "fullName": "Long John Manga Longa 3-2mm Mormaii Feminino Surf – Preto e Rosa",
+      "price": "R$ 900,00",
+      "description": "Proteção térmica e flexibilidade para o surf.",
+      "olxLink": "",
+      "status": "disponivel",
+      "detailedInfo": {
+        "valorOriginal": "R$ 1.990,00",
+        "localRetirada": "Rio Tavares - Florianópolis",
+        "descricaoGeral": "Long John feminino da Mormaii com modelagem anatômica e tecnologia exclusiva. Ideal para surfistas que buscam flexibilidade, proteção e durabilidade. Com sistema sem zíper, gola ergonômica e vedação interna avançada, garante conforto térmico e liberdade de movimento.",
+        "especificacoesHTML": "<ul><li>Tipo: Long John</li><li>Espessura: 3-2mm</li><li>Gênero: Feminino</li><li>Divisão: Adulto</li><li>Produto: Surf</li><li>Coleção: 2021</li><li>Tecido: Neox4 Plus – policloropreno 4x mais flexível</li><li>Costura: Blindstitch (não atravessa o tecido)</li><li>Sistema: En System sem zíper com gola ergonômica</li><li>Vedação interna: 70% com Neox4 Tape</li><li>Joelhos: Proteção com EBS System (alta durabilidade)</li><li>Proteção UV: Até 98% dos raios UV (certificação ARPANSA)</li><li>Composição: 100% policloropreno com revestimento 86% poliamida, 14% elastano</li><li>Garantia de fábrica: 12 meses</li></ul>",
+        "estadoProduto": "Novo, nunca usado. Produto original com nota e garantia Mormaii."
+      }
+    }
 ]
