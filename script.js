@@ -549,7 +549,13 @@
                 total_value: totalPrice.toFixed(2)
             });
 
-            const whatsappUrl = `https://wa.me/${APP_CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            const baseUrl = url();
+            let whatsappUrl;
+            if (baseUrl === 'https://wa.me/') {
+                whatsappUrl = `${baseUrl}${APP_CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            } else {
+                whatsappUrl = `${baseUrl}${APP_CONFIG.WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
+            }
             window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         }
     };
@@ -638,3 +644,13 @@
     document.addEventListener('DOMContentLoaded', App.initialize);
 
 })();
+
+// Função utilitária para gerar o início da URL do WhatsApp conforme o dispositivo
+function url() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+        return 'https://wa.me/';
+    } else {
+        return 'https://web.whatsapp.com/send?phone=';
+    }
+}
