@@ -308,5 +308,22 @@
             "estadoProduto": "Usado, com alguns pontos de ferrugem mas funcionando perfeitamente.",
             "observacoes": "Ideal para quem busca praticidade e eficiência na cozinha. Motivo da venda: mudança."
         }
-    }
+    },
+    {
+  "id": "longjohn_mormaii_feminino",
+  "imageSrc": "images/longjohn-mormaii-feminino-400.webp",
+  "shortName": "Long John Mormaii Feminino",
+  "fullName": "Long John Manga Longa 3-2mm Mormaii Feminino Surf – Preto e Rosa",
+  "price": "R$ 1.990,00",
+  "description": "Roupa de neoprene anatômica e flexível com alta proteção térmica e resistência.",
+  "olxLink": "",
+  "status": "disponivel",
+  "detailedInfo": {
+    "valorOriginal": "R$ 1.990,00",
+    "localRetirada": "Rio Tavares - Florianópolis",
+    "descricaoGeral": "Long John feminino da Mormaii com modelagem anatômica e tecnologia exclusiva. Ideal para surfistas que buscam flexibilidade, proteção e durabilidade. Com sistema sem zíper, gola ergonômica e vedação interna avançada, garante conforto térmico e liberdade de movimento.",
+    "especificacoesHTML": "<ul><li>Tipo: Long John</li><li>Espessura: 3-2mm</li><li>Gênero: Feminino</li><li>Divisão: Adulto</li><li>Produto: Surf</li><li>Coleção: 2021</li><li>Tecido: Neox4 Plus – policloropreno 4x mais flexível</li><li>Costura: Blindstitch (não atravessa o tecido)</li><li>Sistema: En System sem zíper com gola ergonômica</li><li>Vedação interna: 70% com Neox4 Tape</li><li>Joelhos: Proteção com EBS System (alta durabilidade)</li><li>Proteção UV: Até 98% dos raios UV (certificação ARPANSA)</li><li>Composição: 100% policloropreno com revestimento 86% poliamida, 14% elastano</li><li>Garantia de fábrica: 12 meses</li></ul>",
+    "estadoProduto": "Novo, nunca usado. Produto original com nota e garantia Mormaii."
+  }
+}
 ]
