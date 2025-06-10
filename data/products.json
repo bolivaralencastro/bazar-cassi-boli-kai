@@ -290,6 +290,23 @@
     "descricaoGeral": "Par de stripboxes de 160cm ideal para retratos e fotografia de estúdio. Inclui grid colmeia para luz mais controlada e encaixe Bowens universal.",
     "especificacoesHTML": "<ul><li>Altura: 160 cm</li><li>Formato: Strip (estreito e vertical)</li><li>Compatibilidade: Encaixe Bowens</li><li>Acessórios: Grid colmeia removível</li><li>Quantidade: Par (2 unidades)</li></ul>",
     "estadoProduto": "Pouquíssimo uso. Estrutura firme, tecido intacto e grade inclusa. Venda do par completo."
+ }, // <--- Vírgula aqui
+  {
+    "id": "forno_oster_18l_convection",
+    "imageSrc": "images/forno-eletrico-oster.webp",
+    "shortName": "Forno Elétrico Oster 18L",
+    "fullName": "Forno Elétrico Oster Convection Cook 18L - Vermelho Metálico 220V",
+    "price": "R$ 100,00", // <-- DEFINA SEU PREÇO DE VENDA
+    "description": "Tecnologia de convecção para assados rápidos e uniformes.",
+    "olxLink": "",
+    "status": "disponivel",
+    "detailedInfo": {
+        "valorOriginal": "R$ 499,00",
+        "localRetirada": "Rio Tavares - Florianópolis",
+        "descricaoGeral": "O Forno Elétrico Oster® Convection Cook com 18L de capacidade utiliza tecnologia de convecção para distribuir o calor de forma rápida e uniforme, ideal para o preparo de carnes suculentas, crostas crocantes e sabores intensos. Perfeito para uma refeição completa para a família, permitindo gratinar, dourar, cozinhar ou tostar em poucos minutos.",
+        "especificacoesHTML": "<ul><li>Modelo: TSSTTV7118R-017</li><li>Capacidade: 18 Litros</li><li>Tecnologia: Convecção</li><li>Funções Pré-programadas: 5 (Assar, Assar por convecção, Tostar, Grelhar, Aquecer)</li><li>Ajuste de Temperatura: 120ºC a 230ºC</li><li>Timer: 60 minutos com aviso sonoro</li><li>Potência: 1400W</li><li>Tensão: 127V</li><li>Consumo: 1,4 kWh</li><li>Cor: Vermelho metálico com acabamento em aço inoxidável</li><li>Dimensões Externas (LxAxP): 42.2cm x 24.8cm x 32cm</li><li>Dimensões Internas da Cavidade (LxAxP): Aproximadamente 29.5cm x 19.5cm x 28cm</li><li>Peso: 4,66Kg</li><li>Recursos Adicionais: Grade removível, bandeja coletora de migalhas removível para fácil limpeza. (Acompanha 1 grade).</li><li>Tomada: 20 Amperes</li></ul>",
+        "estadoProduto": "Usado, mas em ótimo estado de conservação e perfeito funcionamento. Limpo e higienizado.", // <-- DESCREVA O ESTADO REAL DO SEU ITEM
+        "observacoes": "Ideal para quem busca praticidade e eficiência na cozinha. Motivo da venda: mudança."
+    }
   }
-}
 ]
