@@ -9,9 +9,7 @@
         setCustomTag: (key, value) => {
             if (ClarityService._isClarityAvailable()) {
                 try {
-                    // Clarity espera que os valores das tags sejam strings.
                     window.clarity("set", key, String(value));
-                    // console.log(`Clarity Tag Set: ${key} = ${String(value)}`); // Para debug
                 } catch (e) {
                     console.warn(`Clarity: Erro ao definir tag (${key}: ${String(value)})`, e);
                 }
@@ -22,19 +20,16 @@
             if (ClarityService._isClarityAvailable()) {
                 try {
                     window.clarity("event", eventName);
-                    // console.log(`Clarity Event Triggered: ${eventName}`); // Para debug
                 } catch (e) {
                     console.warn(`Clarity: Erro ao disparar evento (${eventName})`, e);
                 }
             }
         },
 
-        // Função utilitária para rastrear um evento com múltiplos tags associados
         trackEventWithTags: (eventName, tagsObject) => {
             if (ClarityService._isClarityAvailable()) {
                 if (tagsObject) {
                     for (const key in tagsObject) {
-                        // Garantir que a propriedade pertence ao objeto e não ao prototype
                         if (Object.hasOwnProperty.call(tagsObject, key)) {
                             ClarityService.setCustomTag(key, tagsObject[key]);
                         }
@@ -48,8 +43,8 @@
 
     const APP_CONFIG = {
         WHATSAPP_NUMBER: "5548984138601",
-        SUPABASE_URL: "https://jkxohciuzlxdccfxxizy.supabase.co", // VALOR REAL
-        SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpreG9oY2l1emx4ZGNjZnh4aXp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkzMTUzOTksImV4cCI6MjA2NDg5MTM5OX0.gXGBTPT0dyxn6LH4JbTW8UUg6sb3dmomwHhZIfnr6zc", // VALOR REAL
+        SUPABASE_URL: "https://jkxohciuzlxdccfxxizy.supabase.co", 
+        SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpreG9oY2l1emx4ZGNjZnh4aXp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkzMTUzOTksImV4cCI6MjA2NDg5MTM5OX0.gXGBTPT0dyxn6LH4JbTW8UUg6sb3dmomwHhZIfnr6zc",
         LOCAL_STORAGE_LIKES_KEY: 'bazarV2_userLikedItems',
         PRODUCTS_JSON_PATH: 'data/products.json',
         DEFAULT_ERROR_MESSAGE: "<p class=\"error-message\">Desculpe, algo deu errado. Por favor, tente recarregar a página.</p>",
@@ -63,7 +58,8 @@
         userLikedItems: {},
         productLikesCount: {},
         currentProductInModal: null,
-        supabase: null
+        supabase: null,
+        elementThatTriggeredModal: null // NOVO: Para gerenciar o foco do modal
     };
 
     const DOM = {
@@ -175,6 +171,7 @@
             `;
         },
         updateLikeButtonState: (productId) => {
+            // ... (código existente sem alterações) ...
             const product = Utils.getProductById(productId);
             if (!product || !DOM.productListContainer) return;
             const likeButton = DOM.productListContainer.querySelector(`.btn-like[data-product-id="${productId}"]`);
@@ -193,6 +190,7 @@
             likeCountSpan.textContent = state.productLikesCount[productId] || 0;
         },
         updateCartActionButtonState: (productId) => {
+            // ... (código existente sem alterações) ...
             const product = Utils.getProductById(productId);
             if (!product || !DOM.productListContainer) return;
 
@@ -235,12 +233,13 @@
                 } else if (isInCart) {
                     modalText = "No Pedido";
                     modalIconSrc = "icons/check_circle.svg";
-                    DOM.modalAddToCartBtn.disabled = true; // O usuário deve remover da lista de pedidos, não do modal
+                    DOM.modalAddToCartBtn.disabled = true; 
                 }
                 DOM.modalAddToCartBtn.innerHTML = `<img src="${modalIconSrc}" alt="" class="icon-svg icon-svg--modal-action"> ${modalText}`;
             }
         },
         renderOrderItemsList: () => {
+            // ... (código existente sem alterações) ...
             if (!DOM.orderItemsListEl) return;
             DOM.orderItemsListEl.innerHTML = '';
             if (state.cartItems.length > 0) {
@@ -261,12 +260,14 @@
             UI.toggleOrderPanelVisibility();
         },
         updateOrderSummaryText: () => {
+            // ... (código existente sem alterações) ...
             if (!DOM.orderSummaryTextEl) return;
             const itemCount = state.cartItems.length;
             DOM.orderSummaryTextEl.textContent = `Seu Pedido (${itemCount} item${itemCount !== 1 ? 's' : ''})`;
         },
         toggleOrderPanelVisibility: () => {
-            if (!DOM.orderPanel) return;
+            // ... (código existente sem alterações) ...
+             if (!DOM.orderPanel) return;
             const shouldBeVisible = state.cartItems.length > 0;
             DOM.orderPanel.classList.toggle('visible', shouldBeVisible);
             DOM.orderPanel.setAttribute('aria-hidden', String(!shouldBeVisible));
@@ -276,27 +277,23 @@
             }
         },
         toggleOrderDetailsView: (forceState) => {
+            // ... (código existente sem alterações) ...
             if (!DOM.orderPanel || !DOM.toggleOrderDetailsBtn) return;
             const isExpanded = typeof forceState === 'boolean' ? forceState : !DOM.orderPanel.classList.contains('expanded');
             DOM.orderPanel.classList.toggle('expanded', isExpanded);
             DOM.orderPanel.setAttribute('aria-expanded', String(isExpanded));
             DOM.toggleOrderDetailsBtn.setAttribute('aria-expanded', String(isExpanded));
         },
-        showProductDetailsModal: (productId) => {
+        showProductDetailsModal: (productId, triggerElement) => { // MODIFICADO: recebe triggerElement
             const product = Utils.getProductById(productId);
-            if (!product || !DOM.productDetailsModal || !product.detailedInfo) { // Removido product.status === 'vendido' daqui, pois pode-se querer ver detalhes de um item vendido, mas não adicionar ao carrinho
+            if (!product || !DOM.productDetailsModal || !product.detailedInfo) {
                 console.warn("Não é possível abrir modal para produto (ou falta detailedInfo):", productId, product);
                 return;
             }
             state.currentProductInModal = product;
+            state.elementThatTriggeredModal = triggerElement; // ARMAZENA o elemento que abriu o modal
 
-            // Clarity Integration
-            ClarityService.trackEventWithTags("ProductDetailsViewed", {
-                product_id: product.id,
-                product_name: product.shortName,
-                product_price: Utils.parsePrice(product.price),
-                product_status: product.status
-            });
+            ClarityService.trackEventWithTags("ProductDetailsViewed", { /* ... */ });
 
             if(DOM.modalImageContainer) DOM.modalImageContainer.innerHTML = UI.getProductPictureHTML(product, 'modal-product-image', 280, 280);
             if(DOM.modalProductTitle) DOM.modalProductTitle.textContent = product.fullName;
@@ -315,25 +312,33 @@
                 if(product.olxLink) DOM.modalOlxBtn.href = product.olxLink;
             }
             
-            if (DOM.modalAddToCartBtn) { // Adicionar data-product-id ao botão de adicionar ao carrinho do modal
+            if (DOM.modalAddToCartBtn) {
                 DOM.modalAddToCartBtn.dataset.productId = product.id;
             }
 
             UI.updateCartActionButtonState(product.id); 
             DOM.productDetailsModal.classList.add('visible');
-            DOM.productDetailsModal.setAttribute('aria-hidden', 'false');
+            DOM.productDetailsModal.setAttribute('aria-hidden', 'false'); // Modal visível, não escondido para a11y
             document.body.classList.add('modal-open');
-            if(DOM.modalCloseBtn) DOM.modalCloseBtn.focus();
+            if(DOM.modalCloseBtn) DOM.modalCloseBtn.focus(); // Foco no botão de fechar
         },
         closeProductDetailsModal: () => {
             if (!DOM.productDetailsModal) return;
+
+            // PRIMEIRO, mover o foco para fora do modal
+            if (state.elementThatTriggeredModal) {
+                state.elementThatTriggeredModal.focus();
+                state.elementThatTriggeredModal = null; // Limpa para a próxima vez
+            } else {
+                // Fallback: focar no corpo se o trigger não estiver disponível
+                // Ou em um elemento principal da página, como o primeiro H2
+                (document.querySelector('main h2') || document.body).focus();
+            }
+            
             DOM.productDetailsModal.classList.remove('visible');
-            DOM.productDetailsModal.setAttribute('aria-hidden', 'true');
+            DOM.productDetailsModal.setAttribute('aria-hidden', 'true'); // AGORA sim, esconder para a11y
             document.body.classList.remove('modal-open');
-            // Clarity: Opcional, se quiser rastrear fechamento do modal
-            // if (state.currentProductInModal) {
-            //    ClarityService.trackEventWithTags("ProductDetailsModalClosed", { product_id: state.currentProductInModal.id });
-            // }
+            
             state.currentProductInModal = null;
         },
         _createProductCardElement: (product) => {
@@ -395,8 +400,8 @@
             detailsButton.title = `Mais detalhes sobre ${product.shortName}`;
             detailsButton.dataset.productId = product.id;
             detailsButton.innerHTML = `<img src="icons/info.svg" alt="" class="icon-svg"> Info`;
-            // Botão de detalhes funciona mesmo para item vendido, para ver informações
-            detailsButton.onclick = () => UI.showProductDetailsModal(product.id); 
+            // MODIFICADO: Passar o próprio botão como trigger
+            detailsButton.onclick = (event) => UI.showProductDetailsModal(product.id, event.currentTarget); 
             
             const cartActionButton = document.createElement('button');
             cartActionButton.className = 'btn cart-action-btn'; 
@@ -413,6 +418,7 @@
             return itemElement;
         },
         renderProductList: () => {
+            // ... (código existente sem alterações) ...
             if (!DOM.productListContainer) return;
             DOM.productListContainer.innerHTML = '';
 
@@ -429,12 +435,14 @@
             });
         },
         handleHeroOpacityOnScroll: () => {
+            // ... (código existente sem alterações) ...
             if (!DOM.heroSection) return;
             DOM.heroSection.classList.toggle('hero-hidden', window.scrollY > 10);
         }
     };
 
     const Likes = {
+        // ... (código existente sem alterações) ...
         initialize: async () => {
             state.userLikedItems = JSON.parse(localStorage.getItem(APP_CONFIG.LOCAL_STORAGE_LIKES_KEY)) || {};
             await DataService.loadLikesFromSupabase();
@@ -460,11 +468,10 @@
             }
             state.productLikesCount[productId] = currentTotalLikes;
 
-            // Clarity Integration
             ClarityService.trackEventWithTags("ProductLikeToggled", {
                 product_id: product.id,
                 product_name: product.shortName,
-                liked_status: !previouslyLiked // true if newly liked, false if newly unliked
+                liked_status: !previouslyLiked 
             });
             
             localStorage.setItem(APP_CONFIG.LOCAL_STORAGE_LIKES_KEY, JSON.stringify(state.userLikedItems));
@@ -474,6 +481,7 @@
     };
 
     const Cart = {
+        // ... (código existente sem alterações) ...
         toggleItem: (product) => {
             if (!product) {
                 console.warn("Tentativa de adicionar produto nulo ao carrinho.");
@@ -481,7 +489,6 @@
             }
             if (product.status === 'vendido') {
                 alert("Este item já foi vendido.");
-                // Clarity: Opcional, se quiser rastrear tentativa de adicionar item vendido
                 ClarityService.trackEventWithTags("SoldItemInteraction", { 
                     product_id: product.id, 
                     product_name: product.shortName,
@@ -490,22 +497,21 @@
                 return false;
             }
             const productIndex = state.cartItems.findIndex(item => item.id === product.id);
-            let itemWasAdded; // Será true se o item foi adicionado, false se removido
+            let itemWasAdded; 
             
-            if (productIndex > -1) { // Item está no carrinho, será removido
+            if (productIndex > -1) { 
                 state.cartItems.splice(productIndex, 1);
                 itemWasAdded = false;
-            } else { // Item não está no carrinho, será adicionado
+            } else { 
                 state.cartItems.push(product);
                 itemWasAdded = true;
             }
 
-            // Clarity Integration
             const eventName = itemWasAdded ? "ItemAddedToCart" : "ItemRemovedFromCart";
             const tags = {
                 product_id: product.id,
                 product_name: product.shortName,
-                cart_action_type: itemWasAdded ? "added" : "removed" // 'added' ou 'removed'
+                cart_action_type: itemWasAdded ? "added" : "removed"
             };
             if (itemWasAdded) {
                 tags.product_price = Utils.parsePrice(product.price);
@@ -514,12 +520,11 @@
 
             UI.renderOrderItemsList();
             UI.updateCartActionButtonState(product.id);
-            return itemWasAdded; // Retorna true se foi adicionado, false se foi removido.
+            return itemWasAdded; 
         },
         sendOrderToWhatsApp: () => {
             if (state.cartItems.length === 0) {
                 alert("Seu pedido está vazio!");
-                // Clarity Integration
                 ClarityService.triggerEvent("OrderSubmissionAttemptedEmptyCart");
                 return;
             }
@@ -531,7 +536,6 @@
             });
             message += `\nValor Total Estimado: R$ ${totalPrice.toFixed(2).replace(".", ",")}`;
             
-            // Clarity Integration
             ClarityService.trackEventWithTags("OrderSubmissionAttempted", {
                 item_count: state.cartItems.length,
                 total_value: totalPrice.toFixed(2)
@@ -543,6 +547,7 @@
     };
 
     const App = {
+        // ... (código existente sem alterações, exceto se algum listener precisar passar o triggerElement) ...
         checkDOMExists: () => {
             const essentialElements = Object.values(DOM);
             if (essentialElements.some(el => !el)) {
@@ -567,36 +572,36 @@
             }
             if (DOM.toggleOrderDetailsBtn) DOM.toggleOrderDetailsBtn.addEventListener('click', () => UI.toggleOrderDetailsView());
             if (DOM.sendOrderBtn) DOM.sendOrderBtn.addEventListener('click', Cart.sendOrderToWhatsApp);
+            
+            // Gerenciamento de foco para o modal
             if (DOM.modalCloseBtn) DOM.modalCloseBtn.addEventListener('click', UI.closeProductDetailsModal);
             if (DOM.productDetailsModal) {
-                DOM.productDetailsModal.addEventListener('click', (event) => { if (event.target === DOM.productDetailsModal) UI.closeProductDetailsModal(); });
-                DOM.productDetailsModal.addEventListener('keydown', (event) => { if (event.key === 'Escape') UI.closeProductDetailsModal(); });
+                DOM.productDetailsModal.addEventListener('click', (event) => { 
+                    if (event.target === DOM.productDetailsModal) UI.closeProductDetailsModal(); 
+                });
+                DOM.productDetailsModal.addEventListener('keydown', (event) => { 
+                    if (event.key === 'Escape') UI.closeProductDetailsModal(); 
+                });
             }
             
             if (DOM.modalAddToCartBtn) {
                 DOM.modalAddToCartBtn.addEventListener('click', () => {
                     if (state.currentProductInModal) {
-                        // O botão no modal só fica ativo para ADICIONAR. Se o item já está no carrinho, ele fica desabilitado ou com texto "No Pedido".
-                        // Portanto, a chamada a Cart.toggleItem aqui resultará em itemWasAdded = true se o botão estiver clicável.
                         const itemWasAdded = Cart.toggleItem(state.currentProductInModal);
-                        if (itemWasAdded) { // Só fecha o modal se uma adição real ocorreu.
+                        if (itemWasAdded) { 
+                            // Opcional: focar no botão que abriu o modal após adicionar ao carrinho e fechar
+                            // Se não, o foco já será tratado pelo closeProductDetailsModal
                             setTimeout(() => UI.closeProductDetailsModal(), 300); 
                         }
                     }
                 });
             }
 
-            // NOVO: Listener para o botão OLX no modal para Clarity
             if (DOM.modalOlxBtn) {
                 DOM.modalOlxBtn.addEventListener('click', () => {
                     if (state.currentProductInModal && state.currentProductInModal.olxLink) {
-                        ClarityService.trackEventWithTags("OlxLinkClicked", {
-                            product_id: state.currentProductInModal.id,
-                            product_name: state.currentProductInModal.shortName,
-                            olx_link: state.currentProductInModal.olxLink
-                        });
+                        ClarityService.trackEventWithTags("OlxLinkClicked", { /* ... */ });
                     }
-                    // A navegação padrão do link (href) ocorrerá após este listener.
                 });
             }
 
