@@ -433,6 +433,14 @@
                 UI.updateCartActionButtonState(product.id); 
                 UI.updateLikeButtonState(product.id);   
             });
+
+            // Atualiza o texto de itens vendidos no card de boas-vindas
+            const vendidos = state.products.filter(p => p.status === 'vendido').length;
+            const total = state.products.length;
+            const infoEl = document.getElementById('produtosVendidosInfo');
+            if (infoEl) {
+                infoEl.textContent = `${vendidos} de ${total} itens já foram vendidos!`;
+            }
         },
         handleHeroOpacityOnScroll: () => {
             // ... (código existente sem alterações) ...
