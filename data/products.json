@@ -290,7 +290,8 @@
     "descricaoGeral": "Par de stripboxes de 160cm ideal para retratos e fotografia de estúdio. Inclui grid colmeia para luz mais controlada e encaixe Bowens universal.",
     "especificacoesHTML": "<ul><li>Altura: 160 cm</li><li>Formato: Strip (estreito e vertical)</li><li>Compatibilidade: Encaixe Bowens</li><li>Acessórios: Grid colmeia removível</li><li>Quantidade: Par (2 unidades)</li></ul>",
     "estadoProduto": "Pouquíssimo uso. Estrutura firme, tecido intacto e grade inclusa. Venda do par completo."
- }, // <--- Vírgula aqui
+  }
+},
   {
     "id": "forno_oster_18l_convection",
     "imageSrc": "images/forno-eletrico-oster.webp",
