@@ -29,7 +29,7 @@
             "valorOriginal": "R$ 1.039,00",
             "localRetirada": "Rio Tavares - Florianópolis",
             "descricaoGeral": "Adega climatizada da Brastemp com capacidade para 12 garrafas, ideal para quem busca conservar e servir vinhos na temperatura ideal. Compacta, moderna e elegante, combina com qualquer ambiente.",
-            "especificacoesHTML": "<ul><li>Capacidade: 12 garrafas</li><li>Voltagem: 110V</li><li>Controle de temperatura: Painel eletrônico touch sensor</li><li>Iluminação interna: LED</li><li>Sistema de refrigeração: Eletrônico</li><li>Cor: Preto</li><li>Dimensões: 63,3 cm (A) x 28 cm (L) x 51 cm (P)</li><li>Peso: 12,2 kg</li></ul>",
+            "especificacoesHTML": "<ul><li>Capacidade: 12 garrafas</li><li>Voltagem: 220V</li><li>Controle de temperatura: Painel eletrônico touch sensor</li><li>Iluminação interna: LED</li><li>Sistema de refrigeração: Eletrônico</li><li>Cor: Preto</li><li>Dimensões: 63,3 cm (A) x 28 cm (L) x 51 cm (P)</li><li>Peso: 12,2 kg</li></ul>",
             "estadoProduto": "Usada, em ótimo estado de conservação. Nenhum dano aparente, funcionamento perfeito."
         }
     },
@@ -46,7 +46,7 @@
             "valorOriginal": "R$ 1.699,00",
             "localRetirada": "Rio Tavares - Florianópolis",
             "descricaoGeral": "Máquina robusta e eficiente, ideal para famílias que buscam economia de água e ótimo desempenho na lavagem. Prática, silenciosa.",
-            "especificacoesHTML": "<ul><li>Capacidade: 8,5kg</li><li>Modelo: Essential Care LES09</li><li>Abertura: Superior (top load)</li><li>Programas de lavagem: 12 automáticos</li><li>Sistema de lavagem: Com turbo agitação</li><li>Recursos: Níveis de água ajustáveis, Filtro pega-fiapos, Dispenser multiuso</li><li>Tampa: Vidro temperado</li><li>Eficiência Energética: Classificação A</li><li>Voltagem: 127V</li></ul>",
+            "especificacoesHTML": "<ul><li>Capacidade: 8,5kg</li><li>Modelo: Essential Care LES09</li><li>Abertura: Superior (top load)</li><li>Programas de lavagem: 12 automáticos</li><li>Sistema de lavagem: Com turbo agitação</li><li>Recursos: Níveis de água ajustáveis, Filtro pega-fiapos, Dispenser multiuso</li><li>Tampa: Vidro temperado</li><li>Eficiência Energética: Classificação A</li><li>Voltagem: 220V</li></ul>",
             "estadoProduto": "Usada, mas em excelente funcionamento. Limpa e bem conservada."
         }
     },
@@ -132,7 +132,7 @@
             "valorOriginal": "R$ 649,90",
             "localRetirada": "Rio Tavares - Florianópolis",
             "descricaoGeral": "Ventilador de torre NOVO, nunca usado. Ideal para quartos e salas - muito silencioso e com excelente alcance de ventilação.",
-            "especificacoesHTML": "<ul><li>Design: Moderno e compacto</li><li>Controle: Remoto multifunções</li><li>Velocidades: 4 (baixa, média, alta e ECO)</li><li>Modos de vento: 3 (normal - contínuo, brisa - simula vento natural, noturno - mais suave)</li><li>Oscilação: Horizontal de 90º</li><li>Timer programável: 1h, 2h, 4h, 8h ou até 15h</li><li>Painel: Com LED indicador</li><li>Potência: 70W</li><li>Altura: 103 cm</li><li>Peso: 3,7 kg</li><li>Voltagem: 127V</li></ul>",
+            "especificacoesHTML": "<ul><li>Design: Moderno e compacto</li><li>Controle: Remoto multifunções</li><li>Velocidades: 4 (baixa, média, alta e ECO)</li><li>Modos de vento: 3 (normal - contínuo, brisa - simula vento natural, noturno - mais suave)</li><li>Oscilação: Horizontal de 90º</li><li>Timer programável: 1h, 2h, 4h, 8h ou até 15h</li><li>Painel: Com LED indicador</li><li>Potência: 70W</li><li>Altura: 103 cm</li><li>Peso: 3,7 kg</li><li>Voltagem: 220V</li></ul>",
             "estadoProduto": "NOVO - nunca foi utilizado. Acompanha controle remoto original."
         }
     },
@@ -166,7 +166,7 @@
             "valorOriginal": "R$ 419",
             "localRetirada": "Rio Tavares - Florianópolis",
             "descricaoGeral": "Air Fryer potente e compacta, ideal para preparar refeições mais saudáveis com praticidade.",
-            "especificacoesHTML": "<ul><li>Capacidade: 3,2 litros</li><li>Potência: 1500W</li><li>Controle de temperatura: 80° a 200°C</li><li>Timer: Até 30 minutos</li><li>Indicadores: Luzes de funcionamento e aquecimento</li><li>Voltagem: 110V (127V)</li><li>Design: Moderno e fácil de limpar</li></ul>",
+            "especificacoesHTML": "<ul><li>Capacidade: 3,2 litros</li><li>Potência: 1500W</li><li>Controle de temperatura: 80° a 200°C</li><li>Timer: Até 30 minutos</li><li>Indicadores: Luzes de funcionamento e aquecimento</li><li>Voltagem: 220V</li><li>Design: Moderno e fácil de limpar</li></ul>",
             "estadoProduto": "Funcionando normalmente. Precisa trocar o botão do timer (custa no máximo R$ 30). A alça também pode ser trocada por uma nova (R$ 45), mas o encaixe pode ser resolvido com parafusos simples.",
             "observacoes": "Ótima opção para quem quer economizar e resolver pequenos ajustes por conta própria. Ideal para quem gosta de pequenos consertos e quer economizar."
         }
@@ -210,7 +210,7 @@
         "id": "cafeteira_oster_daylight",
         "imageSrc": "images/cafeteira-oster-daylight-400.webp", 
         "shortName": "Cafeteira Oster Day Light",
-        "fullName": "Cafeteira Digital Oster Day Light OCAF500 – 127V",
+        "fullName": "Cafeteira Digital Oster Day Light OCAF500 – 220V",
         "price": "R$ 100,00",
         "description": "Café pronto ao acordar. Moderna, prática e programável.",
         "olxLink": "", 
@@ -219,7 +219,7 @@
             "valorOriginal": "R$ 289,00",
             "localRetirada": "Rio Tavares – Florianópolis",
             "descricaoGeral": "Modelo compacto e programável, ideal para quem deseja praticidade no preparo do café do dia a dia. Basta programar e acordar com café fresquinho.",
-            "especificacoesHTML": "<ul><li>Modelo: OCAF500</li><li>Funcionalidade: Timer programável até 24h</li><li>Recursos: Placa aquecedora, desligamento automático, jarra de 1,2L, filtro permanente lavável</li><li>Voltagem: 127V</li><li>Cor: Preta</li><li>Peso aproximado: 1,2kg</li><li>Acessórios: Acompanha copo medidor</li></ul>",
+            "especificacoesHTML": "<ul><li>Modelo: OCAF500</li><li>Funcionalidade: Timer programável até 24h</li><li>Recursos: Placa aquecedora, desligamento automático, jarra de 1,2L, filtro permanente lavável</li><li>Voltagem: 220V</li><li>Cor: Preta</li><li>Peso aproximado: 1,2kg</li><li>Acessórios: Acompanha copo medidor</li></ul>",
             "estadoProduto": "Usada poucas vezes. Em ótimo estado e funcionamento perfeito."
         }
     },
@@ -295,7 +295,7 @@
         "id": "forno_oster_18l_convection",
         "imageSrc": "images/forno-eletrico-oster.webp",
         "shortName": "Forno Elétrico Oster 18L",
-        "fullName": "Forno Elétrico Oster Convection Cook 18L - Vermelho Metálico 127V",
+        "fullName": "Forno Elétrico Oster Convection Cook 18L - Vermelho Metálico 220V",
         "price": "R$ 100,00",
         "description": "Tecnologia de convecção para assados rápidos e uniformes.",
         "olxLink": "",
@@ -304,7 +304,7 @@
             "valorOriginal": "R$ 499,00",
             "localRetirada": "Rio Tavares - Florianópolis",
             "descricaoGeral": "O Forno Elétrico Oster® Convection Cook com 18L de capacidade utiliza tecnologia de convecção para distribuir o calor de forma rápida e uniforme, ideal para o preparo de carnes suculentas, crostas crocantes e sabores intensos. Perfeito para uma refeição completa para a família, permitindo gratinar, dourar, cozinhar ou tostar em poucos minutos.",
-            "especificacoesHTML": "<ul><li>Modelo: TSSTTV7118R-017</li><li>Capacidade: 18 Litros</li><li>Tecnologia: Convecção</li><li>Funções Pré-programadas: 5 (Assar, Assar por convecção, Tostar, Grelhar, Aquecer)</li><li>Ajuste de Temperatura: 120ºC a 230ºC</li><li>Timer: 60 minutos com aviso sonoro</li><li>Potência: 1400W</li><li>Tensão: 127V</li><li>Consumo: 1,4 kWh</li><li>Cor: Vermelho metálico com acabamento em aço inoxidável</li><li>Dimensões Externas (LxAxP): 42.2cm x 24.8cm x 32cm</li><li>Dimensões Internas da Cavidade (LxAxP): Aproximadamente 29.5cm x 19.5cm x 28cm</li><li>Peso: 4,66Kg</li><li>Recursos Adicionais: Grade removível, bandeja coletora de migalhas removível para fácil limpeza. (Acompanha 1 grade).</li><li>Tomada: 20 Amperes</li></ul>",
+            "especificacoesHTML": "<ul><li>Modelo: TSSTTV7118R-017</li><li>Capacidade: 18 Litros</li><li>Tecnologia: Convecção</li><li>Funções Pré-programadas: 5 (Assar, Assar por convecção, Tostar, Grelhar, Aquecer)</li><li>Ajuste de Temperatura: 120ºC a 230ºC</li><li>Timer: 60 minutos com aviso sonoro</li><li>Potência: 1400W</li><li>Tensão: 220V</li><li>Consumo: 1,4 kWh</li><li>Cor: Vermelho metálico com acabamento em aço inoxidável</li><li>Dimensões Externas (LxAxP): 42.2cm x 24.8cm x 32cm</li><li>Dimensões Internas da Cavidade (LxAxP): Aproximadamente 29.5cm x 19.5cm x 28cm</li><li>Peso: 4,66Kg</li><li>Recursos Adicionais: Grade removível, bandeja coletora de migalhas removível para fácil limpeza. (Acompanha 1 grade).</li><li>Tomada: 20 Amperes</li></ul>",
             "estadoProduto": "Usado, com alguns pontos de ferrugem mas funcionando perfeitamente.",
             "observacoes": "Ideal para quem busca praticidade e eficiência na cozinha. Motivo da venda: mudança."
         }
