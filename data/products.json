@@ -325,5 +325,90 @@
         "especificacoesHTML": "<ul><li>Tipo: Long John</li><li>Espessura: 3-2mm</li><li>Gênero: Feminino</li><li>Divisão: Adulto</li><li>Produto: Surf</li><li>Coleção: 2021</li><li>Tecido: Neox4 Plus – policloropreno 4x mais flexível</li><li>Costura: Blindstitch (não atravessa o tecido)</li><li>Sistema: En System sem zíper com gola ergonômica</li><li>Vedação interna: 70% com Neox4 Tape</li><li>Joelhos: Proteção com EBS System (alta durabilidade)</li><li>Proteção UV: Até 98% dos raios UV (certificação ARPANSA)</li><li>Composição: 100% policloropreno com revestimento 86% poliamida, 14% elastano</li><li>Garantia de fábrica: 12 meses</li></ul>",
         "estadoProduto": "Novo, nunca usado. Produto original com nota e garantia Mormaii."
       }
+    },
+    {
+       "id": "gimbal_estabilizador_manual",
+  "imageSrc": "images/gimbal-400.webp",
+  "shortName": "Gimbal Manual (Steadycam)",
+  "fullName": "Gimbal Estabilizador Manual para Câmeras DSLR e Mirrorless",
+  "price": "R$ 150,00",
+  "description": "Vídeos suaves e profissionais com este estabilizador manual.",
+  "olxLink": "",
+  "status": "disponivel",
+  "detailedInfo": {
+    "valorOriginal": "R$ 800,00",
+    "localRetirada": "Rio Tavares - Florianópolis",
+    "descricaoGeral": "Estabilizador mecânico manual (tipo steadycam) projetado para câmeras DSLR e Mirrorless. Permite a captura de vídeos fluidos e cinematográficos, eliminando trepidações através de um sistema de contrapesos. Ideal para videomakers que buscam controle total e não dependem de baterias.",
+    "especificacoesHTML": "<ul><li>Tipo: Estabilizador Mecânico Manual (Tipo Steadycam)</li><li>Ajuste: Sistema de contrapesos para balanceamento preciso</li><li>Compatibilidade: Câmeras DSLR e Mirrorless</li><li>Material: Construção em alumínio resistente</li><li>Recursos: Manopla emborrachada para pegada firme, placa de engate rápido.</li></ul>",
+    "estadoProduto": "Usado, mas em perfeito estado funcional. Todas as articulações e rolamentos operam suavemente. Pronto para uso, acompanha todos os contrapesos. Pode conter pequenas marcas de uso que não afetam o desempenho."
+      }
+    },
+    {
+      "id": "cadeira_escolar_cimo",
+      "imageSrc": "images/cadeira-escolar-cimo-400.webp",
+      "shortName": "Cadeira Escolar Cimo",
+      "fullName": "Cadeira Escolar Antiga com Prancheta - Marca Cimo",
+      "price": "R$ 150,00",
+      "description": "Peça vintage de madeira, para decoração ou uso.",
+      "olxLink": "",
+      "status": "disponivel",
+      "detailedInfo": {
+        "valorOriginal": "N/A (Peça de época)",
+        "localRetirada": "Rio Tavares - Florianópolis",
+        "descricaoGeral": "Autêntica cadeira escolar da icônica marca Cimo, um clássico do design brasileiro. Peça cheia de história, perfeita para compor uma decoração retrô/vintage, como escrivaninha compacta ou simplesmente como um item de colecionador (https://www.cutterman.co/produto/cadeira-escolar-cimo-699).",
+        "especificacoesHTML": "<ul><li>Marca: Cimo</li><li>Material: Madeira maciça e compensado naval</li><li>Design: Cadeira com prancheta acoplada para destros</li><li>Estilo: Vintage, Retrô (décadas de 70/80)</li><li>Recursos: Compartimento para livros abaixo do assento</li></ul>",
+        "estadoProduto": "Usada, em bom estado de conservação. Apresenta marcas do tempo e de uso, que conferem charme e autenticidade à peça. Estrutura firme e robusta."
+      }
+    },
+    {
+      "id": "speedlite_canon_430exii",
+      "imageSrc": "images/speedlite-canon-430exii-400.webp",
+      "shortName": "Flash Canon 430EX II",
+      "fullName": "Flash Speedlite Canon 430EX II",
+      "price": "R$ 400,00",
+      "description": "Flash potente e versátil para câmeras Canon EOS.",
+      "olxLink": "",
+      "status": "disponivel",
+      "detailedInfo": {
+        "valorOriginal": "R$ 1.500,00",
+        "localRetirada": "Rio Tavares - Florianópolis",
+        "descricaoGeral": "O Canon Speedlite 430EX II é um flash externo versátil e potente, essencial para fotógrafos que buscam controle criativo sobre a iluminação. Oferece mais potência que o flash embutido da câmera e permite rebater a luz no teto ou paredes para um resultado mais suave e profissional. Totalmente compatível com o sistema E-TTL II da Canon.",
+        "especificacoesHTML": "<ul><li>Número Guia: 43 (em ISO 100, a 105mm)</li><li>Compatibilidade: Câmeras Canon com sistema E-TTL / E-TTL II</li><li>Cabeça de Zoom: Automático e manual (24-105mm)</li><li>Movimento da Cabeça: Inclinação de 90° para cima, rotação de 180° para a esquerda e 90° para a direita</li><li>Recursos: Sincronização de alta velocidade (HSS), modo escravo sem fio, luz auxiliar de AF</li><li>Alimentação: 4 pilhas AA</li></ul>",
+        "estadoProduto": "Usado, em excelente estado de conservação e perfeito funcionamento. Lâmpada com poucos disparos. Acompanha sapata de apoio e case original."
+      }
+    },
+    {
+      "id": "octabox_greika_80cm",
+      "imageSrc": "images/octabox-greika-80cm-400.webp",
+      "shortName": "Octabox Greika 80cm",
+      "fullName": "Octabox Greika tipo Sombrinha 80cm com Encaixe Bowens",
+      "price": "R$ 150,00",
+      "description": "Modificador de luz para retratos, cria luz suave e natural.",
+      "olxLink": "",
+      "status": "disponivel",
+      "detailedInfo": {
+        "valorOriginal": "R$ 299,00",
+        "localRetirada": "Rio Tavares - Florianópolis",
+        "descricaoGeral": "Modificador de luz octogonal de 80cm da marca Greika. Ideal para fotógrafos de estúdio, especialmente para retratos, moda e beleza. O formato octogonal cria um reflexo (catchlight) mais natural e agradável nos olhos do modelo. Montagem rápida estilo sombrinha, muito prática para montar e desmontar.",
+        "especificacoesHTML": "<ul><li>Marca: Greika</li><li>Diâmetro: 80 cm</li><li>Formato: Octogonal</li><li>Montagem: Rápida, tipo sombrinha (varillas)</li><li>Encaixe: Bowens (compatível com a maioria dos flashes de estúdio)</li><li>Interior: Prateado para máxima reflexão</li><li>Acessórios: Acompanha tela difusora frontal e bolsa para transporte</li></ul>",
+        "estadoProduto": "Usado pouquíssimas vezes, está em estado de novo. Sem rasgos, manchas ou qualquer avaria. Todas as varetas e o anel Bowens estão perfeitos."
+      }
+    },
+    {
+      "id": "suporte_fundo_greika",
+      "imageSrc": "images/suporte-fundo-infinito-400.webp",
+      "shortName": "Suporte Fundo Infinito",
+      "fullName": "Suporte para Fundo Infinito Fotográfico Greika",
+      "price": "R$ 200,00",
+      "description": "Monte seu estúdio em qualquer lugar. Portátil e resistente.",
+      "olxLink": "",
+      "status": "disponivel",
+      "detailedInfo": {
+        "valorOriginal": "R$ 450,00",
+        "localRetirada": "Rio Tavares - Florianópolis",
+        "descricaoGeral": "Kit de suporte para fundo infinito da marca Greika, essencial para fotógrafos e videomakers que precisam de um estúdio móvel. Leve e fácil de montar, permite usar fundos de tecido ou papel em qualquer local. Ideal para ensaios, entrevistas, lives e fotografia de produtos.",
+        "especificacoesHTML": "<ul><li>Marca: Greika</li><li>Componentes: 2 tripés de iluminação e 1 barra transversal telescópica (dividida em seções)</li><li>Altura Máxima dos Tripés: Aproximadamente 2,60 metros</li><li>Largura Máxima da Barra: Aproximadamente 3,00 metros (ajustável)</li><li>Material: Alumínio anodizado em preto</li><li>Capacidade: Suporta fundos de tecido, lona ou papel de até 5kg (aprox.)</li><li>Acessórios: Acompanha bolsa de nylon para transporte</li></ul>",
+        "estadoProduto": "Usado, em ótimo estado funcional. Todas as travas, roscas e ajustes estão funcionando perfeitamente. A bolsa de transporte pode ter pequenas marcas de uso."
+      }
     }
 ]
