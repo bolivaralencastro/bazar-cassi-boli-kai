@@ -362,7 +362,7 @@
     },
     {
       "id": "speedlite_canon_430exii",
-      "imageSrc": "images/speedlite-canon-430exii-400.webp",
+      "imageSrc": "images/canon-speedlight-400.webp",
       "shortName": "Flash Canon 430EX II",
       "fullName": "Flash Speedlite Canon 430EX II",
       "price": "R$ 400,00",
@@ -379,7 +379,7 @@
     },
     {
       "id": "octabox_greika_80cm",
-      "imageSrc": "images/octabox-greika-80cm-400.webp",
+      "imageSrc": "images/octa-box-greika-400.webp",
       "shortName": "Octabox Greika 80cm",
       "fullName": "Octabox Greika tipo Sombrinha 80cm com Encaixe Bowens",
       "price": "R$ 150,00",
@@ -396,7 +396,7 @@
     },
     {
       "id": "suporte_fundo_greika",
-      "imageSrc": "images/suporte-fundo-infinito-400.webp",
+      "imageSrc": "images/sup-fundo-greika-400.webp",
       "shortName": "Suporte Fundo Infinito",
       "fullName": "Suporte para Fundo Infinito Fotográfico Greika",
       "price": "R$ 200,00",
