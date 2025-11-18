@@ -284,6 +284,13 @@ main {
   font-size: 0.95rem;
 }
 
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .btn-like {
   display: inline-flex;
   align-items: center;
