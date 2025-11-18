@@ -14,6 +14,10 @@ ul, ol {
 
 button {
   font: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 body {
@@ -287,8 +291,15 @@ main {
 .action-buttons {
   display: flex;
   align-items: center;
-  gap: 12px;
   flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+  margin-right: 12px;
+}
+
+.action-buttons .btn:last-child {
+  margin-right: 0;
 }
 
 .btn-like {
@@ -329,6 +340,7 @@ main {
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .btn .icon-svg {

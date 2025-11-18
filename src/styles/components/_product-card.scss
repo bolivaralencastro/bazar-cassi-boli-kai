@@ -85,8 +85,15 @@
 .action-buttons {
   display: flex;
   align-items: center;
-  gap: space(1.5);
   flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+  margin-right: space(1.5);
+}
+
+.action-buttons .btn:last-child {
+  margin-right: 0;
 }
 
 .btn-like {
@@ -119,6 +126,7 @@
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .btn .icon-svg {
