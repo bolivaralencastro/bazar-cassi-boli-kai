@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "sass src/styles/main.scss public/css/main.css",
-    "build:css:prod": "sass --style=compressed src/styles/main.scss public/css/main.css",
-    "watch:css": "sass --watch src/styles/main.scss:public/css/main.css"
+    "build:css": "sass src/styles/main.scss docs/css/main.css",
+    "build:css:prod": "sass --style=compressed src/styles/main.scss docs/css/main.css",
+    "watch:css": "sass --watch src/styles/main.scss:docs/css/main.css"
   },
   "keywords": [],
   "author": "",
