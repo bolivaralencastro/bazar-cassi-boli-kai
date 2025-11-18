@@ -1,0 +1,46 @@
+@use '../abstracts/tokens' as *;
+
+body {
+  margin: 0;
+  background-color: $color-body-background;
+  color: $color-text;
+}
+
+body.order-panel-padding {
+  padding-bottom: space(20);
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+main {
+  margin: 0 auto space(3);
+  max-width: 720px;
+  padding: space(3) clamp(space(1.5), 4vw, space(3));
+  background-color: $color-surface;
+  border-radius: $radius-md;
+  box-shadow: $shadow-soft;
+  position: relative;
+  z-index: $z-index-main;
+}
+
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 720px;
+  margin: 0 auto space(3);
+  transition: opacity 0.35s ease;
+}
+
+.hero-section.hero-hidden {
+  opacity: 0;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 720px;
+  border-radius: $radius-sm;
+  object-fit: cover;
+}

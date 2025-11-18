@@ -1,0 +1,25 @@
+@use 'tokens' as *;
+
+@mixin focus-ring($color: $color-accent) {
+  outline: 2px solid $color;
+  outline-offset: 2px;
+}
+
+@mixin button-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

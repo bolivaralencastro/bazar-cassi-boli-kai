@@ -1,0 +1,13 @@
+@use '../abstracts/tokens' as *;
+
+.error-message {
+  color: $color-danger;
+  background-color: rgba($color-danger, 0.1);
+  padding: space(1);
+  border: $border-width solid rgba($color-danger, 0.3);
+  border-radius: $radius-sm;
+  margin: space(1) 0;
+}
+
+.error-container {
+}

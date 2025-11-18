@@ -1,0 +1,24 @@
+@use '../abstracts/tokens' as *;
+
+.icon-svg {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+  display: inline-block;
+  fill: currentColor;
+}
+
+.order-panel-header .icon-svg {
+  margin-left: space(0.5);
+  margin-right: 0;
+}
+
+.remove-order-item-btn .icon-svg {
+  width: 20px;
+  height: 20px;
+  fill: $color-like;
+}
+
+.remove-order-item-btn:hover .icon-svg {
+  filter: brightness(0.92);
+}

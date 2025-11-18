@@ -1,0 +1,19 @@
+@use '../abstracts/tokens' as *;
+
+body {
+  font-family: $font-family-base;
+  color: $color-text;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $color-heading;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+p {
+  color: $color-muted;
+  font-weight: $font-weight-regular;
+}

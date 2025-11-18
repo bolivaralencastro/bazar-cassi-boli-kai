@@ -1,0 +1,110 @@
+@use '../abstracts/tokens' as *;
+@use '../abstracts/mixins' as *;
+
+.order-panel {
+  position: fixed;
+  left: 50%;
+  bottom: space(2);
+  transform: translateX(-50%);
+  width: min(680px, calc(100% - space(4)));
+  background-color: $color-heading;
+  color: $color-inverse;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-medium;
+  display: none;
+  z-index: $z-index-order-panel;
+}
+
+.order-panel.visible {
+  display: block;
+}
+
+.order-panel-content-wrapper {
+  padding: space(1.5) space(2);
+}
+
+.order-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: space(1);
+}
+
+#orderSummaryText {
+  font-weight: $font-weight-semibold;
+}
+
+#toggleOrderDetailsBtn {
+  @include button-reset;
+  font-size: 0.9rem;
+  color: inherit;
+  opacity: 0.85;
+  gap: space(0.5);
+}
+
+#toggleOrderDetailsBtn .icon-svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s ease;
+}
+
+.order-panel.expanded #toggleOrderDetailsBtn .icon-svg {
+  transform: rotate(180deg);
+}
+
+#orderItemsList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  border-top: $border-width solid rgba(255, 255, 255, 0.1);
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+}
+
+.order-panel.expanded #orderItemsList {
+  max-height: 220px;
+  opacity: 1;
+  overflow-y: auto;
+  margin-top: space(1);
+  padding-top: space(1);
+}
+
+#orderItemsList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: space(1);
+  padding: space(0.75) 0;
+  border-bottom: $border-width solid rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+}
+
+#orderItemsList li:last-child {
+  border-bottom: none;
+}
+
+.send-order-btn {
+  margin-top: space(1.5);
+  width: 100%;
+  padding: space(1.25);
+  border-radius: $radius-sm;
+  border: none;
+  background-color: $color-accent;
+  color: $color-inverse;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.send-order-btn:hover,
+.send-order-btn:focus {
+  background-color: $color-accent-hover;
+}
+
+.remove-order-item-btn {
+  @include button-reset;
+  margin-left: space(1);
+}

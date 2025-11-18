@@ -1,0 +1,34 @@
+@use '../abstracts/tokens' as *;
+
+.welcome-card {
+  background-color: $color-surface-soft;
+  border: $border-width solid $color-border;
+  border-radius: $radius-md;
+  padding: space(3) clamp(space(2), 5vw, space(4));
+  margin-bottom: space(4);
+  text-align: center;
+  box-shadow: $shadow-soft;
+  color: $color-text;
+}
+
+.welcome-card h2 {
+  margin: 0 0 space(2);
+  font-size: 1.75rem;
+  color: $color-heading;
+}
+
+.welcome-card p {
+  margin: 0 0 space(1.75);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: $color-muted;
+}
+
+.welcome-card p:last-of-type {
+  margin-bottom: 0;
+}
+
+.welcome-card em {
+  font-size: 0.9rem;
+  color: $color-muted;
+}

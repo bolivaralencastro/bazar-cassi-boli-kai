@@ -1,0 +1,50 @@
+$font-family-base: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$color-body-background: #f3f4f6;
+$color-surface: #ffffff;
+$color-surface-soft: #f8fafc;
+$color-border: #e2e8f0;
+$color-border-strong: #cbd5f5;
+
+$color-heading: #1f2933;
+$color-text: #334155;
+$color-muted: #64748b;
+$color-inverse: #ffffff;
+
+$color-accent: #2f855a;
+$color-accent-hover: #276749;
+$color-danger: #e05353;
+$color-danger-hover: #c53030;
+$color-disabled-bg: #e5e7eb;
+$color-disabled-text: #94a3b8;
+$color-like: #ef4444;
+
+$color-overlay: rgba(15, 23, 42, 0.72);
+$color-overlay-soft: rgba(226, 232, 240, 0.75);
+
+$shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+$shadow-medium: 0 14px 32px rgba(15, 23, 42, 0.12);
+
+$radius-sm: 8px;
+$radius-md: 12px;
+
+$border-width: 1px;
+
+$z-index-hero: 1;
+$z-index-main: 2;
+$z-index-order-panel: 10;
+$z-index-modal: 1000;
+
+$space-unit: 8px;
+
+@function space($multiplier) {
+  @return $space-unit * $multiplier;
+}
+
+@function rem($pixels, $base: 16) {
+  @return ($pixels / $base) * 1rem;
+}
