@@ -203,6 +203,12 @@ main {
   margin-left: 8px;
 }
 
+#productList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .product-list-item {
   display: flex;
   flex-wrap: wrap;
@@ -266,7 +272,7 @@ main {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px;
   margin-top: auto;
 }
 

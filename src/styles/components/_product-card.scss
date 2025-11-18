@@ -1,6 +1,12 @@
 @use '../abstracts/tokens' as *;
 @use '../abstracts/mixins' as *;
 
+#productList {
+  display: flex;
+  flex-direction: column;
+  gap: space(2);
+}
+
 .product-list-item {
   display: flex;
   flex-wrap: wrap;
@@ -64,7 +70,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: space(1);
+  gap: space(1.5);
   margin-top: auto;
 }
 
